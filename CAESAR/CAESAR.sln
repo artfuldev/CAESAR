@@ -10,6 +10,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Root", "Root", "{42BD7E9C-2
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AA819664-250B-48E9-8592-21F8A3CA4AE3}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\readme.md = ..\docs\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pending", "Pending", "{E9C8724E-EE62-48A7-B69C-97DC83A9E7BF}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\pending\01 - Introduction.md = ..\docs\pending\01 - Introduction.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +33,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E9C8724E-EE62-48A7-B69C-97DC83A9E7BF} = {AA819664-250B-48E9-8592-21F8A3CA4AE3}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
