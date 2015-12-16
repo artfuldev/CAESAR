@@ -40,10 +40,8 @@ functionally and architecturally sound piece of software. My purpose is not to t
 the answers that you'll need, but rather to help you ask the right questions.
 
 ##The How
-The goal is to create a cross-platform console application that runs on DNX, but initially
-we will start with a Windows Console applictaion. Naturally we will be breaking down the
-functionality into libraries (that can be cross-platform), which will allow us to transition to
-a cross-platform console app in the near future, as soon as possible.
+The goal is to create a cross-platform console application that runs on DNX. Naturally we will
+be breaking down the functionality into libraries (that are also cross-platform).
 
 More granular details on what we will accomplishing on a time-frame basis will be updated in
 the journal localted in the docs folder of the repository.
