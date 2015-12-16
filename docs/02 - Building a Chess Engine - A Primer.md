@@ -4,7 +4,7 @@ even though we have a few commits already, we have never actually committed any 
 always start with a plan. I have a personal software development cycle which goes roughly
 like this:
 
-[!Software Development Cycle](media/software-development-cycle.png)
+![Software Development Cycle](media/software-development-cycle.png)
 
 First things first: know about [chess](https://en.wikipedia.org/wiki/Chess). Or, skip it
 entirely and follow on. We will be getting into the details when we want to start writing code
@@ -25,7 +25,7 @@ lie ahead of us in this wonderful journey we are prepared to take.
 Once the board representation is complete, we need to put the 'brains' in the engine. That will
 be search and evaluation, the fun stuff.
 
-[!Broad Initial Process](media/broad-initial-process.png)
+![Broad Initial Process](media/broad-initial-process.png)
 
 We then need a UI to connect and get inputs from and give outputs to. We can cook up a GUI, but
 thankfully, we have GUIs with some communication protocols we can take advantage of. So we will
