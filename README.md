@@ -18,7 +18,7 @@ everyone.
 
 I intend this to be an interactive act of discovery.
 
-So, we're attempt creating a chess engine with software best practices in mind - simple, no?
+So, we're attempting to create a chess engine with software best practices in mind - simple, no?
 
 ##The Why
 Chess engines are almost always written way too optimized for "anyone" to just "have a peek under
