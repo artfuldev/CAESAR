@@ -61,7 +61,7 @@ If you feel that there is anything more that we can do to make this accessible t
 audience, you are encouraged to share.
 
 ##Next Steps
-* Go to the docs folder, review the content, review the source code, and just dive in!
+* Go to the [docs](docs) folder, review the content, review the source code, and just dive in!
 
 ##Problems, Concerns, and Feedback
 You can communicate via email to kenshin@thebattosai.in or even open issues at this repo, if
