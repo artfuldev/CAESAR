@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Media", "Media", "{20374D28
 	ProjectSection(SolutionItems) = preProject
 		..\docs\media\broad-initial-process.png = ..\docs\media\broad-initial-process.png
 		..\docs\media\chess-board.png = ..\docs\media\chess-board.png
+		..\docs\media\g2-square.png = ..\docs\media\g2-square.png
 		..\docs\media\software-development-cycle.png = ..\docs\media\software-development-cycle.png
 		..\docs\media\starting-position.png = ..\docs\media\starting-position.png
 	EndProjectSection

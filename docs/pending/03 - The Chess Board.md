@@ -21,11 +21,13 @@ We can reference them using the numbering and alphabets. As an example, the seco
 bottom can be referenced as *rank 2* or *2nd rank*. Similarly the second *file* from the right can
 be referred to as the *g file*. This is important. We call them rank numbers and file names.
 
+![Chess Board](../media/g2-square.png)
+
 ##Squares
 Just as in a grid or table, rows and columns intersect at cells, the ranks and files of a chessboard
 intersect at *square*s. A square can be referred to on a chess board by rederring to the file and
 rank to which it belongs. Let's take an example. The square on the board second from bottom and
-second from right, belongs to the *g file* and *2nd rank*. It is therefore referred to as the *g2
+second from right, belongs to the *g file* and *rank 2*. It is therefore referred to as the *g2
 square*.
 
 Try pointing out the *e4*, *d5*, and *b7* squares to get familiar with this reference. To recap, a
@@ -35,7 +37,8 @@ squares, ranging from a1 through a8, b1 through b8, and likewise, to h1 through 
 ##Representations
 There are several representations of a chess board in computers. But we are going to build our own
 representation from scratch with what we know, and keep refining it until we reach a point where it
-encompasses everything needed for our requirement. This method will also pave the way to:
+encompasses everything needed for our requirement. This method will also pave the way to learning
+about:
 
 * proper thinking
 * sticking to what we know
