@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CAESAR.Chess.Implementation;
+using Xunit;
 
-namespace CAESAR.ConsoleApp
+namespace CAESAR.Chess.Tests
 {
-    public class Program
+    // This project can output the Class library as a NuGet Package.
+    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
+    public class BoardTests
     {
-        public static void Main(string[] args)
+        [Fact]
+        public void PassingTests()
         {
             var board = new Board();
             var outputString = "";
@@ -16,7 +20,6 @@ namespace CAESAR.ConsoleApp
                 outputString += square.Name + ", ";
             outputString.TrimEnd(',');
             Console.WriteLine(outputString);
-            Console.ReadLine();
         }
     }
 }
