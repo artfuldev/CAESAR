@@ -62,7 +62,7 @@ Keeping in line with [SOLID principles](), we code against abstractions and not 
 
 Hence we have:
 
-An *IBoard* is made up of *IRank*s, *IFile*s and *ISquare*s. Its *IRank*s, *IFile*s and *ISquare*s
+An *[IBoard](../CAESAR/CAESAR.Chess/IBoard.cs)* is made up of *IRank*s, *IFile*s and *ISquare*s. Its *IRank*s, *IFile*s and *ISquare*s
 can be obtained by rank numbers or rank indices, file names or file indices, and square names,
 respectively.
 
