@@ -62,24 +62,28 @@ Keeping in line with [SOLID principles](), we code against abstractions and not 
 
 Hence we have:
 
-An *[IBoard](../CAESAR/CAESAR.Chess/IBoard.cs)* is made up of *IRank*s, *IFile*s and *ISquare*s. Its *IRank*s, *IFile*s and *ISquare*s
-can be obtained by rank numbers or rank indices, file names or file indices, and square names,
-respectively.
+An *[IBoard](../CAESAR/CAESAR.Chess/IBoard.cs)* is made up of *IRank*s, *IFile*s and *ISquare*s.
+Its *IRank*s, *IFile*s and *ISquare*s can be obtained by rank numbers or rank indices, file names
+or file indices, and square names, respectively.
 
-An *IRank* is a *ReadOnlyCollection* of *ISquare*s, belongs to an *IBoard* in which it is designated a
-Rank *Number* from `1` to `8`. The selection of squares from the board that belongs to the rank is
-decided based on the rank number. All of this is encapsulated by the *Rank* class.
+An *[IRank](../CAESAR/CAESAR.Chess/IRank.cs)* is a *ReadOnlyCollection* of *ISquare*s, belongs to an
+*IBoard* in which it is designated a Rank *Number* from `1` to `8`. The selection of squares from the
+board that belongs to the rank is decided based on the rank number. All of this is encapsulated by the
+*[Rank](../CAESAR/CAESAR.Chess/Implementation/Rank.cs)* class.
 
-An *IFile* is also a *ReadOnlyCollection* of *ISquare*s, belongs to an *IBoard* in which it is
-designated a *Name* which is made up of a single character from `a` to `h`. The selection of squares
-from the board that belongs to the file is decided based on the file name. All of this is
-encapsulated by the *File* class.
+An *[IFile](../CAESAR/CAESAR.Chess/IFile.cs)* is also a *ReadOnlyCollection* of *ISquare*s, belongs
+to an *IBoard* in which it is designated a *Name* which is made up of a single character from `a` to
+`h`. The selection of squares from the board that belongs to the file is decided based on the file
+name. All of this is encapsulated by the *[File](../CAESAR/CAESAR.Chess/Implementation/File.cs)*
+class.
 
-An *ISquare* is either light or dark, belongs to an *IBoard*, an *IFile* and an *IRank*. Its name is
-calculated as the combination of the *IFile*'s name and the *IRank*'s number. All this is encapsulated
-by the *Square* class.
+An *[ISquare](../CAESAR/CAESAR.Chess/ISquare.cs)* is either light or dark, belongs to an *IBoard*, an
+*IFile* and an *IRank*. Its name is calculated as the combination of the *IFile*'s name and the
+*IRank*'s number. All this is encapsulated by the
+*[Square](../CAESAR/CAESAR.Chess/Implementation/Square.cs)* class.
 
-A default *IBoard* construction is present in the *Board* class, it is the default implementation.
+A default *IBoard* construction is present in the
+*[Board](../CAESAR/CAESAR.Chess/Implementation/Board.cs)* class, it is the default implementation.
 We also print a board using a console application in order to test the board generation.
 We will shortly be adding unit tests to test whether the current Board Representation satisfies the
 criteria of whatever we have learnt so far. Even though we are fairly sure by listing out just as we
