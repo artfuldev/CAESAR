@@ -11,10 +11,8 @@ namespace CAESAR.ConsoleApp
         public static void Main(string[] args)
         {
             var board = new Board();
-            var outputString = "";
-            foreach (var square in board.Squares)
-                outputString += square.Name + ", ";
-            outputString.TrimEnd(',');
+            var outputString = board.Squares.Aggregate("", (current, square) => current + (square.Name + ", "));
+            outputString = outputString.TrimEnd(',',' ');
             Console.WriteLine(outputString);
             Console.ReadLine();
         }
