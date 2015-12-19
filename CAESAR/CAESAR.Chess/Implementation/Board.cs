@@ -13,7 +13,7 @@ namespace CAESAR.Chess.Implementation
         {
             var squares = new ISquare[SquareCount];
             for (var i = 0; i < SquareCount; i++)
-                squares[i] = new Square(this, i%2 == 0);
+                squares[i] = new Square(this, i%2 != 0);
             Squares = squares;
 
             var ranks = new IRank[RankCount];
@@ -25,7 +25,6 @@ namespace CAESAR.Chess.Implementation
             for (var i = 0; i < FileCount; i++)
                 files[i] = new File(this, (char)(97 + i));
             Files = files;
-
         }
         public IReadOnlyCollection<IFile> Files { get; }
         public IReadOnlyCollection<IRank> Ranks { get; }
