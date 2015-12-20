@@ -1,6 +1,7 @@
 ﻿using System;
 using CAESAR.Chess.Implementation;
 using System.Linq;
+using System.Threading;
 using Xunit;
 
 namespace CAESAR.Chess.Tests
@@ -68,10 +69,102 @@ namespace CAESAR.Chess.Tests
             Assert.True(_board.Squares.Count == 64);
         }
 
-        [Fact]
-        public void FirstSquareofBoardIsA1()
+        [Theory]
+        [InlineData(1, "a1")]
+        [InlineData(2, "b1")]
+        [InlineData(3, "c1")]
+        [InlineData(4, "d1")]
+        [InlineData(5, "e1")]
+        [InlineData(6, "f1")]
+        [InlineData(7, "g1")]
+        [InlineData(8, "h1")]
+        [InlineData(9, "a2")]
+        [InlineData(10, "b2")]
+        [InlineData(11, "c2")]
+        [InlineData(12, "d2")]
+        [InlineData(13, "e2")]
+        [InlineData(14, "f2")]
+        [InlineData(15, "g2")]
+        [InlineData(16, "h2")]
+        [InlineData(17, "a3")]
+        [InlineData(18, "b3")]
+        [InlineData(19, "c3")]
+        [InlineData(20, "d3")]
+        [InlineData(21, "e3")]
+        [InlineData(22, "f3")]
+        [InlineData(23, "g3")]
+        [InlineData(24, "h3")]
+        [InlineData(25, "a4")]
+        [InlineData(26, "b4")]
+        [InlineData(27, "c4")]
+        [InlineData(28, "d4")]
+        [InlineData(29, "e4")]
+        [InlineData(30, "f4")]
+        [InlineData(31, "g4")]
+        [InlineData(32, "h4")]
+        [InlineData(33, "a5")]
+        [InlineData(34, "b5")]
+        [InlineData(35, "c5")]
+        [InlineData(36, "d5")]
+        [InlineData(37, "e5")]
+        [InlineData(38, "f5")]
+        [InlineData(39, "g5")]
+        [InlineData(40, "h5")]
+        [InlineData(41, "a6")]
+        [InlineData(42, "b6")]
+        [InlineData(43, "c6")]
+        [InlineData(44, "d6")]
+        [InlineData(45, "e6")]
+        [InlineData(46, "f6")]
+        [InlineData(47, "g6")]
+        [InlineData(48, "h6")]
+        [InlineData(49, "a7")]
+        [InlineData(50, "b7")]
+        [InlineData(51, "c7")]
+        [InlineData(52, "d7")]
+        [InlineData(53, "e7")]
+        [InlineData(54, "f7")]
+        [InlineData(55, "g7")]
+        [InlineData(56, "h7")]
+        [InlineData(57, "a8")]
+        [InlineData(58, "b8")]
+        [InlineData(59, "c8")]
+        [InlineData(60, "d8")]
+        [InlineData(61, "e8")]
+        [InlineData(62, "f8")]
+        [InlineData(63, "g8")]
+        [InlineData(64, "h8")]
+        public void NthSquareInBoardIsNamedX(int n, string x)
         {
-            Assert.True(_board.Squares.ElementAt(0).Name == "a1");
+            Assert.True(_board.Squares.ElementAt(n-1).Name == x);
+        }
+
+        [Fact]
+        public void EveryAlternateSquareInBoardHasTheSameColor()
+        {
+            // Even Indices
+            var isLight = _board.Squares.ElementAt(0).IsLight;
+            for (var i = 2; i < _board.Squares.Count; i += 2)
+                Assert.True(_board.Squares.ElementAt(i).IsLight == isLight);
+
+            // Odd Indices
+            isLight = _board.Squares.ElementAt(1).IsLight;
+            for (var i = 3; i < _board.Squares.Count; i += 2)
+                Assert.True(_board.Squares.ElementAt(i).IsLight == isLight);
+        }
+
+        [Theory]
+        [InlineData("h1")]
+        public void SquareNamedXInBoardIsALightSquare(string x)
+        {
+            Assert.True(_board.Squares.First(square => square.Name == x).IsLight);
+        }
+
+        [Theory]
+        [InlineData("a1")]
+        public void SquareNamedXInBoardIsADarkSquare(string x)
+        {
+            Assert.True(_board.Squares.First(square => square.Name == x).IsDark);
         }
     }
 }
