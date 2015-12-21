@@ -166,5 +166,23 @@ namespace CAESAR.Chess.Tests
         {
             Assert.True(_board.Squares.First(square => square.Name == x).IsDark);
         }
+
+        [Theory]
+        [InlineData("g2", 'g')]
+        public void SquareNamedXnBelongsToFileX(string xn, char x)
+        {
+            var square = _board.Squares.First(s => s.Name == xn);
+            var file = _board.Files.First(f => f.Name == x);
+            Assert.True(file.Contains(square));
+        }
+
+        [Theory]
+        [InlineData("g2", (byte)2)]
+        public void SquareNamedXnBelongsToRankN(string xn, byte n)
+        {
+            var square = _board.Squares.First(x => x.Name == xn);
+            var rank = _board.Ranks.First(x => x.Number == n);
+            Assert.True(rank.Contains(square));
+        }
     }
 }

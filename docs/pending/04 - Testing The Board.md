@@ -41,7 +41,7 @@ be constructor and "set" tests.
 - [x] The *n*th Square in a Board is named *x* (Theory) eg., `1`st square is named `a1` square
 - [x] The *x* square in a Board is a light square, or a dark square (Theories) eg., `a1` square is dark
 - [x] The Board is made up of alternating light and dark squares (Fact)
-- [ ] The *xn* Square belongs to *x* File and *n* Rank (Theory) eg., `a1` square belongs to `a` file and
+- [x] The *xn* Square belongs to *x* File and *n* Rank (Theory) eg., `a1` square belongs to `a` file and
 rank `1`.
 
 
