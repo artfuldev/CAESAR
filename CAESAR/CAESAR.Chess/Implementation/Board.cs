@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace CAESAR.Chess.Implementation
 {
@@ -31,57 +33,57 @@ namespace CAESAR.Chess.Implementation
         public IReadOnlyCollection<ISquare> Squares { get; }
         public ISquare GetSquare(string squareName)
         {
-            throw new System.NotImplementedException();
+            return Squares.FirstOrDefault(x => x.Name == squareName);
         }
 
         public ISquare GetSquare(IFile file, IRank rank)
         {
-            throw new System.NotImplementedException();
+            return file.FirstOrDefault(rank.Contains);
         }
 
         public ISquare GetSquare(string fileName, string rankNumber)
         {
-            throw new System.NotImplementedException();
+            return GetSquare(GetFile(fileName), GetRank(rankNumber));
         }
 
         public ISquare GetSquare(char fileName, byte rankNumber)
         {
-            throw new System.NotImplementedException();
+            return GetSquare(GetFile(fileName), GetRank(rankNumber));
         }
 
         public ISquare GetSquare(byte fileIndex, byte rankIndex)
         {
-            throw new System.NotImplementedException();
+            return GetSquare(GetFileByIndex(fileIndex), GetRankByIndex(rankIndex));
         }
 
         public IFile GetFile(char fileName)
         {
-            throw new System.NotImplementedException();
+            return Files.FirstOrDefault(x => x.Name == fileName);
         }
 
         public IFile GetFile(string fileName)
         {
-            throw new System.NotImplementedException();
+            return GetFile(Convert.ToChar(fileName));
         }
 
         public IFile GetFileByIndex(byte fileIndex)
         {
-            throw new System.NotImplementedException();
+            return Files.ElementAtOrDefault(fileIndex);
         }
 
         public IRank GetRank(byte rankNumber)
         {
-            throw new System.NotImplementedException();
+            return Ranks.FirstOrDefault(x => x.Number == rankNumber);
         }
 
         public IRank GetRank(string rankNumber)
         {
-            throw new System.NotImplementedException();
+            return GetRank(Convert.ToByte(rankNumber));
         }
 
         public IRank GetRankByIndex(byte rankIndex)
         {
-            throw new System.NotImplementedException();
+            return Ranks.ElementAtOrDefault(rankIndex);
         }
     }
 }
