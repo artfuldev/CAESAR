@@ -1,6 +1,6 @@
 # Testing The Board
 
-In the [last journal entry](../03%20-%20The%20Chess%20Board.md), we got to learn about the chess board,
+In the [last journal entry](03%20-%20The%20Chess%20Board.md), we got to learn about the chess board,
 and its many features, including ranks, files, and squares and how to reference them. We then attempted
 to construct a representation of the board. We then needed to test it.
 
@@ -48,3 +48,4 @@ rank `1`.
 ## Further Information
 * [Chessboard](https://en.wikipedia.org/wiki/Chessboard)
 * [Board Representation](https://en.wikipedia.org/wiki/Board_representation_(chess))
+* [Previous Journal Entry](03%20-%20The%20Chess%20Board.md)
