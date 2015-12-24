@@ -44,6 +44,31 @@ be constructor and "set" tests.
 - [x] The *xn* Square belongs to *x* File and *n* Rank (Theory) eg., `a1` square belongs to `a` file and
 rank `1`.
 
+### Square
+- [x] A Square cannot be constructed without a reference to a Board (Fact)
+- [x] A Square contains a reference to its Board (Fact)
+- [x] A Square can be queried for its lightness (and darkness) (Fact)
+- [x] A Square cannot be both dark and light at the same time (Fact)
+- [x] A Square's string representation is its name ;) (Fact)
+- [ ] A Square can be queried for its File (Fact)
+- [ ] A Square can be queried for its Rank (Fact)
+- [ ] A Square can be queried for its Name (Fact)
+
+### File
+- [ ] A File cannot be constructed without a reference to a Board (Fact)
+- [ ] A File contains a reference to its Board (Fact)
+- [ ] A File cannot be named anything other than from a to h (Theory) 
+- [ ] A File can be queried for its name (Fact)
+- [ ] A File can be queried for its squares (Fact)
+- [ ] A File's string representation is its name ;) (Fact)
+
+### Rank
+- [ ] A Rank cannot be constructed without a reference to a Board (Fact)
+- [ ] A Rank contains a reference to its Board (Fact)
+- [ ] A Rank cannot be numbered anything other than from 1 to 8 (Theory) 
+- [ ] A Rank can be queried for its number (Fact)
+- [ ] A Rank can be queried for its squares (Fact)
+- [ ] A Rank's string representation is its number ;) (Fact)
 
 ## Further Information
 * [Chessboard](https://en.wikipedia.org/wiki/Chessboard)
