@@ -7,7 +7,7 @@ namespace CAESAR.Chess.Implementation
 {
     public class File : ReadOnlyCollection<ISquare>, IFile
     {
-        public File(IBoard board, char name) : base(board.Squares.Skip(name - 97).Where((x, i) => i%8 == 0).ToList())
+        public File(IBoard board, char name) : base((board?.Squares?.Skip(name - 97)?.Where((x, i) => i%8 == 0) ?? new Square[0]).ToList())
         {
             if (board == null)
                 throw new ArgumentNullException();

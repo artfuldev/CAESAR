@@ -8,7 +8,7 @@ namespace CAESAR.Chess.Implementation
 {
     public class Rank : ReadOnlyCollection<ISquare>, IRank
     {
-        public Rank(IBoard board, byte number) : base(board.Squares.Skip((number - 1)*8).Take(8).ToList())
+        public Rank(IBoard board, byte number) : base((board?.Squares?.Skip((number - 1)*8)?.Take(8) ?? new Square[0]).ToList())
         {
             if (board == null)
                 throw new ArgumentNullException();

@@ -55,10 +55,8 @@ namespace CAESAR.Chess.Tests
         }
 
         [Fact]
-        public void StringRepresentationOfSquareIsItsName()
-        {
-            Assert.Equal(_darkSquare.Name, _darkSquare.ToString());
-            Assert.Equal(_lightSquare.Name, _lightSquare.ToString());
+        public void StringRepresentationOfSquareOfBoardIsItsName()
+        { 
             Assert.Equal(_square.Name, _square.ToString());
         }
 
