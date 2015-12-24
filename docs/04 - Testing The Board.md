@@ -55,12 +55,13 @@ rank `1`.
 - [x] *A Board's Square* can be queried for its Name (Fact)
 
 ### File
-- [ ] A File cannot be constructed without a reference to a Board (Fact)
-- [ ] A File contains a reference to its Board (Fact)
-- [ ] A File cannot be named anything other than from a to h (Theory) 
-- [ ] A File can be queried for its name (Fact)
-- [ ] A File can be queried for its squares (Fact)
-- [ ] A File's string representation is its name ;) (Fact)
+- [x] A File cannot be constructed without a reference to a Board (Fact)
+- [x] A File contains a reference to its Board (Fact)
+- [x] A File cannot be named anything other than from a to h (Theory) 
+- [x] A File can be queried for its name (Fact)
+- [x] A File can be queried for its squares (Fact)
+- [x] A File contains exactly 8 squares (Fact)
+- [x] A File's string representation is its name ;) (Fact)
 
 ### Rank
 - [ ] A Rank cannot be constructed without a reference to a Board (Fact)
@@ -68,6 +69,7 @@ rank `1`.
 - [ ] A Rank cannot be numbered anything other than from 1 to 8 (Theory) 
 - [ ] A Rank can be queried for its number (Fact)
 - [ ] A Rank can be queried for its squares (Fact)
+- [ ] A Rank contains exactly 8 squares (Fact)
 - [ ] A Rank's string representation is its number ;) (Fact)
 
 ## Further Information

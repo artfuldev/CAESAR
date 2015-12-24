@@ -49,5 +49,31 @@ namespace CAESAR.Chess.Tests
             Assert.Equal(_file.Name.ToString(), _file.ToString());
         }
 
+        [Fact]
+        public void FileCanBeQueriedForItsName()
+        {
+            Assert.NotNull(_file.Name);
+            Assert.Equal(_file.Name, 'a');
+            foreach (var file in _board.Files)
+                Assert.NotNull(file.Name);
+        }
+
+        [Fact]
+        public void FileCanBeQueriedForItsSquares()
+        {
+            Assert.NotNull(_file);
+            Assert.NotEmpty(_file);
+            foreach (var file in _board.Files)
+                Assert.NotEmpty(file);
+        }
+
+        [Fact]
+        public void NumberOfSquaresInFileIs8()
+        {
+            Assert.Equal(_file.Count, 8);
+            foreach (var file in _board.Files)
+                Assert.Equal(file.Count, 8);
+        }
+
     }
 }
