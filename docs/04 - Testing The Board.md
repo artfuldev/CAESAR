@@ -50,9 +50,9 @@ rank `1`.
 - [x] A Square can be queried for its lightness (and darkness) (Fact)
 - [x] A Square cannot be both dark and light at the same time (Fact)
 - [x] A Square's string representation is its name ;) (Fact)
-- [ ] A Square can be queried for its File (Fact)
-- [ ] A Square can be queried for its Rank (Fact)
-- [ ] A Square can be queried for its Name (Fact)
+- [x] *A Board's Square* (a Square from Board.Squares) can be queried for its File (Fact)
+- [x] *A Board's Square* can be queried for its Rank (Fact)
+- [x] *A Board's Square* can be queried for its Name (Fact)
 
 ### File
 - [ ] A File cannot be constructed without a reference to a Board (Fact)

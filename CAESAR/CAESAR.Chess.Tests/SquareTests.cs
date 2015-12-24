@@ -62,5 +62,22 @@ namespace CAESAR.Chess.Tests
             Assert.Equal(_square.Name, _square.ToString());
         }
 
+        [Fact]
+        public void SquareOfBoardContainsReferenceToFile()
+        {
+            Assert.NotNull(_square.File);
+        }
+
+        [Fact]
+        public void SquareOfBoardContainsReferenceToRank()
+        {
+            Assert.NotNull(_square.Rank);
+        }
+
+        [Fact]
+        public void SquareOfBoardHasName()
+        {
+            Assert.False(string.IsNullOrWhiteSpace(_square.Name));
+        }
     }
 }
