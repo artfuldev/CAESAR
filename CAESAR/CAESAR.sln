@@ -19,7 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{AA819664-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pending", "Pending", "{E9C8724E-EE62-48A7-B69C-97DC83A9E7BF}"
 	ProjectSection(SolutionItems) = preProject
-		..\docs\pending\05 - The Chess Pieces.md = ..\docs\pending\05 - The Chess Pieces.md
+		..\docs\pending\05 - A SOLID Look at the Board Implementation.md = ..\docs\pending\05 - A SOLID Look at the Board Implementation.md
+		..\docs\pending\06 - The Chess Pieces.md = ..\docs\pending\06 - The Chess Pieces.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Media", "Media", "{20374D28-C351-4410-BA56-722F4E6928A4}"
