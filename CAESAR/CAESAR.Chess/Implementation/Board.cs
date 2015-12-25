@@ -41,39 +41,18 @@ namespace CAESAR.Chess.Implementation
             return file.FirstOrDefault(rank.Contains);
         }
 
-        public ISquare GetSquare(string fileName, string rankNumber)
-        {
-            return GetSquare(GetFile(fileName), GetRank(rankNumber));
-        }
-
         public ISquare GetSquare(char fileName, byte rankNumber)
         {
             return GetSquare(GetFile(fileName), GetRank(rankNumber));
-        }
-
-        public ISquare GetSquare(byte fileIndex, byte rankIndex)
-        {
-            return GetSquare(GetFileByIndex(fileIndex), GetRankByIndex(rankIndex));
         }
 
         public IFile GetFile(char fileName)
         {
             return Files.FirstOrDefault(x => x.Name == fileName);
         }
-
-        public IFile GetFile(string fileName)
-        {
-            return GetFile(Convert.ToChar(fileName));
-        }
-
         public IRank GetRank(byte rankNumber)
         {
             return Ranks.FirstOrDefault(x => x.Number == rankNumber);
-        }
-
-        public IRank GetRank(string rankNumber)
-        {
-            return GetRank(Convert.ToByte(rankNumber));
         }
     }
 }
