@@ -1,4 +1,4 @@
-# A SOLID Look at the Board Implementation
+# A SOLID Look at the Board
 
 Now that we have come so far with some knowledge, some ideas, interface and class definitions, and unit
 tests, it's time to have a review. Having timely reviews after every module of code we implement, helps
