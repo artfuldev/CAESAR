@@ -66,11 +66,6 @@ namespace CAESAR.Chess.Implementation
             return GetFile(Convert.ToChar(fileName));
         }
 
-        public IFile GetFileByIndex(byte fileIndex)
-        {
-            return Files.ElementAtOrDefault(fileIndex);
-        }
-
         public IRank GetRank(byte rankNumber)
         {
             return Ranks.FirstOrDefault(x => x.Number == rankNumber);
@@ -79,11 +74,6 @@ namespace CAESAR.Chess.Implementation
         public IRank GetRank(string rankNumber)
         {
             return GetRank(Convert.ToByte(rankNumber));
-        }
-
-        public IRank GetRankByIndex(byte rankIndex)
-        {
-            return Ranks.ElementAtOrDefault(rankIndex);
         }
     }
 }

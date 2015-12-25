@@ -14,9 +14,7 @@ namespace CAESAR.Chess
         ISquare GetSquare(byte fileIndex, byte rankIndex);
         IFile GetFile(char fileName);
         IFile GetFile(string fileName);
-        IFile GetFileByIndex(byte fileIndex);
         IRank GetRank(byte rankNumber);
         IRank GetRank(string rankNumber);
-        IRank GetRankByIndex(byte rankIndex);
     }
 }
