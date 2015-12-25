@@ -53,6 +53,7 @@ rank `1`.
 - [x] *A Board's Square* (a Square from Board.Squares) can be queried for its File (Fact)
 - [x] *A Board's Square* can be queried for its Rank (Fact)
 - [x] *A Board's Square* can be queried for its Name (Fact)
+- [x] *A Board's Square*'s name is the combination of its FileName and RankNumber (Fact)
 
 ### File
 - [x] A File cannot be constructed without a reference to a Board (Fact)
@@ -62,15 +63,17 @@ rank `1`.
 - [x] A File can be queried for its squares (Fact)
 - [x] A File contains exactly 8 squares (Fact)
 - [x] A File's string representation is its name ;) (Fact)
+- [x] A File contains squares from ranks 1 through 8 (Fact)
 
 ### Rank
-- [ ] A Rank cannot be constructed without a reference to a Board (Fact)
-- [ ] A Rank contains a reference to its Board (Fact)
-- [ ] A Rank cannot be numbered anything other than from 1 to 8 (Theory) 
-- [ ] A Rank can be queried for its number (Fact)
-- [ ] A Rank can be queried for its squares (Fact)
-- [ ] A Rank contains exactly 8 squares (Fact)
-- [ ] A Rank's string representation is its number ;) (Fact)
+- [x] A Rank cannot be constructed without a reference to a Board (Fact)
+- [x] A Rank contains a reference to its Board (Fact)
+- [x] A Rank cannot be numbered anything other than from 1 to 8 (Theory) 
+- [x] A Rank can be queried for its number (Fact)
+- [x] A Rank can be queried for its squares (Fact)
+- [x] A Rank contains exactly 8 squares (Fact)
+- [x] A Rank's string representation is its number ;) (Fact)
+- [x] A Rank contains squares from files from a through h (Fact)
 
 ## Further Information
 * [Chessboard](https://en.wikipedia.org/wiki/Chessboard)

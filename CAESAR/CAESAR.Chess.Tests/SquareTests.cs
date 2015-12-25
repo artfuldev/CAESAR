@@ -77,5 +77,11 @@ namespace CAESAR.Chess.Tests
         {
             Assert.False(string.IsNullOrWhiteSpace(_square.Name));
         }
+
+        [Fact]
+        public void SquareOfBoardsNameIsFileNamePlusRankNumber()
+        {
+            Assert.Equal(_square.Name, _square.File.Name.ToString() + _square.Rank.Number);
+        }
     }
 }
