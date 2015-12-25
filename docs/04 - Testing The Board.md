@@ -43,6 +43,11 @@ be constructor and "set" tests.
 - [x] The Board is made up of alternating light and dark squares (Fact)
 - [x] The *xn* Square belongs to *x* File and *n* Rank (Theory) eg., `a1` square belongs to `a` file and
 rank `1`.
+- [x] GetSquare (ByName) returns correct square (Theory)
+- [x] GetSquare (ByFileAndRank) returns correct square (Theory)
+- [x] GetSquare (ByFileNameAndRankNumber) returns correct square (Theory)
+- [x] GetFile returns correct File (Theory)
+- [x] GetRank returns correct Rank (Theory)
 
 ### Square
 - [x] A Square cannot be constructed without a reference to a Board (Fact)

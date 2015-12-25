@@ -182,5 +182,50 @@ namespace CAESAR.Chess.Tests
             var rank = _board.Ranks.First(x => x.Number == n);
             Assert.True(rank.Contains(square));
         }
+
+        [Theory]
+        [InlineData("g2")]
+        public void GetSquareReturnsCorrectSquare(string name)
+        {
+            var square = _board.Squares.FirstOrDefault(x => x.Name == name);
+            Assert.Equal(square, _board.GetSquare(name));
+        }
+
+        [Theory]
+        [InlineData("g2")]
+        public void GetSquareByFileAndRankReturnsCorrectSquare(string name)
+        {
+            var fileName = name[0];
+            var rankNumber = Convert.ToByte(name[1].ToString());
+            var file = _board.Files.ElementAtOrDefault(fileName - 97);
+            var rank = _board.Ranks.ElementAtOrDefault(rankNumber - 1);
+            var square = _board.Squares.FirstOrDefault(x => x.File.Equals(file) && x.Rank.Equals(rank));
+            Assert.Equal(square, _board.GetSquare(file, rank));
+        }
+
+        [Theory]
+        [InlineData('g', (byte)2)]
+        public void GetSquareByFileNameAndRankNumberReturnsCorrectSquare(char fileName, byte rankNumber)
+        {
+            var square = _board.Squares.FirstOrDefault(x => x.File.Name == fileName && x.Rank.Number == rankNumber);
+            Assert.Equal(square, _board.GetSquare(fileName, rankNumber));
+        }
+
+        [Theory]
+        [InlineData('g')]
+        public void GetFileReturnsCorrectFile(char name)
+        {
+            var file = _board.Files.FirstOrDefault(x => x.Name == name);
+            Assert.Equal(file, _board.GetFile(name));
+        }
+
+        [Theory]
+        [InlineData((byte)2)]
+        public void GetRankReturnsCorrectRank(byte rankNumber)
+        {
+            var rank = _board.Ranks.FirstOrDefault(x => x.Number == rankNumber);
+            Assert.Equal(rank, _board.GetRank(rankNumber));
+        }
+
     }
 }
