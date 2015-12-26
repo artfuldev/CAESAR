@@ -2,9 +2,10 @@
 
 namespace CAESAR.Chess
 {
-    public interface IFile : IReadOnlyCollection<ISquare>
+    public interface IFile
     {
         char Name { get; }
         IBoard Board { get; }
+        IReadOnlyCollection<ISquare> Squares { get; }
     }
 }

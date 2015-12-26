@@ -15,7 +15,7 @@ namespace CAESAR.Chess.Implementation
         {
             var files = new IFile[FileCount];
             for (var i = 0; i < FileCount; i++)
-                files[i] = new File(this, (char)(97 + i));
+                files[i] = new File(this, (char)(97 + i), new ISquare[8]);
 
             var ranks = new IRank[RankCount];
             for (var i = 0; i < RankCount; i++)
@@ -26,12 +26,20 @@ namespace CAESAR.Chess.Implementation
                 for (var j = 0; j < FileCount; j++)
                 {
                     // Initialize Square
-                    squares[(i * RankCount) + j] = new Square(this, files[j], ranks[i],
-                        files[j].Name.ToString() + ranks[i].Number.ToString(), ((i * RankCount) + j) % 2 != 0);
+                    var squareIndex = (i * RankCount) + j;
+
+                    squares[squareIndex] = new Square(this, files[j], ranks[i],
+                        files[j].Name.ToString() + ranks[i].Number.ToString(), squareIndex % 2 != 0);
 
                     // Add square to Rank
                     var rankSquares = ranks[i].Squares as List<ISquare>;
-                    rankSquares[j] = squares[(i * RankCount) + j];
+                    if (rankSquares != null)
+                        rankSquares[j] = squares[squareIndex];
+
+                    // Add square to File
+                    var fileSquares = files[j].Squares as List<ISquare>;
+                    if (fileSquares != null)
+                        fileSquares[i] = squares[squareIndex];
                 }
 
             Squares = squares;
