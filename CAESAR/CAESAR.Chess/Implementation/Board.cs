@@ -13,33 +13,33 @@ namespace CAESAR.Chess.Implementation
 
         public Board()
         {
+            var fileSquares = new List<ISquare>[FileCount];
             var files = new IFile[FileCount];
             for (var i = 0; i < FileCount; i++)
-                files[i] = new File(this, (char)(97 + i), new ISquare[8]);
+            {
+                fileSquares[i] = new ISquare[8].ToList();
+                files[i] = new File(this, (char) (97 + i), fileSquares[i]);
+            }
 
+            var rankSquares = new List<ISquare>[RankCount];
             var ranks = new IRank[RankCount];
             for (var i = 0; i < RankCount; i++)
-                ranks[i] = new Rank(this, (byte)(i + 1), new ISquare[8]);
+            {
+                rankSquares[i] = new ISquare[8].ToList();
+                ranks[i] = new Rank(this, (byte) (i + 1), rankSquares[i]);
+            }
 
             var squares = new ISquare[SquareCount];
             for (var i = 0; i < RankCount; i++)
                 for (var j = 0; j < FileCount; j++)
                 {
-                    // Initialize Square
                     var squareIndex = (i * RankCount) + j;
-
-                    squares[squareIndex] = new Square(this, files[j], ranks[i],
+                    var square = new Square(this, files[j], ranks[i],
                         files[j].Name.ToString() + ranks[i].Number.ToString(), squareIndex % 2 != 0);
 
-                    // Add square to Rank
-                    var rankSquares = ranks[i].Squares as List<ISquare>;
-                    if (rankSquares != null)
-                        rankSquares[j] = squares[squareIndex];
-
-                    // Add square to File
-                    var fileSquares = files[j].Squares as List<ISquare>;
-                    if (fileSquares != null)
-                        fileSquares[i] = squares[squareIndex];
+                    squares[squareIndex] = square;
+                    rankSquares[i][j] = square;
+                    fileSquares[j][i] = square;
                 }
 
             Squares = squares.ToList().AsReadOnly();
