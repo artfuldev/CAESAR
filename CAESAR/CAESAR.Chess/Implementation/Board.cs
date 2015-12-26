@@ -13,19 +13,23 @@ namespace CAESAR.Chess.Implementation
 
         public Board()
         {
-            var squares = new ISquare[SquareCount];
-            for (var i = 0; i < SquareCount; i++)
-                squares[i] = new Square(this, i%2 != 0);
-            Squares = squares;
-
-            var ranks = new IRank[RankCount];
-            for (var i = 0; i < RankCount; i++)
-                ranks[i] = new Rank(this, (byte) (i + 1));
-            Ranks = ranks;
 
             var files = new IFile[FileCount];
             for (var i = 0; i < FileCount; i++)
                 files[i] = new File(this, (char)(97 + i));
+
+            var ranks = new IRank[RankCount];
+            for (var i = 0; i < RankCount; i++)
+                ranks[i] = new Rank(this, (byte)(i + 1));
+
+            var squares = new ISquare[SquareCount];
+            for (var i = 0; i < RankCount; i++)
+                for (var j = 0; j < FileCount; j++)
+                    squares[(i*RankCount) + j] = new Square(this, files[j], ranks[i],
+                        files[i].Name.ToString() + ranks[i].Number.ToString(), i%2 != 0);
+
+            Squares = squares;
+            Ranks = ranks;
             Files = files;
         }
         public IReadOnlyCollection<IFile> Files { get; }
