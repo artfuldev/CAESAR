@@ -56,7 +56,7 @@ namespace CAESAR.Chess.Implementation
 
         public ISquare GetSquare(IFile file, IRank rank)
         {
-            return file.FirstOrDefault(rank.Squares.Contains);
+            return file.Squares.FirstOrDefault(rank.Squares.Contains);
         }
 
         public ISquare GetSquare(char fileName, byte rankNumber)

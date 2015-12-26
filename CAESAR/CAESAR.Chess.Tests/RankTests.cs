@@ -78,9 +78,9 @@ namespace CAESAR.Chess.Tests
         [Fact]
         public void FileOfSquaresInRankRangeFromAtoH()
         {
-            Assert.Equal(string.Join(",", _rank.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
+            Assert.Equal(string.Join(",", _rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
             foreach (var rank in _board.Ranks)
-                Assert.Equal(string.Join(",", rank.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
+                Assert.Equal(string.Join(",", rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
         }
     }
 }
