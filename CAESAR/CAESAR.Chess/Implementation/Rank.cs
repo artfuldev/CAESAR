@@ -14,14 +14,17 @@ namespace CAESAR.Chess.Implementation
                 throw new ArgumentNullException("A rank cannot be created without a board reference", nameof(board));
             if (number < 1 || number > 8)
                 throw new ArgumentOutOfRangeException();
-            if(squares == null || !squares.Any())
+            if (squares == null)
                 throw new ArgumentNullException("A rank cannot be created without squares", nameof(squares));
-            if (squares.Count() != 8)
+            var list = squares as List<ISquare> ?? squares.ToList();
+            if (!list.Any())
+                throw new ArgumentNullException("A rank cannot be created without squares", nameof(squares));
+            if (list.Count != 8)
                 throw new ArgumentException("A rank can only be created with 8 squares", nameof(squares));
 
             Board = board;
             Number = number;
-            Squares = squares.ToList();
+            Squares = list.AsReadOnly();
         }
 
         public byte Number { get; }
