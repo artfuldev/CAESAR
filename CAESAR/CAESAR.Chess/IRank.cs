@@ -2,9 +2,10 @@
 
 namespace CAESAR.Chess
 {
-    public interface IRank : IReadOnlyCollection<ISquare>
+    public interface IRank
     {
         byte Number { get; }
         IBoard Board { get; }
+        IReadOnlyCollection<ISquare> Squares { get; }
     }
 }
