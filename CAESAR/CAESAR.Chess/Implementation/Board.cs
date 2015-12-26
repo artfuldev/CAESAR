@@ -42,9 +42,9 @@ namespace CAESAR.Chess.Implementation
                         fileSquares[i] = squares[squareIndex];
                 }
 
-            Squares = squares;
-            Ranks = ranks;
-            Files = files;
+            Squares = squares.ToList().AsReadOnly();
+            Ranks = ranks.ToList().AsReadOnly();
+            Files = files.ToList().AsReadOnly();
         }
         public IReadOnlyCollection<IFile> Files { get; }
         public IReadOnlyCollection<IRank> Ranks { get; }
