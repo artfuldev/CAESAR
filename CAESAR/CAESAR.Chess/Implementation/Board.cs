@@ -25,7 +25,7 @@ namespace CAESAR.Chess.Implementation
             for (var i = 0; i < RankCount; i++)
                 for (var j = 0; j < FileCount; j++)
                     squares[(i * RankCount) + j] = new Square(this, files[j], ranks[i],
-                        files[i].Name.ToString() + ranks[i].Number.ToString(), i % 2 != 0);
+                        files[j].Name.ToString() + ranks[i].Number.ToString(), ((i * RankCount) + j) % 2 != 0);
 
             Squares = squares;
             Ranks = ranks;

@@ -38,7 +38,7 @@ namespace CAESAR.Chess.Tests
         [InlineData(8, 'h')]
         public void NthFileInBoardIsNamedX(int n, char x)
         {
-            Assert.True(_board.Files.ElementAt(n-1).Name == x);
+            Assert.True(_board.Files.ElementAt(n - 1).Name == x);
         }
 
         [Fact]
@@ -134,7 +134,7 @@ namespace CAESAR.Chess.Tests
         [InlineData(64, "h8")]
         public void NthSquareInBoardIsNamedX(int n, string x)
         {
-            Assert.True(_board.Squares.ElementAt(n-1).Name == x);
+            Assert.Equal(x, _board.Squares.ElementAt(n - 1).Name);
         }
 
         [Fact]
