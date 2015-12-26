@@ -20,15 +20,15 @@ namespace CAESAR.Chess.Tests
         private SquareTests(IBoard board)
         {
             _board = board;
-            _darkSquare = new Square(_board);
-            _lightSquare = new Square(_board, true);
+            _darkSquare = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "a1");
+            _lightSquare = new Square(_board, _board.Files.ElementAt(7), _board.Ranks.ElementAt(2), "h3", true);
             _square = _board.Squares.FirstOrDefault();
         }
 
         [Fact]
         public void SquareCannotBeConstructedWithoutBoard()
         {
-            Assert.Throws<ArgumentNullException>(() => { var s = new Square(null); });
+            Assert.Throws<ArgumentNullException>(() => { var s = new Square(null, null, null, null, false); });
         }
 
         [Fact]

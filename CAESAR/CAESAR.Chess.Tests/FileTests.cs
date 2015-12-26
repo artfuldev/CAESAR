@@ -30,7 +30,7 @@ namespace CAESAR.Chess.Tests
 
         [Theory]
         [InlineData('i')]
-        [InlineData((char) 0)]
+        [InlineData((char)0)]
         [InlineData('A')]
         public void FileCannotBeConstructedWithoutNameFromAtoH(char name)
         {

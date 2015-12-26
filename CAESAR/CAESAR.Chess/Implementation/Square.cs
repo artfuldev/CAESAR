@@ -5,20 +5,29 @@ namespace CAESAR.Chess.Implementation
 {
     public class Square : ISquare
     {
-        public Square(IBoard board, bool isLight = false)
+        public Square(IBoard board, IFile file, IRank rank, string name, bool isLight = false)
         {
             if (board == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(board),
+                    "A square cannot be constructed without a board reference");
+            if (file == null)
+                throw new ArgumentNullException(nameof(file),
+                    "A square cannot be constructed without a file reference");
+            if (rank == null)
+                throw new ArgumentNullException(nameof(rank),
+                    "A square cannot be constructed without a rank reference");
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("A square cannot have an empty name", nameof(name));
             Board = board;
+            File = file;
+            Rank = rank;
+            Name = name;
             IsLight = isLight;
         }
         public IBoard Board { get; }
-        private IFile _file;
-        private IRank _rank;
-        private string _name;
-        public IFile File => _file ?? (_file = Board.Files.FirstOrDefault(x => x.Contains(this)));
-        public IRank Rank => _rank?? (_rank = Board.Ranks.FirstOrDefault(x => x.Contains(this)));
-        public string Name => _name ?? (_name = (File.Name + Rank.Number.ToString()));
+        public IFile File { get; }
+        public IRank Rank { get; }
+        public string Name { get; }
         public bool IsLight { get; }
         public bool IsDark => !IsLight;
 
