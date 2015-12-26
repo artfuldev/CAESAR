@@ -180,7 +180,7 @@ namespace CAESAR.Chess.Tests
         {
             var square = _board.Squares.First(x => x.Name == xn);
             var rank = _board.Ranks.First(x => x.Number == n);
-            Assert.True(rank.Contains(square));
+            Assert.True(rank.Squares.Contains(square));
         }
 
         [Theory]

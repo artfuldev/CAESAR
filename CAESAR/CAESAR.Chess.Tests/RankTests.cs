@@ -19,13 +19,13 @@ namespace CAESAR.Chess.Tests
         private RankTests(IBoard board)
         {
             _board = board;
-            _rank = new Rank(_board, 1);
+            _rank = _board.Ranks.FirstOrDefault();
         }
 
         [Fact]
         public void RankCannotBeConstructedWithoutBoard()
         {
-            Assert.Throws<ArgumentNullException>(() => { var s = new Rank(null, 1); });
+            Assert.Throws<ArgumentNullException>(() => { var s = new Rank(null, 1, null); });
         }
 
         [Theory]
@@ -34,7 +34,7 @@ namespace CAESAR.Chess.Tests
         [InlineData(byte.MaxValue)]
         public void RankCannotBeConstructedWithoutNameFromAtoH(byte number)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = new Rank(_board, number); });
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = new Rank(_board, number, null); });
         }
 
         [Fact]
@@ -62,17 +62,17 @@ namespace CAESAR.Chess.Tests
         public void RankCanBeQueriedForItsSquares()
         {
             Assert.NotNull(_rank);
-            Assert.NotEmpty(_rank);
+            Assert.NotEmpty(_rank.Squares);
             foreach (var rank in _board.Ranks)
-                Assert.NotEmpty(rank);
+                Assert.NotEmpty(rank.Squares);
         }
 
         [Fact]
         public void NumberOfSquaresInRankIs8()
         {
-            Assert.Equal(_rank.Count, 8);
+            Assert.Equal(8, _rank.Squares.Count);
             foreach (var rank in _board.Ranks)
-                Assert.Equal(rank.Count, 8);
+                Assert.Equal(8, rank.Squares.Count);
         }
 
         [Fact]
