@@ -19,13 +19,20 @@ namespace CAESAR.Chess.Implementation
 
             var ranks = new IRank[RankCount];
             for (var i = 0; i < RankCount; i++)
-                ranks[i] = new Rank(this, (byte)(i + 1));
+                ranks[i] = new Rank(this, (byte)(i + 1), new ISquare[8]);
 
             var squares = new ISquare[SquareCount];
             for (var i = 0; i < RankCount; i++)
                 for (var j = 0; j < FileCount; j++)
+                {
+                    // Initialize Square
                     squares[(i * RankCount) + j] = new Square(this, files[j], ranks[i],
                         files[j].Name.ToString() + ranks[i].Number.ToString(), ((i * RankCount) + j) % 2 != 0);
+
+                    // Add square to Rank
+                    var rankSquares = ranks[i].Squares as List<ISquare>;
+                    rankSquares[j] = squares[(i * RankCount) + j];
+                }
 
             Squares = squares;
             Ranks = ranks;
@@ -41,7 +48,7 @@ namespace CAESAR.Chess.Implementation
 
         public ISquare GetSquare(IFile file, IRank rank)
         {
-            return file.FirstOrDefault(rank.Contains);
+            return file.FirstOrDefault(rank.Squares.Contains);
         }
 
         public ISquare GetSquare(char fileName, byte rankNumber)
