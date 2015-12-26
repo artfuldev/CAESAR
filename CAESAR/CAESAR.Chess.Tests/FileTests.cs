@@ -19,13 +19,13 @@ namespace CAESAR.Chess.Tests
         private FileTests(IBoard board)
         {
             _board = board;
-            _file = new File(_board, 'a');
+            _file = _board.Files.FirstOrDefault();
         }
 
         [Fact]
         public void FileCannotBeConstructedWithoutBoard()
         {
-            Assert.Throws<ArgumentNullException>(() => { var s = new File(null, 'a'); });
+            Assert.Throws<ArgumentNullException>(() => { var s = new File(null, 'a', null); });
         }
 
         [Theory]
@@ -34,7 +34,7 @@ namespace CAESAR.Chess.Tests
         [InlineData('A')]
         public void FileCannotBeConstructedWithoutNameFromAtoH(char name)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = new File(_board, name); });
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = new File(_board, name, null); });
         }
 
         [Fact]
@@ -62,25 +62,25 @@ namespace CAESAR.Chess.Tests
         public void FileCanBeQueriedForItsSquares()
         {
             Assert.NotNull(_file);
-            Assert.NotEmpty(_file);
+            Assert.NotEmpty(_file.Squares);
             foreach (var file in _board.Files)
-                Assert.NotEmpty(file);
+                Assert.NotEmpty(file.Squares);
         }
 
         [Fact]
         public void NumberOfSquaresInFileIs8()
         {
-            Assert.Equal(_file.Count, 8);
+            Assert.Equal(8, _file.Squares.Count);
             foreach (var file in _board.Files)
-                Assert.Equal(file.Count, 8);
+                Assert.Equal(8, file.Squares.Count);
         }
 
         [Fact]
         public void RankOfSquaresInFileRangeFrom1To8()
         {
-            Assert.Equal(string.Join(",", _file.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
+            Assert.Equal(string.Join(",", _file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
             foreach (var file in _board.Files)
-                Assert.Equal(string.Join(",", file.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
+                Assert.Equal(string.Join(",", file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
         }
 
     }

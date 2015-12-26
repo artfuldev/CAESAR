@@ -171,7 +171,7 @@ namespace CAESAR.Chess.Tests
         {
             var square = _board.Squares.First(s => s.Name == xn);
             var file = _board.Files.First(f => f.Name == x);
-            Assert.True(file.Contains(square));
+            Assert.True(file.Squares.Contains(square));
         }
 
         [Theory]
