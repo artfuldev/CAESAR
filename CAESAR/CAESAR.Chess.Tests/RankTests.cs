@@ -28,6 +28,20 @@ namespace CAESAR.Chess.Tests
             Assert.Throws<ArgumentNullException>(() => { var s = new Rank(null, 1, null); });
         }
 
+        [Fact]
+        public void RankCannotBeConstructedWithoutSquares()
+        {
+            Assert.Throws<ArgumentNullException>(() => { var s = new Rank(_board, 1, null); });
+            Assert.Throws<ArgumentNullException>(() => { var s = new Rank(_board, 1, _board.Squares.Take(0)); });
+        }
+
+        [Fact]
+        public void RankCannotBeConstructedWithout8Squares()
+        {
+            Assert.Throws<ArgumentException>(() => { var s = new Rank(_board, 1, _board.Squares.Take(2)); });
+            Assert.Throws<ArgumentException>(() => { var s = new Rank(_board, 1, _board.Squares.Take(9)); });
+        }
+
         [Theory]
         [InlineData((byte)0)]
         [InlineData((byte)9)]

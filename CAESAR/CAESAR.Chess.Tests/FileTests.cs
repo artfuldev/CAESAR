@@ -28,6 +28,21 @@ namespace CAESAR.Chess.Tests
             Assert.Throws<ArgumentNullException>(() => { var s = new File(null, 'a', null); });
         }
 
+        [Fact]
+        public void FileCannotBeConstructedWithoutSquares()
+        {
+            Assert.Throws<ArgumentNullException>(() => { var s = new File(_board, 'a', null); });
+            Assert.Throws<ArgumentNullException>(() => { var s = new File(_board, 'a', _board.Squares.Take(0)); });
+        }
+
+        [Fact]
+        public void FileCannotBeConstructedWithout8Squares()
+        {
+            
+            Assert.Throws<ArgumentException>(() => { var s = new File(_board, 'a', _board.Squares.Take(2)); });
+            Assert.Throws<ArgumentException>(() => { var s = new File(_board, 'a', _board.Squares.Take(9)); });
+        }
+
         [Theory]
         [InlineData('i')]
         [InlineData((char)0)]

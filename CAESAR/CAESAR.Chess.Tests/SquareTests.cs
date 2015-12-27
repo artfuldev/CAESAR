@@ -32,6 +32,27 @@ namespace CAESAR.Chess.Tests
         }
 
         [Fact]
+        public void SquareCannotBeConstructedWithoutFile()
+        {
+            Assert.Throws<ArgumentNullException>(() => { var s = new Square(_board, null, null, null, false); });
+        }
+
+        [Fact]
+        public void SquareCannotBeConstructedWithoutRank()
+        {
+            Assert.Throws<ArgumentNullException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), null, null, false); });
+        }
+
+        [Fact]
+        public void SquareCannotBeConstructedWithoutName()
+        {
+            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), null, false); });
+            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "", false); });
+            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "   ", false); });
+            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "\n", false); });
+        }
+
+        [Fact]
         public void SquareContainsReferenceToItsBoard()
         {
             Assert.Equal(_board, _darkSquare.Board);
