@@ -39,7 +39,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess", "CAESAR.Ches
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess.Tests", "CAESAR.Chess.Tests\CAESAR.Chess.Tests.xproj", "{DADEE861-AE38-44AE-821D-82E8099CFD81}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pieces", "Pieces", "{BC91CD5B-5A1F-4228-877C-D9CF7717463C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pieces", "Pieces", "{9FD4E8F7-C335-4E9E-A1D5-5B5421D1A1AD}"
 	ProjectSection(SolutionItems) = preProject
 		..\docs\media\pieces\bishop-black.png = ..\docs\media\pieces\bishop-black.png
 		..\docs\media\pieces\bishop-white.png = ..\docs\media\pieces\bishop-white.png
@@ -54,6 +54,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pieces", "Pieces", "{BC91CD
 		..\docs\media\pieces\queen-white.png = ..\docs\media\pieces\queen-white.png
 		..\docs\media\pieces\rook-black.png = ..\docs\media\pieces\rook-black.png
 		..\docs\media\pieces\rook-white.png = ..\docs\media\pieces\rook-white.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moves", "Moves", "{7FA5F847-6571-44B8-8CC4-37D6E9BB1150}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\media\moves\bishop-possible-moves.png = ..\docs\media\moves\bishop-possible-moves.png
+		..\docs\media\moves\king-possible-moves.png = ..\docs\media\moves\king-possible-moves.png
+		..\docs\media\moves\knight-possible-moves.png = ..\docs\media\moves\knight-possible-moves.png
+		..\docs\media\moves\pawn-possible-moves.png = ..\docs\media\moves\pawn-possible-moves.png
+		..\docs\media\moves\queen-possible-moves.png = ..\docs\media\moves\queen-possible-moves.png
+		..\docs\media\moves\rook-possible-moves.png = ..\docs\media\moves\rook-possible-moves.png
 	EndProjectSection
 EndProject
 Global
@@ -81,7 +91,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E9C8724E-EE62-48A7-B69C-97DC83A9E7BF} = {AA819664-250B-48E9-8592-21F8A3CA4AE3}
 		{20374D28-C351-4410-BA56-722F4E6928A4} = {AA819664-250B-48E9-8592-21F8A3CA4AE3}
-		{BC91CD5B-5A1F-4228-877C-D9CF7717463C} = {20374D28-C351-4410-BA56-722F4E6928A4}
+		{9FD4E8F7-C335-4E9E-A1D5-5B5421D1A1AD} = {20374D28-C351-4410-BA56-722F4E6928A4}
+		{7FA5F847-6571-44B8-8CC4-37D6E9BB1150} = {20374D28-C351-4410-BA56-722F4E6928A4}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
