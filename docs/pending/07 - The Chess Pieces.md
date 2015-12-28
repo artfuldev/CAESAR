@@ -49,13 +49,85 @@ White Piece|Black Piece|Name|Notation White|Notation Black|
 ![White Knight](../media/pieces/knight-white.png)|![Black Knight](../media/pieces/knight-black.png)|Knight|N|n|
 ![White Pawn](../media/pieces/pawn-white.png)|![Black Pawn](../media/pieces/pawn-black.png)|Pawn|P|p|
 
-Pooling what we know so far, we can roughly see the characteristics of what we could call the Piece class:
+Pooling what we know so far, we can roughly see the characteristics of what we could call a *Piece*:
 
 * A single piece can occupy a single square on the chess board
 * A piece has a name which denotes its type
 * A piece has a colour which denotes its side (of play)
 * A piece has a notation which is derived from both the name and the colour
 * A piece can be moved from one square to another (by the player)
+
+## Pieces and Moves
+In chess, as we talked about earlier, players play by moving their pieces on the chessboard from one
+square to another. Pieces and moves are linked in a way, that the type of piece determines the available
+moves, because each piece moves in a certain way. As we learn more about the types of moves available to
+each piece, we may have to incorporate more features into our board in order to facilitate the generation
+of such moves. Le's have a look at the possible moves of all the pieces.
+
+In a move, a piece may be moved from one square (the *source* square) to another square on the chessboard
+(the *destination* square) if the player (white or black) owns the piece resting on the source square,
+and, (i) the destination square is empty, or, (ii) the destination square is occupied by any opponent's
+piece which is not a King. If the destination square is empty, it is a normal move. If it is occupied by
+an enemy piece, the move is called a capturing move, and the enemy's piece that was occupying the
+destination square before the move is removed from the board upon completion of the move.
+
+### King (K)
+The king moves exactly one square in any direction: forwards, backwards, left, right, or *diagonally*. It
+can also perform a special move known as *castling* in conjuction with the rook. Since castling is a
+special move, we'll come back to it later.
+
+![Possible Moves of an unhindered King](../media/moves/king-possible-moves.png)
+
+### Queen (Q)
+The queen moves any number of vacant squares in any direction: forwards, backwards, left, right, or
+diagonally, in a straight line, up until it meets an enemy piece (which it can capture), or the end of the
+board.
+
+![Possible Moves of an unhindered Queen](../media/moves/queen-possible-moves.png)
+
+### Rook (R)
+The rook moves any number of vacant squares forwards, backwards, left, or right in a straight line, up
+until it meets an enemy piece (which it can capture), or the end of the board. It also takes part, along
+with the king, in a special move called castling.
+
+![Possible Moves of a Rook](../media/moves/rook-possible-moves.png)
+
+### Bishop (B)
+The bishop moves any number of vacant squares diagonally in a straight line, up until it meets an enemy
+piece (which it can capture), or the end of the board. Consequently, a bishop stays on squares of the
+same color throughout a game. The two bishops each player starts with move on squares of opposite colors.
+
+![Possible Moves of a Bishop](../media/moves/bishop-possible-moves.png)
+
+### Knight (N)
+The knight moves on an extended diagonal from one corner of any 2x3 rectangle of squares to the furthest
+opposite corner. Consequently, the knight alternates its square color each time it moves. The knight is
+the only piece that jumps over any intervening piece(s) when moving (castling being the only special
+instance in which pieces jump over one another).
+
+![Possible Moves of a Knight](../media/moves/knight-possible-moves.png)
+
+### Pawn (P)
+The pawn moves forward exactly one space, or optionally, two spaces when on its starting square, toward
+the opponent's side of the board. When there is an enemy piece one square diagonally ahead of the pawn,
+either left or right, then the pawn may capture that piece. A pawn can perform a special type of capture
+of an enemy pawn called *en passant*. If the pawn reaches a square on the back rank of the opponent, it
+*promotes* to the player's choice of a queen, rook, bishop, or knight.
+
+![Possible Moves of a Pawn](../media/moves/pawn-possible-moves.png)
+
+Pieces other than pawns capture in the same way that they move. A capturing piece replaces the opponent
+piece on its square, except for an *en passant* capture. Captured pieces are immediately removed from the
+ game. A square may hold only one piece at any given time. Except for castling and the knight's move, no
+piece may jump over another piece.
+
+>Source: Wikipedia
+
+## Next Steps
+Now that we have gained some knowledge about the chess pieces, and their moves, it is time to incorporate
+this knowledge into our chess engine. We will write the pieces and moves (of what we know so far), test
+our implementation for what we know, look out for best practices, have a SOLID look, and then try to move
+on to the next part our journey, the rules of chess.
 
 ## Further Information
 * [Chess Piece](https://en.wikipedia.org/wiki/Chess_piece)
@@ -65,3 +137,5 @@ Pooling what we know so far, we can roughly see the characteristics of what we c
 * [Bishop](https://en.wikipedia.org/wiki/Bishop_(chess))
 * [Knight](https://en.wikipedia.org/wiki/Knight_(chess))
 * [Pawn](https://en.wikipedia.org/wiki/Pawn_(chess))
+* [Castling](https://en.wikipedia.org/wiki/Castling)
+* [Rules of Chess](https://en.wikipedia.org/wiki/Rules_of_chess)
