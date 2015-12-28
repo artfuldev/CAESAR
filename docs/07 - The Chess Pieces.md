@@ -6,7 +6,7 @@ other important things. Let's start with the pieces. I hope you remember the boa
 journal entry](03%20-%20The%20Chess%20Board.md). With the chess pieces placed on the board in the
 starting position, it looks a bit like this:
 
-![Starting Position](../media/starting-position.png)
+![Starting Position](media/starting-position.png)
 
 Now that we know how to reference the squares, ranks and files on the board, it is going to be easy for
 us to talk about the pieces. At first glance, we can make the following observations:
@@ -32,7 +32,7 @@ white pieces to play, and the other uses the black pieces. Playing is done by mo
 square on the chessboard to another. Knowing that much about players, moves and the game is enough for 
 the moment, let us concentrate on the pieces themselves.
 
-![Unique Pieces](../media/pieces/chess-pieces-all.png)
+![Unique Pieces](media/pieces/chess-pieces-all.png)
 
 As we noted earlier, there are 6 unique chess pieces. Let us identify and name them. This is important,
 because in chess, each piece moves differently, and being able to refer them by name has its advantages
@@ -42,12 +42,12 @@ denoting a black piece (neat, eh?).
 
 White Piece|Black Piece|Name|Notation White|Notation Black|
 -----------|-----------|----|--------------|--------------|
-![White King](../media/pieces/king-white.png)|![Black King](../media/pieces/king-black.png)|King|K|k|
-![White Queen](../media/pieces/queen-white.png)|![Black Queen](../media/pieces/queen-black.png)|Queen|Q|q|
-![White Rook](../media/pieces/rook-white.png)|![Black Rook](../media/pieces/rook-black.png)|Rook|R|r|
-![White Bishop](../media/pieces/bishop-white.png)|![Black Bishop](../media/pieces/bishop-black.png)|Bishop|B|b|
-![White Knight](../media/pieces/knight-white.png)|![Black Knight](../media/pieces/knight-black.png)|Knight|N|n|
-![White Pawn](../media/pieces/pawn-white.png)|![Black Pawn](../media/pieces/pawn-black.png)|Pawn|P|p|
+![White King](media/pieces/king-white.png)|![Black King](media/pieces/king-black.png)|King|K|k|
+![White Queen](media/pieces/queen-white.png)|![Black Queen](media/pieces/queen-black.png)|Queen|Q|q|
+![White Rook](media/pieces/rook-white.png)|![Black Rook](media/pieces/rook-black.png)|Rook|R|r|
+![White Bishop](media/pieces/bishop-white.png)|![Black Bishop](media/pieces/bishop-black.png)|Bishop|B|b|
+![White Knight](media/pieces/knight-white.png)|![Black Knight](media/pieces/knight-black.png)|Knight|N|n|
+![White Pawn](media/pieces/pawn-white.png)|![Black Pawn](media/pieces/pawn-black.png)|Pawn|P|p|
 
 Pooling what we know so far, we can roughly see the characteristics of what we could call a *Piece*:
 
@@ -76,28 +76,28 @@ The king moves exactly one square in any direction: forwards, backwards, left, r
 can also perform a special move known as *castling* in conjuction with the rook. Since castling is a
 special move, we'll come back to it later.
 
-![Possible Moves of an unhindered King](../media/moves/king-possible-moves.png)
+![Possible Moves of an unhindered King](media/moves/king-possible-moves.png)
 
 ### Queen (Q)
 The queen moves any number of vacant squares in any direction: forwards, backwards, left, right, or
 diagonally, in a straight line, up until it meets an enemy piece (which it can capture), or the end of the
 board.
 
-![Possible Moves of an unhindered Queen](../media/moves/queen-possible-moves.png)
+![Possible Moves of an unhindered Queen](media/moves/queen-possible-moves.png)
 
 ### Rook (R)
 The rook moves any number of vacant squares forwards, backwards, left, or right in a straight line, up
 until it meets an enemy piece (which it can capture), or the end of the board. It also takes part, along
 with the king, in a special move called castling.
 
-![Possible Moves of a Rook](../media/moves/rook-possible-moves.png)
+![Possible Moves of a Rook](media/moves/rook-possible-moves.png)
 
 ### Bishop (B)
 The bishop moves any number of vacant squares diagonally in a straight line, up until it meets an enemy
 piece (which it can capture), or the end of the board. Consequently, a bishop stays on squares of the
 same color throughout a game. The two bishops each player starts with move on squares of opposite colors.
 
-![Possible Moves of a Bishop](../media/moves/bishop-possible-moves.png)
+![Possible Moves of a Bishop](media/moves/bishop-possible-moves.png)
 
 ### Knight (N)
 The knight moves on an extended diagonal from one corner of any 2x3 rectangle of squares to the furthest
@@ -105,7 +105,7 @@ opposite corner. Consequently, the knight alternates its square color each time 
 the only piece that jumps over any intervening piece(s) when moving (castling being the only special
 instance in which pieces jump over one another).
 
-![Possible Moves of a Knight](../media/moves/knight-possible-moves.png)
+![Possible Moves of a Knight](media/moves/knight-possible-moves.png)
 
 ### Pawn (P)
 The pawn moves forward exactly one space, or optionally, two spaces when on its starting square, toward
@@ -114,7 +114,7 @@ either left or right, then the pawn may capture that piece. A pawn can perform a
 of an enemy pawn called *en passant*. If the pawn reaches a square on the back rank of the opponent, it
 *promotes* to the player's choice of a queen, rook, bishop, or knight.
 
-![Possible Moves of a Pawn](../media/moves/pawn-possible-moves.png)
+![Possible Moves of a Pawn](media/moves/pawn-possible-moves.png)
 
 Pieces other than pawns capture in the same way that they move. A capturing piece replaces the opponent
 piece on its square, except for an *en passant* capture. Captured pieces are immediately removed from the
