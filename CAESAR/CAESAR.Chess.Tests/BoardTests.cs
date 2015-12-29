@@ -137,22 +137,9 @@ namespace CAESAR.Chess.Tests
             Assert.Equal(x, _board.Squares.ElementAt(n - 1).Name);
         }
 
-        [Fact]
-        public void EveryAlternateSquareInBoardHasTheSameColor()
-        {
-            // Even Indices
-            var isLight = _board.Squares.ElementAt(0).IsLight;
-            for (var i = 2; i < _board.Squares.Count; i += 2)
-                Assert.True(_board.Squares.ElementAt(i).IsLight == isLight);
-
-            // Odd Indices
-            isLight = _board.Squares.ElementAt(1).IsLight;
-            for (var i = 3; i < _board.Squares.Count; i += 2)
-                Assert.True(_board.Squares.ElementAt(i).IsLight == isLight);
-        }
-
         [Theory]
         [InlineData("h1")]
+        [InlineData("a2")]
         public void SquareNamedXInBoardIsALightSquare(string x)
         {
             Assert.True(_board.Squares.First(square => square.Name == x).IsLight);
