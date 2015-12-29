@@ -8,7 +8,7 @@ namespace CAESAR.Chess.Pieces
         {
         }
 
-        public override IEnumerable<IMove> GetMoves()
+        protected override IEnumerable<IMove> GetMovesImplementation()
         {
             throw new System.NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CAESAR.Chess.Pieces
@@ -18,7 +19,15 @@ namespace CAESAR.Chess.Pieces
         public bool IsWhite { get; }
         public bool IsBlack => !IsWhite;
         public ISquare Square { get; }
-        public abstract IEnumerable<IMove> GetMoves();
+
+        public IEnumerable<IMove> GetMoves()
+        {
+            if (Square == null)
+                throw new NotSupportedException("A piece that is not in a square cannot have any moves");
+            return GetMovesImplementation();
+        }
+
+        protected abstract IEnumerable<IMove> GetMovesImplementation(); 
         public string Name { get; }
         public char Notation { get; }
     }
