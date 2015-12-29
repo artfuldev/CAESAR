@@ -35,7 +35,7 @@ namespace CAESAR.Chess.Implementation
                 {
                     var squareIndex = (i * RankCount) + j;
                     var square = new Square(this, files[j], ranks[i],
-                        files[j].Name.ToString() + ranks[i].Number.ToString(), squareIndex % 2 != 0);
+                        files[j].Name.ToString() + ranks[i].Number.ToString(), (i+j) % 2 != 0);
 
                     squares[squareIndex] = square;
                     rankSquares[i][j] = square;
