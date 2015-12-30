@@ -5,6 +5,11 @@ namespace CAESAR.Chess.Helpers
 {
     public static class SquareExtensions
     {
+        public static ISquare GetAdjacentSquareInDirection(this ISquare square, Direction direction)
+        {
+            return square.GetAdjacentSquaresInDirection(direction).FirstOrDefault();
+        }
+
         public static IEnumerable<ISquare> GetAdjacentSquaresInDirection(this ISquare square, Direction direction)
         {
             if (ReferenceEquals(null, square) || direction == Direction.None)
