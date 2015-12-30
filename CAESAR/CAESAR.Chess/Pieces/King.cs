@@ -13,12 +13,12 @@ namespace CAESAR.Chess.Pieces
         private static readonly IEnumerable<Direction> Directions = new Direction[]
         {
             Direction.Up,
-            Direction.Right,
-            Direction.Down, 
-            Direction.Left,
             Direction.UpRight,
+            Direction.Right,
             Direction.DownRight,
+            Direction.Down,
             Direction.DownLeft,
+            Direction.Left,
             Direction.UpLeft
         };
         protected override IEnumerable<IMove> GetMovesImplementation()
