@@ -7,7 +7,7 @@ namespace CAESAR.Chess
         bool IsWhite { get; }
         bool IsBlack { get; }
         void Place(IBoard board, IPiece piece, string squareName);
-        IBoard MakeMove(IMove move, IBoard board);
-        IBoard UnMakeMove(IMove move, IBoard board);
+        void MakeMove(IMove move);
+        void UnMakeMove(IMove move);
     }
 }

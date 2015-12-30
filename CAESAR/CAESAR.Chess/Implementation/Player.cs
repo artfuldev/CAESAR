@@ -15,16 +15,41 @@ namespace CAESAR.Chess.Implementation
         {
             var square = board.GetSquare(squareName);
             piece.Square = square;
+            square.Piece = piece;
         }
 
-        public IBoard MakeMove(IMove move, IBoard board)
+        public void MakeMove(IMove move)
         {
-            throw new System.NotImplementedException();
+            switch (move.MoveType)
+            {
+                case MoveType.Normal:
+                    var piece = move.Piece;
+                    move.Source.Piece = null;
+                    move.Destination.Piece = piece;
+                    piece.Square = move.Destination;
+                    return;
+                case MoveType.None:
+                case MoveType.Illegal:
+                default:
+                    return;
+            }
         }
 
-        public IBoard UnMakeMove(IMove move, IBoard board)
+        public void UnMakeMove(IMove move)
         {
-            throw new System.NotImplementedException();
+            switch (move.MoveType)
+            {
+                case MoveType.Normal:
+                    var piece = move.Piece;
+                    move.Destination.Piece = null;
+                    move.Source.Piece = piece;
+                    piece.Square = move.Source;
+                    return;
+                case MoveType.None:
+                case MoveType.Illegal:
+                default:
+                    return;
+            }
         }
     }
 }
