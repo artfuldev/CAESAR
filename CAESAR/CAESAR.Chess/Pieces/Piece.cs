@@ -18,7 +18,7 @@ namespace CAESAR.Chess.Pieces
 
         public bool IsWhite { get; }
         public bool IsBlack => !IsWhite;
-        public ISquare Square { get; }
+        public ISquare Square { get; set; }
 
         public IEnumerable<IMove> GetMoves()
         {

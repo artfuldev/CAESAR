@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CAESAR.Chess.Pieces;
 
 namespace CAESAR.Chess.Implementation
 {
@@ -25,6 +26,7 @@ namespace CAESAR.Chess.Implementation
             IsLight = isLight;
         }
         public IBoard Board { get; }
+        public IPiece Piece { get; set; }
         public IFile File { get; }
         public IRank Rank { get; }
         public string Name { get; }

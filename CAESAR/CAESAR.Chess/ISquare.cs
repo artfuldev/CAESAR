@@ -1,4 +1,6 @@
-﻿namespace CAESAR.Chess
+﻿using CAESAR.Chess.Pieces;
+
+namespace CAESAR.Chess
 {
     public interface ISquare
     {
@@ -8,5 +10,6 @@
         bool IsLight { get; }
         bool IsDark { get; }
         IBoard Board { get; }
+        IPiece Piece { get; set; }
     }
 }
