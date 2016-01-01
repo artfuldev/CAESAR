@@ -5,13 +5,13 @@
     "DNX,Version=v4.5.1": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.5.1"
       }
     },
     "DNX,Version=v4.6": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.6"
       }
     },
     "DNXCore,Version=v5.0": {
@@ -320,25 +320,25 @@
     "DNX,Version=v4.5.1/win7-x86": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.5.1"
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.5.1"
       }
     },
     "DNX,Version=v4.6/win7-x86": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.6"
       }
     },
     "DNX,Version=v4.6/win7-x64": {
       "CAESAR.Chess/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5"
+        "framework": "DNX,Version=v4.6"
       }
     },
     "DNXCore,Version=v5.0/win7-x86": {
