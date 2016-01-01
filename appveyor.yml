@@ -13,3 +13,5 @@ before_build:
 test_script:
  - ps: cd .\CAESAR\CAESAR.Chess.Tests
  - ps: dnx test
+ - ps: pip install --user codecov
+ - ps: codecov
