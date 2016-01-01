@@ -1,5 +1,5 @@
 # CAESAR
-[![Build status](https://ci.appveyor.com/api/projects/status/yxfloeucyihc1xld?svg=true)](https://ci.appveyor.com/project/kenshinthebattosai/caesar)
+[![Build status](https://ci.appveyor.com/api/projects/status/yxfloeucyihc1xld?svg=true)](https://ci.appveyor.com/project/kenshinthebattosai/caesar) [![License](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg)](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg)
 
 *Chess Analysis Engine as an exercise in Software Architecture and Review (CAESAR)*
 
