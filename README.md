@@ -1,4 +1,6 @@
 # CAESAR
+[![Build status](https://ci.appveyor.com/api/projects/status/yxfloeucyihc1xld?svg=true)](https://ci.appveyor.com/project/kenshinthebattosai/caesar)
+
 *Chess Analysis Engine as an exercise in Software Architecture and Review (CAESAR)*
 
 A pet project that aims to build a chess engine with a focus on software architecture and best
