@@ -137,6 +137,9 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
+      },
       "xunit/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -381,6 +384,9 @@
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -681,6 +687,9 @@
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "System.Collections/4.0.11-beta-23516": {
         "type": "package",
@@ -1565,6 +1574,9 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
+      },
       "xunit/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -1809,6 +1821,9 @@
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -2055,6 +2070,9 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
+      },
       "xunit/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -2299,6 +2317,9 @@
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -2617,6 +2638,9 @@
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
         "type": "package",
@@ -3913,6 +3937,9 @@
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
+      },
+      "OpenCover/4.6.261-rc": {
+        "type": "package"
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
         "type": "package",
@@ -5239,6 +5266,57 @@
         "Newtonsoft.Json.7.0.1.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "OpenCover/4.6.261-rc": {
+      "type": "package",
+      "sha512": "kTwzuRlHSuJjEPmadvsFobh8ky7H1rbrkt70mgwv5I+9iMegr2/m8VQTW90iWSXJBjFhH5JC8DCLQ6doY1B6Lg==",
+      "files": [
+        "docs/ReleaseNotes.txt",
+        "docs/Usage.rtf",
+        "License.rtf",
+        "MSBuild/OpenCover.MSBuild.dll",
+        "MSBuild/OpenCover.targets",
+        "OpenCover.4.6.261-rc.nupkg",
+        "OpenCover.4.6.261-rc.nupkg.sha512",
+        "OpenCover.nuspec",
+        "readme.txt",
+        "Samples/x64/OpenCover.Simple.Target.exe",
+        "Samples/x64/OpenCover.Simple.Target.pdb",
+        "Samples/x86/OpenCover.Simple.Target.exe",
+        "Samples/x86/OpenCover.Simple.Target.pdb",
+        "SampleSln/.nuget/packages.config",
+        "SampleSln/Bom/Bom.csproj",
+        "SampleSln/Bom/BomManager.cs",
+        "SampleSln/Bom/Properties/AssemblyInfo.cs",
+        "SampleSln/BomSample.sln",
+        "SampleSln/BomTest/BomManagerTests.cs",
+        "SampleSln/BomTest/BomTest.csproj",
+        "SampleSln/BomTest/packages.config",
+        "SampleSln/BomTest/Properties/AssemblyInfo.cs",
+        "SampleSln/coverage.bat",
+        "SampleSln/packages/repositories.config",
+        "tools/Autofac.Configuration.dll",
+        "tools/Autofac.dll",
+        "tools/CrashReporter.NET.dll",
+        "tools/Gendarme.Framework.dll",
+        "tools/Gendarme.Rules.Maintainability.dll",
+        "tools/log4net.config",
+        "tools/log4net.dll",
+        "tools/Mono.Cecil.dll",
+        "tools/Mono.Cecil.Mdb.dll",
+        "tools/Mono.Cecil.Pdb.dll",
+        "tools/OpenCover.Console.exe",
+        "tools/OpenCover.Console.exe.config",
+        "tools/OpenCover.Console.pdb",
+        "tools/OpenCover.Extensions.dll",
+        "tools/OpenCover.Extensions.pdb",
+        "tools/OpenCover.Framework.dll",
+        "tools/OpenCover.Framework.pdb",
+        "tools/x64/OpenCover.Profiler.dll",
+        "tools/x86/OpenCover.Profiler.dll",
+        "transform/simple_report.xslt",
+        "transform/transform.ps1"
       ]
     },
     "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
@@ -7705,7 +7783,8 @@
     "": [
       "CAESAR.Chess ",
       "xunit >= 2.1.0-*",
-      "xunit.runner.dnx >= 2.1.0-*"
+      "xunit.runner.dnx >= 2.1.0-*",
+      "OpenCover >= 4.6.261-rc"
     ],
     "DNX,Version=v4.5.1": [],
     "DNX,Version=v4.6": [],
