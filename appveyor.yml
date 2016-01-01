@@ -21,4 +21,4 @@ test_script:
  - cmd: dnu build
  - cmd: cd c:\projects\caesar\CAESAR\CAESAR.Chess.Tests
  - cmd: C:\Users\appveyor\.dnx\packages\OpenCover\4.6.261-rc\tools\OpenCover.Console.exe -target:"C:\Users\appveyor\.dnx\runtimes\dnx-clr-win-x86.1.0.0-rc1-update1\bin\dnx.exe" -targetargs:"--lib c:\projects\caesar\CAESAR\CAESAR.Chess\bin\Debug\dnx451 test" -output:.\CAESAR_coverage.xml -returntargetcode -register:Path32 -hideskipped:All -filter:"+[CAESAR*]* -[*Tests]*"
- - cmd: codecov -f "CAESAR_coverage.xml"
+ - cmd: codecov -f "CAESAR_coverage.xml" -X gcov
