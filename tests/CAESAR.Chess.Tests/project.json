@@ -1,17 +1,15 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "CAESAR.Chess.Tests Class Library",
   "authors": [ "Kenshin" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "commands": {
+    "test": "xunit.runner.dnx"
+  },
   "dependencies": {
-    "CAESAR.Chess": "",
+    "OpenCover": "4.6.261-rc",
     "xunit": "2.1.0-*",
     "xunit.runner.dnx": "2.1.0-*",
-    "OpenCover": "4.6.261-rc"
+    "CAESAR.Chess": ""
   },
-
+  "description": "CAESAR.Chess.Tests Class Library",
   "frameworks": {
     "dnx451": { },
     "dnx46": { },
@@ -25,8 +23,8 @@
       }
     }
   },
-
-  "commands": {
-    "test": "xunit.runner.dnx"
-  }
+  "licenseUrl": "",
+  "projectUrl": "",
+  "tags": [ "" ],
+  "version": "1.0.0-*"
 }

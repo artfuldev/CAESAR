@@ -5033,7 +5033,7 @@
   "libraries": {
     "CAESAR.Chess/1.0.0": {
       "type": "project",
-      "path": "../CAESAR.Chess/project.json"
+      "path": "../../src/CAESAR.Chess/project.json"
     },
     "Microsoft.CSharp/4.0.1-beta-23516": {
       "type": "package",
@@ -7782,10 +7782,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "CAESAR.Chess ",
+      "OpenCover >= 4.6.261-rc",
       "xunit >= 2.1.0-*",
       "xunit.runner.dnx >= 2.1.0-*",
-      "OpenCover >= 4.6.261-rc"
+      "CAESAR.Chess "
     ],
     "DNX,Version=v4.5.1": [],
     "DNX,Version=v4.6": [],
