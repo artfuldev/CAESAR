@@ -19,7 +19,7 @@ build_script:
 test_script:
  - ps: cd .\CAESAR\CAESAR.Chess.Tests
  - ps: dnx test
- - ps: .\packages\OpenCover.4.6.261-rc\OpenCover.Console.exe -target:"C:\<path-to-dnx>\dnx-clr-win-x86.1.0.0-beta6\bin\dnx.exe" -targetargs:"--lib .\CAESAR\CAESAR\artifacts\bin\CAESAR.Chess\Debug\dnxcore50\CAESAR.Chess.dll .\CAESAR\CAESAR\artifacts\bin\CAESAR.Chess\Debug\dnxcore50\CAESAR.Chess.Tests.dll test" -output:.\CAESAR.Chess_coverage.xml  -filter:+[CAESAR.Chess]*
+ - ps: %USERPROFILE%\.dnx\packages\OpenCover\4.6.261-rc\OpenCover.Console.exe -target:"%PATH%\dnx.exe" -targetargs:"--lib C:\projects\caesar\CAESAR\CAESAR\artifacts\bin\CAESAR.Chess\Debug\dnxcore50\CAESAR.Chess.dll C:\projects\caesar\CAESAR\artifacts\bin\CAESAR.Chess\Debug\dnxcore50\CAESAR.Chess.Tests.dll test" -output:.\CAESAR.Chess_coverage.xml  -filter:+[CAESAR.Chess]*
  - cmd: codecov -f "CAESAR.Chess_coverage.xml"
  - ps: (New-Object System.Net.WebClient).DownloadFile("https://codecov.io/bash", ".\CodecovUploader.sh")
  - ps: .\CodecovUploader.sh -X gcov
