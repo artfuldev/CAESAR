@@ -15,19 +15,21 @@ namespace CAESAR.ConsoleApp
             var board = new Board();
             board.Print();
             var player = new Player();
-            var knight = new Knight(true);
-            var knight2 = new Knight(true);
-            player.Place(board, knight, "g1");
-            player.Place(board, knight2, "b1");
+            var pawn = new Pawn(true);
+            var pawn2 = new Pawn(false);
+            var knight = new Knight(false);
+            player.Place(board, pawn, "b2");
+            player.Place(board, pawn2, "b7");
+            player.Place(board, knight, "c3");
             board.Print();
             Console.ReadLine();
             Console.WriteLine("Moves:");
-            var knightMoves = knight.GetMoves();
-            foreach (var move in knightMoves)
+            var pawnMoves = pawn.GetMoves();
+            foreach (var move in pawnMoves)
             {
                 Console.WriteLine(move.ToString());
             }
-            foreach (var move in knightMoves)
+            foreach (var move in pawnMoves)
             {
                 Console.WriteLine("Making move " + move);
                 player.MakeMove(move);
@@ -41,12 +43,12 @@ namespace CAESAR.ConsoleApp
             Console.ReadLine();
 
             Console.WriteLine("Moves:");
-            var knight2Moves = knight2.GetMoves();
-            foreach (var move in knight2Moves)
+            var pawn2Moves = pawn2.GetMoves();
+            foreach (var move in pawn2Moves)
             {
                 Console.WriteLine(move.ToString());
             }
-            foreach (var move in knight2Moves)
+            foreach (var move in pawn2Moves)
             {
                 Console.WriteLine("Making move " + move);
                 player.MakeMove(move);
@@ -58,15 +60,15 @@ namespace CAESAR.ConsoleApp
             }
             Console.WriteLine("All moves played");
             Console.ReadLine();
-            var firstMove = knight2Moves.FirstOrDefault();
+            var firstMove = pawn2Moves.FirstOrDefault();
             player.MakeMove(firstMove);
-            knight2Moves = knight2.GetMoves();
+            pawn2Moves = pawn2.GetMoves();
             Console.WriteLine("Moves:");
-            foreach (var move in knight2Moves)
+            foreach (var move in pawn2Moves)
             {
                 Console.WriteLine(move.ToString());
             }
-            foreach (var move in knight2Moves)
+            foreach (var move in pawn2Moves)
             {
                 Console.WriteLine("Making move " + move);
                 player.MakeMove(move);

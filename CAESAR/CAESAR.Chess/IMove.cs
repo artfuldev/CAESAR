@@ -11,5 +11,6 @@ namespace CAESAR.Chess
         bool IsBlack { get; }
         MoveType MoveType { get; }
         IPiece PromotionPiece { get; }
+        IPiece CapturedPiece { get; }
     }
 }

@@ -98,6 +98,30 @@ namespace CAESAR.Chess.Helpers
             knightSquare = square.GetAdjacentSquareInDirection(Direction.UpLeft).GetAdjacentSquareInDirection(Direction.Up);
             if (knightSquare != null)
                 yield return knightSquare;
-        } 
+        }
+
+        public static IEnumerable<ISquare> GetPawnMovementSquares(this ISquare square, bool isWhite)
+        {
+            if (ReferenceEquals(null, square))
+                yield break;
+            var direction = isWhite ? Direction.Up : Direction.Down;
+            var movementSquare = square.GetAdjacentSquareInDirection(direction);
+            yield return movementSquare;
+            var isStartingRank = isWhite ? square.Rank.Number == 2 : square.Rank.Number == 7;
+            if (isStartingRank)
+                yield return movementSquare.GetAdjacentSquareInDirection(direction);
+
+        }
+
+        public static IEnumerable<ISquare> GetPawnCaptureSquares(this ISquare square, bool isWhite)
+        {
+            if (ReferenceEquals(null, square))
+                yield break;
+            var directions = isWhite
+                ? new[] {Direction.UpRight, Direction.UpLeft}
+                : new[] {Direction.DownRight, Direction.DownLeft};
+            foreach (var direction in directions)
+                yield return square.GetAdjacentSquareInDirection(direction);
+        }
     }
 }

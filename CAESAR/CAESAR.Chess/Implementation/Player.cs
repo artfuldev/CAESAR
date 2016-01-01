@@ -13,23 +13,33 @@ namespace CAESAR.Chess.Implementation
         public bool IsBlack => !IsWhite;
         public void Place(IBoard board, IPiece piece, string squareName)
         {
-            var square = board.GetSquare(squareName);
-            piece.Square = square;
+            Place(board.GetSquare(squareName), piece);
+        }
+
+        public void Place(ISquare square, IPiece piece)
+        {
+            if (!ReferenceEquals(null, piece))
+                piece.Square = square;
             square.Piece = piece;
         }
 
         public void MakeMove(IMove move)
         {
+            var piece = move.Piece;
+            var destination = move.Destination;
+            var source = move.Source;
             switch (move.MoveType)
             {
                 case MoveType.Normal:
-                    var piece = move.Piece;
-                    move.Source.Piece = null;
-                    move.Destination.Piece = piece;
-                    piece.Square = move.Destination;
-                    return;
+                case MoveType.Capture:
+                    Place(source, null);
+                    Place(destination, piece);
+                    break;
                 case MoveType.None:
                 case MoveType.Illegal:
+                case MoveType.EnPassant:
+                case MoveType.Castle:
+                case MoveType.Promotion:
                 default:
                     return;
             }
@@ -37,16 +47,22 @@ namespace CAESAR.Chess.Implementation
 
         public void UnMakeMove(IMove move)
         {
+            var piece = move.Piece;
+            var destination = move.Destination;
+            var captured = move.CapturedPiece;
+            var source = move.Source;
             switch (move.MoveType)
             {
                 case MoveType.Normal:
-                    var piece = move.Piece;
-                    move.Destination.Piece = null;
-                    move.Source.Piece = piece;
-                    piece.Square = move.Source;
-                    return;
+                case MoveType.Capture:
+                    Place(source, piece);
+                    Place(destination, captured);
+                    break;
                 case MoveType.None:
                 case MoveType.Illegal:
+                case MoveType.EnPassant:
+                case MoveType.Castle:
+                case MoveType.Promotion:
                 default:
                     return;
             }

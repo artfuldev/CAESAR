@@ -5,9 +5,10 @@ namespace CAESAR.Chess.Pieces
 {
     public class Knight : Piece
     {
-        public Knight(bool isWhite, ISquare square = null) : base(isWhite, "Knight", 'N', square)
+        public Knight(bool isWhite) : base(isWhite, "Knight", 'N')
         {
         }
-        protected override IEnumerable<ISquare> EligibleSquares => Square.GetKnightSquares();
+        protected override IEnumerable<ISquare> MovementSquares => Square.GetKnightSquares();
+        protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
     }
 }

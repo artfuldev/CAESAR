@@ -6,7 +6,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Rook : Piece
     {
-        public Rook(bool isWhite, ISquare square = null) : base(isWhite, "Rook", 'R', square)
+        public Rook(bool isWhite) : base(isWhite, "Rook", 'R')
         {
         }
 
@@ -18,7 +18,9 @@ namespace CAESAR.Chess.Pieces
             Direction.Left
         };
 
-        protected override IEnumerable<ISquare> EligibleSquares
+        protected override IEnumerable<ISquare> MovementSquares
             => Directions.SelectMany(direction => Square.GetAdjacentSquaresInDirectionTillNonEmptySquare(direction));
+
+        protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
     }
 }

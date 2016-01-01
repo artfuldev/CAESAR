@@ -7,7 +7,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class King : Piece
     {
-        public King(bool isWhite, ISquare square = null) : base(isWhite, "King", 'K', square)
+        public King(bool isWhite) : base(isWhite, "King", 'K')
         {
         }
         private static readonly IEnumerable<Direction> Directions = new[]
@@ -22,7 +22,10 @@ namespace CAESAR.Chess.Pieces
             Direction.UpLeft
         };
 
-        protected override IEnumerable<ISquare> EligibleSquares
+        protected override IEnumerable<ISquare> MovementSquares
             => Directions.Select(direction => Square.GetAdjacentSquareInDirection(direction));
+
+        protected override IEnumerable<ISquare> CaptureSquares
+            => MovementSquares;
     }
 }

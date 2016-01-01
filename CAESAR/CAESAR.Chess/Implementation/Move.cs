@@ -10,9 +10,12 @@ namespace CAESAR.Chess.Implementation
             Piece = piece;
             Destination = destination;
             MoveType = moveType;
-            PromotionPiece = promotionPiece;
             Source = piece.Square;
             IsWhite = Piece.IsWhite;
+            if (moveType == MoveType.Promotion)
+                PromotionPiece = promotionPiece;
+            if (moveType == MoveType.Capture)
+                CapturedPiece = Destination.Piece;
         }
 
         public ISquare Source { get; }
@@ -22,11 +25,12 @@ namespace CAESAR.Chess.Implementation
         public bool IsBlack => !IsWhite;
         public MoveType MoveType { get; }
         public IPiece PromotionPiece { get; }
+        public IPiece CapturedPiece { get; }
 
         public override string ToString()
         {
-            return Piece.Notation + Destination.Name +
-                   (PromotionPiece != null
+            return Piece.Notation + (MoveType == MoveType.Capture ? "x" : "") + Destination.Name +
+                   (MoveType == MoveType.Promotion
                        ? "=" + PromotionPiece.Notation.ToString().ToUpperInvariant().ToCharArray().First()
                        : "");
         }
