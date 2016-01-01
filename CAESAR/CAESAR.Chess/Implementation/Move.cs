@@ -1,4 +1,5 @@
 ﻿using CAESAR.Chess.Pieces;
+using System.Linq;
 
 namespace CAESAR.Chess.Implementation
 {
@@ -21,5 +22,13 @@ namespace CAESAR.Chess.Implementation
         public bool IsBlack => !IsWhite;
         public MoveType MoveType { get; }
         public IPiece PromotionPiece { get; }
+
+        public override string ToString()
+        {
+            return Piece.Notation + Destination.Name +
+                   (PromotionPiece != null
+                       ? "=" + PromotionPiece.Notation.ToString().ToUpperInvariant().ToCharArray().First()
+                       : "");
+        }
     }
 }

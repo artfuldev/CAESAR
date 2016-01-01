@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Pieces
 {
@@ -8,9 +10,15 @@ namespace CAESAR.Chess.Pieces
         {
         }
 
-        protected override IEnumerable<IMove> GetMovesImplementation()
+        private static readonly IEnumerable<Direction> Directions = new[]
         {
-            throw new System.NotImplementedException();
-        }
+            Direction.UpRight,
+            Direction.DownRight,
+            Direction.DownLeft,
+            Direction.UpLeft
+        };
+
+        protected override IEnumerable<ISquare> EligibleSquares
+            => Directions.SelectMany(direction => Square.GetAdjacentSquaresInDirectionTillNonEmptySquare(direction));
     }
 }

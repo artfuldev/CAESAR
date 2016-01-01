@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CAESAR.Chess.Helpers;
 using CAESAR.Chess.Implementation;
+using CAESAR.Chess.Pieces;
 
 namespace CAESAR.ConsoleApp
 {
@@ -12,20 +13,70 @@ namespace CAESAR.ConsoleApp
         public static void Main(string[] args)
         {
             var board = new Board();
-            var outputString = board.Squares.Aggregate("", (current, x) => current + (x.Name + ", "));
-            outputString = outputString.TrimEnd(',',' ');
-            Console.WriteLine(outputString);
+            board.Print();
+            var player = new Player();
+            var knight = new Knight(true);
+            var knight2 = new Knight(true);
+            player.Place(board, knight, "g1");
+            player.Place(board, knight2, "b1");
+            board.Print();
+            Console.ReadLine();
+            Console.WriteLine("Moves:");
+            var knightMoves = knight.GetMoves();
+            foreach (var move in knightMoves)
+            {
+                Console.WriteLine(move.ToString());
+            }
+            foreach (var move in knightMoves)
+            {
+                Console.WriteLine("Making move " + move);
+                player.MakeMove(move);
+                board.Print();
+                Console.WriteLine("UnMaking move " + move);
+                player.UnMakeMove(move);
+                board.Print();
+                Console.ReadLine();
+            }
+            Console.WriteLine("All moves played");
             Console.ReadLine();
 
-            var square = board.Squares.First(x => x.Name == "g2");
-            var upSquares = square.GetAdjacentSquaresInDirection(Direction.Up);
-            var rightSquares = square.GetAdjacentSquaresInDirection(Direction.Right);
-            var downSquares = square.GetAdjacentSquaresInDirection(Direction.Down);
-            var leftSquares = square.GetAdjacentSquaresInDirection(Direction.Left);
-            var upRightSquares = square.GetAdjacentSquaresInDirection(Direction.UpRight);
-            var downRightSquares = square.GetAdjacentSquaresInDirection(Direction.DownRight);
-            var downLeftSquares = square.GetAdjacentSquaresInDirection(Direction.DownLeft);
-            var upLeftSquares = square.GetAdjacentSquaresInDirection(Direction.UpLeft);
+            Console.WriteLine("Moves:");
+            var knight2Moves = knight2.GetMoves();
+            foreach (var move in knight2Moves)
+            {
+                Console.WriteLine(move.ToString());
+            }
+            foreach (var move in knight2Moves)
+            {
+                Console.WriteLine("Making move " + move);
+                player.MakeMove(move);
+                board.Print();
+                Console.WriteLine("UnMaking move " + move);
+                player.UnMakeMove(move);
+                board.Print();
+                Console.ReadLine();
+            }
+            Console.WriteLine("All moves played");
+            Console.ReadLine();
+            var firstMove = knight2Moves.FirstOrDefault();
+            player.MakeMove(firstMove);
+            knight2Moves = knight2.GetMoves();
+            Console.WriteLine("Moves:");
+            foreach (var move in knight2Moves)
+            {
+                Console.WriteLine(move.ToString());
+            }
+            foreach (var move in knight2Moves)
+            {
+                Console.WriteLine("Making move " + move);
+                player.MakeMove(move);
+                board.Print();
+                Console.WriteLine("UnMaking move " + move);
+                player.UnMakeMove(move);
+                board.Print();
+                Console.ReadLine();
+            }
+            Console.WriteLine("All moves played");
             Console.ReadLine();
         }
     }

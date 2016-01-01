@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CAESAR.Chess.Implementation;
 
 namespace CAESAR.Chess.Pieces
 {
@@ -22,12 +23,14 @@ namespace CAESAR.Chess.Pieces
 
         public IEnumerable<IMove> GetMoves()
         {
-            if (Square == null)
-                throw new NotSupportedException("A piece that is not in a square cannot have any moves");
-            return GetMovesImplementation();
+            return
+                EligibleSquares.Distinct()
+                    .Where(square => square != null)
+                    .Where(square => square.Piece == null || square.Piece.IsWhite != IsWhite)
+                    .Select(square => new Move(this, square));
         }
 
-        protected abstract IEnumerable<IMove> GetMovesImplementation(); 
+        protected abstract IEnumerable<ISquare> EligibleSquares { get; }
         public string Name { get; }
         public char Notation { get; }
     }

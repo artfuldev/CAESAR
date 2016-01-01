@@ -5,12 +5,13 @@ namespace CAESAR.Chess.Helpers
 {
     public static class LinqExtensions
     {
-        public static IEnumerable<T> TakeWhileIncluding<T>(this IEnumerable<T> list, Func<T, bool> predicate)
+        public static IEnumerable<T> TakeWhileUntil<T>(this IEnumerable<T> list, Func<T, bool> whilePredicate, Func<T, bool> untilPredicate)
         {
-            foreach (var el in list)
+            foreach (var item in list)
             {
-                yield return el;
-                if (predicate(el))
+                if (whilePredicate(item) || untilPredicate(item))
+                    yield return item;
+                if (untilPredicate(item))
                     yield break;
             }
         }

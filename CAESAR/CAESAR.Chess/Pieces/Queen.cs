@@ -11,7 +11,7 @@ namespace CAESAR.Chess.Pieces
         {
         }
 
-        private static readonly IEnumerable<Direction> Directions = new Direction[]
+        private static readonly IEnumerable<Direction> Directions = new[]
         {
             Direction.Up,
             Direction.UpRight,
@@ -23,17 +23,7 @@ namespace CAESAR.Chess.Pieces
             Direction.UpLeft
         };
 
-        protected override IEnumerable<IMove> GetMovesImplementation()
-        {
-            var eligibleSquares = Directions
-                .SelectMany(direction =>
-                    Square.GetAdjacentSquaresInDirection(direction)
-                        .Where(square => square != null)
-                        .TakeWhile(square => square.Piece == null)
-                        .Concat(Square.GetAdjacentSquaresInDirection(direction)
-                            .SkipWhile(square => square != null)
-                            .Take(1).Where(square => square.Piece.IsWhite != IsWhite)));
-            return eligibleSquares.Select(square => new Move(this, square));
-        }
+        protected override IEnumerable<ISquare> EligibleSquares
+            => Directions.SelectMany(direction => Square.GetAdjacentSquaresInDirectionTillNonEmptySquare(direction));
     }
 }

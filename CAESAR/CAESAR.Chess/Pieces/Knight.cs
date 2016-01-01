@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Pieces
 {
@@ -7,10 +8,6 @@ namespace CAESAR.Chess.Pieces
         public Knight(bool isWhite, ISquare square = null) : base(isWhite, "Knight", 'N', square)
         {
         }
-
-        protected override IEnumerable<IMove> GetMovesImplementation()
-        {
-            throw new System.NotImplementedException();
-        }
+        protected override IEnumerable<ISquare> EligibleSquares => Square.GetKnightSquares();
     }
 }

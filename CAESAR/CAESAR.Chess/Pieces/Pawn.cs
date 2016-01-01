@@ -8,9 +8,6 @@ namespace CAESAR.Chess.Pieces
         {
         }
 
-        protected override IEnumerable<IMove> GetMovesImplementation()
-        {
-            throw new System.NotImplementedException();
-        }
+        protected override IEnumerable<ISquare> EligibleSquares => new ISquare[0];
     }
 }

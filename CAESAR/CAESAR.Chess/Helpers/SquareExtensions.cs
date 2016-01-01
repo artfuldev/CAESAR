@@ -10,6 +10,12 @@ namespace CAESAR.Chess.Helpers
             return square.GetAdjacentSquaresInDirection(direction).FirstOrDefault();
         }
 
+        public static IEnumerable<ISquare> GetAdjacentSquaresInDirectionTillNonEmptySquare(this ISquare square,
+            Direction direction)
+        {
+            return GetAdjacentSquaresInDirection(square, direction).TakeWhileUntil(x => x != null, x => x.Piece != null);
+        }
+
         public static IEnumerable<ISquare> GetAdjacentSquaresInDirection(this ISquare square, Direction direction)
         {
             if (ReferenceEquals(null, square) || direction == Direction.None)
@@ -55,5 +61,43 @@ namespace CAESAR.Chess.Helpers
 
             }
         }
+
+        public static IEnumerable<ISquare> GetKnightSquares(this ISquare square)
+        {
+            if (ReferenceEquals(null, square))
+                yield break;
+
+            var knightSquare = square.GetAdjacentSquareInDirection(Direction.UpRight).GetAdjacentSquareInDirection(Direction.Up);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.UpRight).GetAdjacentSquareInDirection(Direction.Right);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.DownRight).GetAdjacentSquareInDirection(Direction.Right);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.DownRight).GetAdjacentSquareInDirection(Direction.Down);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.DownLeft).GetAdjacentSquareInDirection(Direction.Down);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.DownLeft).GetAdjacentSquareInDirection(Direction.Left);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.UpLeft).GetAdjacentSquareInDirection(Direction.Left);
+            if (knightSquare != null)
+                yield return knightSquare;
+
+            knightSquare = square.GetAdjacentSquareInDirection(Direction.UpLeft).GetAdjacentSquareInDirection(Direction.Up);
+            if (knightSquare != null)
+                yield return knightSquare;
+        } 
     }
 }
