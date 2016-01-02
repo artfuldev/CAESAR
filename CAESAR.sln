@@ -74,6 +74,49 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F2E82D66-1A6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{44B5361F-68D4-492F-809A-C45EDFB9A464}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{931182D8-753F-498F-94BE-2B13A18C15A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "opencover", "opencover", "{D6B1D325-5663-415D-BA7E-961A6E5A1AB7}"
+	ProjectSection(SolutionItems) = preProject
+		tools\opencover\Autofac.Configuration.dll = tools\opencover\Autofac.Configuration.dll
+		tools\opencover\Autofac.dll = tools\opencover\Autofac.dll
+		tools\opencover\CrashReporter.NET.dll = tools\opencover\CrashReporter.NET.dll
+		tools\opencover\Gendarme.Framework.dll = tools\opencover\Gendarme.Framework.dll
+		tools\opencover\Gendarme.Rules.Maintainability.dll = tools\opencover\Gendarme.Rules.Maintainability.dll
+		tools\opencover\log4net.config = tools\opencover\log4net.config
+		tools\opencover\log4net.dll = tools\opencover\log4net.dll
+		tools\opencover\Mono.Cecil.dll = tools\opencover\Mono.Cecil.dll
+		tools\opencover\Mono.Cecil.Mdb.dll = tools\opencover\Mono.Cecil.Mdb.dll
+		tools\opencover\Mono.Cecil.Pdb.dll = tools\opencover\Mono.Cecil.Pdb.dll
+		tools\opencover\OpenCover.Console.exe = tools\opencover\OpenCover.Console.exe
+		tools\opencover\OpenCover.Console.exe.config = tools\opencover\OpenCover.Console.exe.config
+		tools\opencover\OpenCover.Console.pdb = tools\opencover\OpenCover.Console.pdb
+		tools\opencover\OpenCover.Extensions.dll = tools\opencover\OpenCover.Extensions.dll
+		tools\opencover\OpenCover.Extensions.pdb = tools\opencover\OpenCover.Extensions.pdb
+		tools\opencover\OpenCover.Framework.dll = tools\opencover\OpenCover.Framework.dll
+		tools\opencover\OpenCover.Framework.pdb = tools\opencover\OpenCover.Framework.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "reportgenerator", "reportgenerator", "{D979A580-6ADE-4A87-82FF-42A84CA52911}"
+	ProjectSection(SolutionItems) = preProject
+		tools\reportgenerator\ICSharpCode.NRefactory.CSharp.dll = tools\reportgenerator\ICSharpCode.NRefactory.CSharp.dll
+		tools\reportgenerator\ICSharpCode.NRefactory.dll = tools\reportgenerator\ICSharpCode.NRefactory.dll
+		tools\reportgenerator\ReportGenerator.exe = tools\reportgenerator\ReportGenerator.exe
+		tools\reportgenerator\ReportGenerator.Reporting.dll = tools\reportgenerator\ReportGenerator.Reporting.dll
+		tools\reportgenerator\ReportGenerator.Reporting.XML = tools\reportgenerator\ReportGenerator.Reporting.XML
+		tools\reportgenerator\ReportGenerator.XML = tools\reportgenerator\ReportGenerator.XML
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{12A3EA68-5A2C-4B6B-809C-2D1166F44E86}"
+	ProjectSection(SolutionItems) = preProject
+		tools\opencover\x86\OpenCover.Profiler.dll = tools\opencover\x86\OpenCover.Profiler.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{1E60E00E-4F9B-4147-9913-0F8017A5C671}"
+	ProjectSection(SolutionItems) = preProject
+		tools\opencover\x64\OpenCover.Profiler.dll = tools\opencover\x64\OpenCover.Profiler.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +147,10 @@ Global
 		{DADEE861-AE38-44AE-821D-82E8099CFD81} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
 		{9FD4E8F7-C335-4E9E-A1D5-5B5421D1A1AD} = {20374D28-C351-4410-BA56-722F4E6928A4}
 		{7FA5F847-6571-44B8-8CC4-37D6E9BB1150} = {20374D28-C351-4410-BA56-722F4E6928A4}
+		{D6B1D325-5663-415D-BA7E-961A6E5A1AB7} = {931182D8-753F-498F-94BE-2B13A18C15A9}
+		{D979A580-6ADE-4A87-82FF-42A84CA52911} = {931182D8-753F-498F-94BE-2B13A18C15A9}
+		{12A3EA68-5A2C-4B6B-809C-2D1166F44E86} = {D6B1D325-5663-415D-BA7E-961A6E5A1AB7}
+		{1E60E00E-4F9B-4147-9913-0F8017A5C671} = {D6B1D325-5663-415D-BA7E-961A6E5A1AB7}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
