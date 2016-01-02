@@ -1,4 +1,4 @@
-# CAESAR [![Build status](https://ci.appveyor.com/api/projects/status/yxfloeucyihc1xld?svg=true)](https://ci.appveyor.com/project/kenshinthebattosai/caesar) [![License](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg)](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg) [![Issues](https://img.shields.io/github/issues-raw/kenshinthebattosai/caesar.svg)](issues)
+# CAESAR [![Build status](https://ci.appveyor.com/api/projects/status/yxfloeucyihc1xld?svg=true)](https://ci.appveyor.com/project/kenshinthebattosai/caesar) [![License](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg)](https://img.shields.io/github/license/kenshinthebattosai/caesar.svg) [![Issues](https://img.shields.io/github/issues-raw/kenshinthebattosai/caesar.svg)](issues) [![Codecov Code Coverage](https://img.shields.io/codecov/c/github/kenshinthebattosai/caesar.svg)](https://codecov.io/github/kenshinthebattosai/CAESAR)
 
 *Chess Analysis Engine as an exercise in Software Architecture and Review (CAESAR)*
 

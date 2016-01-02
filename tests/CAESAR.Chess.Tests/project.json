@@ -1,4 +1,4 @@
-﻿{
+{
   "authors": [ "Kenshin" ],
   "commands": {
     "test": "xunit.runner.dnx"
@@ -7,7 +7,8 @@
     "OpenCover": "4.6.261-rc",
     "xunit": "2.1.0-*",
     "xunit.runner.dnx": "2.1.0-*",
-    "CAESAR.Chess": ""
+    "CAESAR.Chess": "",
+    "ReportGenerator": "2.4.0-beta1"
   },
   "description": "CAESAR.Chess.Tests Class Library",
   "frameworks": {
