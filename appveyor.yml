@@ -17,8 +17,7 @@ before_build:
 test_script:
  - cmd: cd c:\projects\caesar\src\CAESAR.Chess
  - cmd: dnu build
- - cmd: xcopy /E C:\Users\appveyor\.dnx\packages\OpenCover\4.6.261-rc\tools c:\projects\caesar\tools\opencover\
  - cmd: cd c:\projects\caesar
- - cmd: .\tools\opencover\OpenCover.Console.exe -target:"C:\Users\appveyor\.dnx\runtimes\dnx-clr-win-x86.1.0.0-rc1-update1\bin\dnx.exe" -targetargs:"--lib c:\projects\caesar\src\CAESAR.Chess\bin\Debug\dnx451 -p c:\projects\caesar\tests\CAESAR.Chess.Tests test" -output:".\CAESAR_coverage.xml" -returntargetcode -register:Path32 -hideskipped:All -filter:"+[CAESAR*]* -[*Tests]*"
+ - cmd: C:\Users\appveyor\.dnx\packages\OpenCover\4.6.261-rc\tools\OpenCover.Console.exe -target:"C:\Users\appveyor\.dnx\runtimes\dnx-clr-win-x86.1.0.0-rc1-update1\bin\dnx.exe" -targetargs:"--lib c:\projects\caesar\src\CAESAR.Chess\bin\Debug\dnx451 -p c:\projects\caesar\tests\CAESAR.Chess.Tests test" -output:".\CAESAR_coverage.xml" -returntargetcode -register:Path32 -hideskipped:All -filter:"+[CAESAR*]* -[*Tests]*"
  - cmd: pip install codecov
  - cmd: codecov -f "CAESAR_coverage.xml" -X gcov
