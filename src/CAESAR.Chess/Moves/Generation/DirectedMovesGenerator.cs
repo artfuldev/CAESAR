@@ -10,8 +10,13 @@ namespace CAESAR.Chess.Moves.Generation
     {
         protected abstract IEnumerable<Direction> Directions { get; }
         protected override IEnumerable<ISquare> MovementSquares
-            => Directions.SelectMany(direction => Square.GetAdjacentSquaresInDirectionTillNonEmptySquare(direction));
+            => Directions.SelectMany(direction => GetAdjacentSquaresInDirectionTillNonEmptySquare(Square, direction));
         protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
         protected override IEnumerable<IMove> SpecialMoves => Enumerable.Empty<IMove>();
+        private static IEnumerable<ISquare> GetAdjacentSquaresInDirectionTillNonEmptySquare(ISquare square,
+            Direction direction)
+        {
+            return square.GetAdjacentSquaresInDirection(direction).TakeWhileUntil(x => x != null, x => x.Piece != null);
+        }
     }
 }
