@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Moves;
 
 namespace CAESAR.Chess.Pieces
 {
@@ -7,7 +8,7 @@ namespace CAESAR.Chess.Pieces
         bool IsWhite { get; }
         bool IsBlack { get; }
         ISquare Square { get; set; }
-        IEnumerable<IMove> GetMoves();
+        IEnumerable<IMove> Moves { get; }
         string Name { get; }
         char Notation { get; }
     }

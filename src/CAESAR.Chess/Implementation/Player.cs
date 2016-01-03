@@ -1,4 +1,5 @@
-﻿using CAESAR.Chess.Pieces;
+﻿using CAESAR.Chess.Moves;
+using CAESAR.Chess.Pieces;
 
 namespace CAESAR.Chess.Implementation
 {

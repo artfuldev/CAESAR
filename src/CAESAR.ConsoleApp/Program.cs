@@ -24,7 +24,7 @@ namespace CAESAR.ConsoleApp
             board.Print();
             Console.ReadLine();
             Console.WriteLine("Moves:");
-            var pawnMoves = pawn.GetMoves();
+            var pawnMoves = pawn.Moves.ToList();
             foreach (var move in pawnMoves)
             {
                 Console.WriteLine(move.ToString());
@@ -43,7 +43,7 @@ namespace CAESAR.ConsoleApp
             Console.ReadLine();
 
             Console.WriteLine("Moves:");
-            var pawn2Moves = pawn2.GetMoves();
+            var pawn2Moves = pawn2.Moves.ToList();
             foreach (var move in pawn2Moves)
             {
                 Console.WriteLine(move.ToString());
@@ -62,7 +62,7 @@ namespace CAESAR.ConsoleApp
             Console.ReadLine();
             var firstMove = pawn2Moves.FirstOrDefault();
             player.MakeMove(firstMove);
-            pawn2Moves = pawn2.GetMoves();
+            pawn2Moves = pawn2.Moves.ToList();
             Console.WriteLine("Moves:");
             foreach (var move in pawn2Moves)
             {

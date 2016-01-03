@@ -1,7 +1,7 @@
-﻿using CAESAR.Chess.Pieces;
-using System.Linq;
+﻿using System.Linq;
+using CAESAR.Chess.Pieces;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.Moves
 {
     public class Move : IMove
     {

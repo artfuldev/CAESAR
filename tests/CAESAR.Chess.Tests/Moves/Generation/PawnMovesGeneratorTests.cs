@@ -1,0 +1,89 @@
+﻿using System;
+using System.Linq;
+using CAESAR.Chess.Helpers;
+using CAESAR.Chess.Implementation;
+using CAESAR.Chess.Moves;
+using CAESAR.Chess.Moves.Generation;
+using CAESAR.Chess.Pieces;
+using Xunit;
+
+namespace CAESAR.Chess.Tests.Moves.Generation
+{
+    public class PawnMovesGeneratorTests
+    {
+        private readonly IMovesGenerator _movesGenerator = new PawnMovesGenerator();
+        private readonly IBoard _board = new Board();
+        private readonly IPiece _piece = new Pawn(true);
+        private readonly IPlayer _player = new Player();
+
+        [Fact]
+        public void MoveGeneratorWithoutSquareGeneratesEmptyMoves()
+        {
+            Assert.Equal(Enumerable.Empty<IMove>(), _movesGenerator.Moves);
+        }
+
+        [Fact]
+        public void MoveGeneratorWithoutPieceGeneratesEmptyMoves()
+        {
+            _movesGenerator.Square = _board.GetSquare("a1");
+            Assert.Equal(Enumerable.Empty<IMove>(), _movesGenerator.Moves);
+        }
+
+        [Theory]
+        [InlineData("d2", "d3,d4")]
+        [InlineData("f3", "f4")]
+        public void PawnAtXGeneratesYMoves(string x, string y)
+        {
+            var square = _board.GetSquare(x);
+            _player.Place(square, _piece);
+            _movesGenerator.Square = square;
+            var moves = _movesGenerator.Moves;
+            var moveStrings = moves.Select(move => move.Destination.ToString());
+            var expectedMoveStrings = y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            Assert.True(expectedMoveStrings.SetEquals(moveStrings));
+        }
+
+        [Theory]
+        [InlineData("d2", "d3", "")]
+        [InlineData("f3", "f4", "")]
+        [InlineData("d2", "d4", "d3")]
+        public void PawnAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
+        {
+            var square = _board.GetSquare(x);
+            var ownPieceSquares =
+                y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
+            foreach (var ownPieceSquare in ownPieceSquares)
+            {
+                _player.Place(ownPieceSquare, new Pawn(true));
+            }
+            _player.Place(square, _piece);
+            _movesGenerator.Square = square;
+            var moves = _movesGenerator.Moves;
+            var moveStrings = moves.Select(move => move.Destination.ToString());
+            var expectedMoveStrings = z.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            Assert.True(expectedMoveStrings.SetEquals(moveStrings));
+        }
+
+        [Theory]
+        [InlineData("d2", "", "d3,d4")]
+        [InlineData("d2", "c3,d3,e3,c2,e2", "c3,e3")]
+        [InlineData("f3", "e3,e4,f4,g4,g3", "e4,g4")]
+        [InlineData("f3", "e4", "e4,f4")]
+        public void PawnAtXWithEnemyPiecesAtYGeneratesZMoves(string x, string y, string z)
+        {
+            var square = _board.GetSquare(x);
+            var ownPieceSquares =
+                y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
+            foreach (var ownPieceSquare in ownPieceSquares)
+            {
+                _player.Place(ownPieceSquare, new Pawn(false));
+            }
+            _player.Place(square, _piece);
+            _movesGenerator.Square = square;
+            var moves = _movesGenerator.Moves;
+            var moveStrings = moves.Select(move => move.Destination.ToString());
+            var expectedMoveStrings = z.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            Assert.True(expectedMoveStrings.SetEquals(moveStrings));
+        }
+    }
+}
