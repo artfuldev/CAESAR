@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using CAESAR.Chess.Helpers;
+using CAESAR.Chess.Moves.Generation;
 
 namespace CAESAR.Chess.Pieces
 {
     public class Bishop : Piece
     {
-        public Bishop(bool isWhite) : base(isWhite, "Bishop", 'B')
+        public Bishop(bool isWhite) : base(isWhite, "Bishop", 'B', new BishopMovesGenerator())
         {
         }
 
@@ -17,10 +17,5 @@ namespace CAESAR.Chess.Pieces
             Direction.DownLeft,
             Direction.UpLeft
         };
-
-        protected override IEnumerable<ISquare> MovementSquares
-            => Directions.SelectMany(direction => Square.GetAdjacentSquaresInDirectionTillNonEmptySquare(direction));
-
-        protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
     }
 }

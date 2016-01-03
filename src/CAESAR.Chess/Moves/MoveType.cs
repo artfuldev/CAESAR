@@ -1,4 +1,4 @@
-﻿namespace CAESAR.Chess
+﻿namespace CAESAR.Chess.Moves
 {
     public enum MoveType
     {
