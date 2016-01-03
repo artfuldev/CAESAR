@@ -15,5 +15,10 @@ namespace CAESAR.Chess.Helpers
                     yield break;
             }
         }
+
+        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> items)
+        {
+            return new HashSet<T>(items);
+        }
     }
 }
