@@ -4,7 +4,7 @@ using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Moves.Generation
 {
-    public class QueenMovesGenenerator : DirectedMovesGenerator
+    public class QueenMovesGenerator : DirectedMovesGenerator
     {
         private static readonly IEnumerable<Direction> AllowedDirections = new[]
         {
