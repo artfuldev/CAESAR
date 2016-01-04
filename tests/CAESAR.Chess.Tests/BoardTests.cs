@@ -1,6 +1,7 @@
 ﻿using System;
 using CAESAR.Chess.Implementation;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Xunit;
 
@@ -218,24 +219,17 @@ namespace CAESAR.Chess.Tests
         public void StringRepresentationEmptyBoardIsAsExpected()
         {
             var actual = _board.ToString();
-            const string expected = @"________________________________
-|   |   |   |   |   |   |   |   | 8
-________________________________
-|   |   |   |   |   |   |   |   | 7
-________________________________
-|   |   |   |   |   |   |   |   | 6
-________________________________
-|   |   |   |   |   |   |   |   | 5
-________________________________
-|   |   |   |   |   |   |   |   | 4
-________________________________
-|   |   |   |   |   |   |   |   | 3
-________________________________
-|   |   |   |   |   |   |   |   | 2
-________________________________
-|   |   |   |   |   |   |   |   | 1
-________________________________
-  a   b   c   d   e   f   g   h";
+            var expectedStringBuilder = new StringBuilder();
+            const string rankLine = "________________________________";
+            const string rankSquares = "|   |   |   |   |   |   |   |   | ";
+            for (var i = 8; i > 0;)
+            {
+                expectedStringBuilder.AppendLine(rankLine);
+                expectedStringBuilder.AppendLine(rankSquares + (i--));
+            }
+            expectedStringBuilder.AppendLine(rankLine);
+            expectedStringBuilder.Append("  a   b   c   d   e   f   g   h");
+            var expected = expectedStringBuilder.ToString();
             Assert.Equal(expected, actual);
         }
 
