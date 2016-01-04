@@ -6,6 +6,6 @@ namespace CAESAR.Chess.Moves.Generation
     public interface IMovesGenerator
     {
         IEnumerable<IMove> Moves { get; }
-        ISquare Square { get; set; }
+        ISquare Square { set; }
     }
 }

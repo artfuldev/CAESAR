@@ -42,7 +42,7 @@ namespace CAESAR.Chess.Tests.Pieces
         public void PieceSetsSquareOfMoveGenerator()
         {
             _piece.Square = SomeSquareInstance;
-            Assert.Equal(SomeSquareInstance, Generator.Square);
+            Assert.Equal(SomeSquareInstance, (Generator as MovesGeneratorTestClass)?.Square);
         }
 
         private class PieceTestClass : Piece

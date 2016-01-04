@@ -22,7 +22,7 @@ namespace CAESAR.Chess.Moves.Generation
         public IEnumerable<IMove> Moves
             => Piece != null ? MovementMoves.Concat(Captures).Concat(SpecialMoves) : Enumerable.Empty<IMove>();
 
-        public ISquare Square { get; set; }
+        public ISquare Square { protected get; set; }
 
         protected IPiece Piece => Square?.Piece;
     }
