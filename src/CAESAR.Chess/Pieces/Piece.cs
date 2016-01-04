@@ -11,6 +11,11 @@ namespace CAESAR.Chess.Pieces
     {
         protected Piece(bool isWhite, string name, char notation, IMovesGenerator movesGenerator)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentNullException(nameof(name), "A piece cannot be constructed without a name");
+            if (ReferenceEquals(null, movesGenerator))
+                throw new ArgumentNullException(nameof(movesGenerator),
+                    "A piece cannot be constructed without a move generator");
             IsWhite = isWhite;
             Name = name;
             Notation = notation;
@@ -33,7 +38,7 @@ namespace CAESAR.Chess.Pieces
             }
         }
 
-        public IEnumerable<IMove> Moves => _movesGenerator?.Moves ?? Enumerable.Empty<IMove>();
+        public IEnumerable<IMove> Moves => _movesGenerator.Moves ?? Enumerable.Empty<IMove>();
         private readonly IMovesGenerator _movesGenerator;
         private ISquare _square;
         public string Name { get; }
