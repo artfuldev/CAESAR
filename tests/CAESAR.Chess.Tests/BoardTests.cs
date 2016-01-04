@@ -214,5 +214,30 @@ namespace CAESAR.Chess.Tests
             Assert.Equal(rank, _board.GetRank(rankNumber));
         }
 
+        [Fact]
+        public void StringRepresentationEmptyBoardIsAsExpected()
+        {
+            var actual = _board.ToString();
+            const string expected = @"________________________________
+|   |   |   |   |   |   |   |   | 8
+________________________________
+|   |   |   |   |   |   |   |   | 7
+________________________________
+|   |   |   |   |   |   |   |   | 6
+________________________________
+|   |   |   |   |   |   |   |   | 5
+________________________________
+|   |   |   |   |   |   |   |   | 4
+________________________________
+|   |   |   |   |   |   |   |   | 3
+________________________________
+|   |   |   |   |   |   |   |   | 2
+________________________________
+|   |   |   |   |   |   |   |   | 1
+________________________________
+  a   b   c   d   e   f   g   h";
+            Assert.Equal(expected, actual);
+        }
+
     }
 }

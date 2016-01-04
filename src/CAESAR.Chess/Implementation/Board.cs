@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 
 namespace CAESAR.Chess.Implementation
 {
@@ -71,6 +72,21 @@ namespace CAESAR.Chess.Implementation
         public IRank GetRank(byte rankNumber)
         {
             return Ranks.FirstOrDefault(x => x.Number == rankNumber);
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var rank in Ranks.Reverse())
+            {
+
+                stringBuilder.AppendLine("________________________________");
+                stringBuilder.AppendLine(rank.Squares.Aggregate("",
+                    (current, square) => current + ("| " + (square.Piece?.Notation ?? ' ') + " ")) + "| " + rank.Number);
+            }
+            stringBuilder.AppendLine("________________________________");
+            stringBuilder.Append("  a   b   c   d   e   f   g   h");
+            return stringBuilder.ToString();
         }
     }
 }
