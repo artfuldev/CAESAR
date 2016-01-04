@@ -10,12 +10,13 @@ namespace CAESAR.Chess.Moves.Generation
         protected override IEnumerable<IMove> SpecialMoves => Enumerable.Empty<IMove>();
 
         // Safe to use "Piece" here, code only gets called when Piece != null in "IEnumerable<IMove> Moves" in base class
-        protected override IEnumerable<ISquare> MovementSquares => GetPawnMovementSquares(Square, Piece.IsWhite);
-        protected override IEnumerable<ISquare> CaptureSquares => GetPawnCaptureSquares(Square, Piece.IsWhite);
+        protected override IEnumerable<ISquare> MovementSquares
+            => Square != null ? GetPawnMovementSquares(Square, Piece.IsWhite) : Enumerable.Empty<ISquare>();
+
+        protected override IEnumerable<ISquare> CaptureSquares
+            => Square != null ? GetPawnCaptureSquares(Square, Piece.IsWhite) : Enumerable.Empty<ISquare>();
         private static IEnumerable<ISquare> GetPawnMovementSquares(ISquare square, bool isWhite)
         {
-            if (ReferenceEquals(null, square))
-                yield break;
             var direction = isWhite ? Direction.Up : Direction.Down;
             var movementSquare = square.GetAdjacentSquareInDirection(direction);
             yield return movementSquare;
@@ -26,13 +27,10 @@ namespace CAESAR.Chess.Moves.Generation
         }
         private static IEnumerable<ISquare> GetPawnCaptureSquares(ISquare square, bool isWhite)
         {
-            if (ReferenceEquals(null, square))
-                yield break;
             var directions = isWhite
                 ? new[] { Direction.UpRight, Direction.UpLeft }
                 : new[] { Direction.DownRight, Direction.DownLeft };
-            foreach (var direction in directions)
-                yield return square.GetAdjacentSquareInDirection(direction);
+            return directions.Select(square.GetAdjacentSquareInDirection);
         }
     }
 }

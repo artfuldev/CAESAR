@@ -9,8 +9,13 @@ namespace CAESAR.Chess.Moves.Generation
     public abstract class DirectedMovesGenerator : MovesGenerator
     {
         protected abstract IEnumerable<Direction> Directions { get; }
+
         protected override IEnumerable<ISquare> MovementSquares
-            => Directions.SelectMany(direction => GetAdjacentSquaresInDirectionTillNonEmptySquare(Square, direction));
+            =>
+                Square != null
+                    ? Directions.SelectMany(
+                        direction => GetAdjacentSquaresInDirectionTillNonEmptySquare(Square, direction))
+                    : Enumerable.Empty<ISquare>();
         protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
         protected override IEnumerable<IMove> SpecialMoves => Enumerable.Empty<IMove>();
         private static IEnumerable<ISquare> GetAdjacentSquaresInDirectionTillNonEmptySquare(ISquare square,
