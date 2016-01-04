@@ -22,9 +22,9 @@ namespace CAESAR.Chess.Moves.Generation
         protected override IEnumerable<IMove> SpecialMoves => Enumerable.Empty<IMove>();
 
         protected override IEnumerable<ISquare> MovementSquares
-            => Square != null ? Directions.Select(Square.GetAdjacentSquareInDirection) : Enumerable.Empty<ISquare>();
+            => Directions.Select(Square.GetAdjacentSquareInDirection);
 
         protected override IEnumerable<ISquare> CaptureSquares
-            => MovementSquares;
+            => Directions.Select(Square.GetAdjacentSquareInDirection);
     }
 }
