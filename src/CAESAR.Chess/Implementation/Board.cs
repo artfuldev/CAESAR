@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Implementation
 {
@@ -80,11 +79,12 @@ namespace CAESAR.Chess.Implementation
             var stringBuilder = new StringBuilder();
             foreach (var rank in Ranks.Reverse())
             {
-                stringBuilder.AppendEnvironmentLine("________________________________");
-                stringBuilder.AppendEnvironmentLine(rank.Squares.Aggregate("",
+
+                stringBuilder.AppendLine("________________________________");
+                stringBuilder.AppendLine(rank.Squares.Aggregate("",
                     (current, square) => current + ("| " + (square.Piece?.Notation ?? ' ') + " ")) + "| " + rank.Number);
             }
-            stringBuilder.AppendEnvironmentLine("________________________________");
+            stringBuilder.AppendLine("________________________________");
             stringBuilder.Append("  a   b   c   d   e   f   g   h");
             return stringBuilder.ToString();
         }
