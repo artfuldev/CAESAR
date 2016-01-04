@@ -14,16 +14,16 @@ namespace CAESAR.Chess.Tests.Pieces
         private static readonly IEnumerable<IMove> MovesInstance = Enumerable.Empty<Move>();
         private static readonly ISquare SomeSquareInstance = new Board().GetSquare("a1");
 
-        private static readonly IMovesGenerator _generator = new MovesGeneratorTestClass();
+        private static readonly IMovesGenerator Generator = new MovesGeneratorTestClass();
 
-        private readonly IPiece _piece = new PieceTestClass("SS", 's', _generator);
+        private readonly IPiece _piece = new PieceTestClass("SS", 's', Generator);
 
         [Fact]
         public void PieceCannotBeConstructedWithoutName()
         {
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(null, 'a', _generator));
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass("", 'a', _generator));
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(" ", 'a', _generator));
+            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(null, 'a', Generator));
+            Assert.Throws<ArgumentNullException>(() => new PieceTestClass("", 'a', Generator));
+            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(" ", 'a', Generator));
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace CAESAR.Chess.Tests.Pieces
         public void PieceSetsSquareOfMoveGenerator()
         {
             _piece.Square = SomeSquareInstance;
-            Assert.Equal(SomeSquareInstance, _generator.Square);
+            Assert.Equal(SomeSquareInstance, Generator.Square);
         }
 
         private class PieceTestClass : Piece
