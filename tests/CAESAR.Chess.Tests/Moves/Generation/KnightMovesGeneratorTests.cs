@@ -32,6 +32,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [Theory]
         [InlineData("d1", "b2,c3,e3,f2")]
         [InlineData("f3", "g5,h4,h2,g1,e1,d2,d4,e5")]
+        [InlineData("b8", "d7,c6,a6")]
         public void KnightAtXGeneratesYMoves(string x, string y)
         {
             var square = _board.GetSquare(x);
