@@ -14,7 +14,9 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         private readonly IMovesGenerator _movesGenerator = new PawnMovesGenerator();
         private readonly IBoard _board = new Board();
         private readonly IPiece _piece = new Pawn(true);
+        private readonly IPiece _blackPiece = new Pawn(false);
         private readonly IPlayer _player = new Player();
+        private readonly IPlayer _blackPlayer = new Player(false);
 
         [Fact]
         public void MoveGeneratorWithoutSquareGeneratesEmptyMoves()
@@ -36,6 +38,21 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         {
             var square = _board.GetSquare(x);
             _player.Place(square, _piece);
+            _movesGenerator.Square = square;
+            var moves = _movesGenerator.Moves;
+            var moveStrings = moves.Select(move => move.Destination.ToString());
+            var expectedMoveStrings = y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            Assert.True(expectedMoveStrings.SetEquals(moveStrings));
+        }
+
+        [Theory]
+        [InlineData("d7", "d6,d5")]
+        [InlineData("f3", "f2")]
+        [InlineData("d6", "d5")]
+        public void BlackPawnAtXGeneratesYMoves(string x, string y)
+        {
+            var square = _board.GetSquare(x);
+            _blackPlayer.Place(square, _blackPiece);
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.Destination.ToString());
