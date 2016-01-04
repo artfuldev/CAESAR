@@ -33,12 +33,11 @@ namespace CAESAR.Chess.Pieces
             set
             {
                 _square = value;
-                if (_movesGenerator != null)
-                    _movesGenerator.Square = value;
+                _movesGenerator.Square = value;
             }
         }
 
-        public IEnumerable<IMove> Moves => _movesGenerator.Moves ?? Enumerable.Empty<IMove>();
+        public IEnumerable<IMove> Moves => _movesGenerator.Moves;
         private readonly IMovesGenerator _movesGenerator;
         private ISquare _square;
         public string Name { get; }
