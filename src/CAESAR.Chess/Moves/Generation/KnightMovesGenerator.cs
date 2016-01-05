@@ -11,9 +11,6 @@ namespace CAESAR.Chess.Moves.Generation
         protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
         private static IEnumerable<ISquare> GetKnightSquares(ISquare square)
         {
-            if (ReferenceEquals(null, square))
-                yield break;
-
             var knightSquare = square.GetAdjacentSquareInDirection(Direction.UpRight).GetAdjacentSquareInDirection(Direction.Up);
             if (knightSquare != null)
                 yield return knightSquare;

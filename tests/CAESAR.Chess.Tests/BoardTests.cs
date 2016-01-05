@@ -1,6 +1,7 @@
 ﻿using System;
 using CAESAR.Chess.Implementation;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using Xunit;
 
@@ -212,6 +213,24 @@ namespace CAESAR.Chess.Tests
         {
             var rank = _board.Ranks.FirstOrDefault(x => x.Number == rankNumber);
             Assert.Equal(rank, _board.GetRank(rankNumber));
+        }
+
+        [Fact]
+        public void StringRepresentationEmptyBoardIsAsExpected()
+        {
+            var actual = _board.ToString();
+            var expectedStringBuilder = new StringBuilder();
+            const string rankLine = "________________________________";
+            const string rankSquares = "|   |   |   |   |   |   |   |   | ";
+            for (var i = 8; i > 0;)
+            {
+                expectedStringBuilder.AppendLine(rankLine);
+                expectedStringBuilder.AppendLine(rankSquares + (i--));
+            }
+            expectedStringBuilder.AppendLine(rankLine);
+            expectedStringBuilder.Append("  a   b   c   d   e   f   g   h");
+            var expected = expectedStringBuilder.ToString();
+            Assert.Equal(expected, actual);
         }
 
     }
