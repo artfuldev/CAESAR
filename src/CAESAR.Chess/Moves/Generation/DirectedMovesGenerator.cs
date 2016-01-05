@@ -16,7 +16,8 @@ namespace CAESAR.Chess.Moves.Generation
         private static IEnumerable<ISquare> GetAdjacentSquaresInDirectionTillNonEmptySquare(ISquare square,
             Direction direction)
         {
-            return square.GetAdjacentSquaresInDirection(direction).TakeWhileUntil(x => x != null, x => x.Piece != null);
+            return square.GetAdjacentSquaresInDirection(direction)
+                .TakeWhileUntil(x => x != null && x.Piece == null, x => x.Piece != null);
         }
     }
 }
