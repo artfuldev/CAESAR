@@ -37,20 +37,44 @@ With Codecov and AppVeyor integration, we identified that we had a
 fixed that in [Pull Request #36](https://github.com/kenshinthebattosai/CAESAR/pull/36), with some
 refactoring.
 
+## Considerations
+In the path we took, we made some architectural and design decisions. For example, we made an IPiece
+interface. This is in line with our SOLID goals. But did we really need separate classes for each piece?
+Why did we have an IMovesGenerator interface? By implementing in the way that we did, we accomplished
+the following:
+
+##### We created a testable, mockable Piece
+Piece is abstract, and we can test the functionalities of Piece by simply writing our own implementation
+of Piece. It can be called mocking.
+##### We made Pieces SOLID
+Piece and every other derived class represents one single piece or a specific piece. In the entire
+module, we are exposing only IPiece to the ISquare and IPlayer interfaces. This essentially means we've
+written SOLID code.
+##### We made testable, mockable MovesGenerators whose implementation can be easily changed without affecting the rest of the pieces 
+By injecting an instance of IMovesGenerator into the Piece, we made it easier to change the implementation
+of the MovesGenerator we pass to a piece, without affecting the rest of the pieces. We have separate
+implementations of IMovesGenerator for each Piece type. So if we need to change the move generation of
+one piece type, we could just add a new or modify the exisiting MovesGenerator for the piece type,
+with zero effect on any other part of the program. We could test the new move generator in isolation
+using unit tests before we inject them into the required Piece.
+
+It is very important for all code to be testable in isolation, so that new implementations can be tested
+before being deployed. By making almost all constructors injection based, we can easily have mock
+implementations of the interfaces in our tests.
+
+#### Related Discussions
+* [Does the Board really follow Single Responsibility Principle?](https://github.com/kenshinthebattosai/CAESAR/issues/16)
+* [Comments missing in files](https://github.com/kenshinthebattosai/CAESAR/issues/18)
+* [Should the Board be immutable?](https://github.com/kenshinthebattosai/CAESAR/issues/22)
+* [Should IMovesGenerator be renamed to IMoveGenerator?](https://github.com/kenshinthebattosai/CAESAR/issues/37)
+
 
 ## Next Steps
-Now that we have gained some knowledge about the chess pieces, and their moves, it is time to incorporate
-this knowledge into our chess engine. We will write the pieces and moves (of what we know so far), test
-our implementation for what we know, look out for best practices, have a SOLID look, and then try to move
-on to the next part our journey, the rules of chess.
+Now that we have implemented the Board and Pieces, time to head on to the interesting area of chess
+rules. These rules will form the backbone of our chess engine, and we should be very careful about them.
+While examining the rules, we'll get to implement the special moves which we've left out from earlier,
+as implementing special moves requires a more thorough understanding of the game. As usual, we'll
+take a closer look as we proceed to build.
 
 ## Further Information
-* [Chess Piece](https://en.wikipedia.org/wiki/Chess_piece)
-* [King](https://en.wikipedia.org/wiki/King_(chess))
-* [Queen](https://en.wikipedia.org/wiki/Queen_(chess))
-* [Rook](https://en.wikipedia.org/wiki/Rook_(chess))
-* [Bishop](https://en.wikipedia.org/wiki/Bishop_(chess))
-* [Knight](https://en.wikipedia.org/wiki/Knight_(chess))
-* [Pawn](https://en.wikipedia.org/wiki/Pawn_(chess))
-* [Castling](https://en.wikipedia.org/wiki/Castling)
 * [Rules of Chess](https://en.wikipedia.org/wiki/Rules_of_chess)
