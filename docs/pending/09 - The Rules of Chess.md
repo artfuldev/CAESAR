@@ -98,7 +98,11 @@ illegal move by itself.
 
 ## End-Game
 The game can primarily end by one of the players winning, or both of them *drawing* with each other.
+
 ### Checkmate
+If a player's king is placed in check and there is no legal move that player can make to escape check,
+then the king is said to be checkmated, the game ends, and that player loses. Unlike other pieces, the
+king is never actually captured or removed from the board because checkmate ends the game.
 
 ### Resignation
 
@@ -108,6 +112,8 @@ The game can primarily end by one of the players winning, or both of them *drawi
 
 ### Time-Based (Flag Fall)
 
+> Source for the majority of the material: [Wikipedia](https://en.wikipedia.org/wiki/Rules_of_chess)
+
 ## Further Information
 
 * [Rules of Chess](https://en.wikipedia.org/wiki/Rules_of_chess)
@@ -115,5 +121,6 @@ The game can primarily end by one of the players winning, or both of them *drawi
 * [En Passant](https://en.wikipedia.org/wiki/En_passant)
 * [Promotion](https://en.wikipedia.org/wiki/Promotion_(chess))
 * [Check](https://en.wikipedia.org/wiki/Check_(chess))
+* [Checkmate](https://en.wikipedia.org/wiki/Checkmate)
 * [Chess Notation](https://en.wikipedia.org/wiki/Chess_notation)
 * [Algebraic Chess Notation](https://en.wikipedia.org/wiki/Algebraic_chess_notation)
