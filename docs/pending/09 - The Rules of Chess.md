@@ -105,6 +105,20 @@ then the king is said to be checkmated, the game ends, and that player loses. Un
 king is never actually captured or removed from the board because checkmate ends the game.
 
 ### Resignation
+Either player may resign at any time and their opponent wins the game. This normally happens when the
+player believes he or she is very likely to lose the game. A player may resign by saying it verbally or
+by indicating it on their scoresheet in any of three ways:
+
+1. by writing "resigns",
+2. by circling the result of the game, or 
+3. by writing "1–0" if Black resigns or "0–1" if White resigns
+
+Tipping over the king also indicates resignation, but it is not frequently used (and should be
+distinguished from accidentally knocking the king over). Stopping both clocks is not an indication of
+resigning, since clocks can be stopped to call the arbiter. An offer of a handshake is not necessarily a
+resignation either, since one player could think they are agreeing to a draw.
+
+For us, as a chess analysis engine, resignation is just going to be an option to output ;)
 
 ### Draw
 
