@@ -121,8 +121,21 @@ resignation either, since one player could think they are agreeing to a draw.
 For us, as a chess analysis engine, resignation is just going to be an option to output ;)
 
 ### Draw
+The game ends in a draw if any of these conditions occur:
 
-#### Stalemate
+* The game is automatically a draw if the player to move is not in check but has no legal move. This situation is called a stalemate.
+* The game is immediately drawn when there is no possibility of checkmate for either side with any series of legal moves. This draw is often due to insufficient material, including the endgames
+  - king against king;
+  - king against king and bishop;
+  - king against king and knight;
+  - king and bishop against king and bishop, with both bishops on squares of the same color.
+
+Both players agree to a draw after one of the players makes such an offer.
+The player having the move may claim a draw by declaring that one of the following conditions exists, or by declaring an intention to make a move which will bring about one of these conditions:
+
+* Fifty-move rule: There has been no capture or pawn move in the last fifty moves by each player.
+* Threefold repetition: The same board position has occurred three times with the same player to move and all pieces having the same rights to move, including the right to castle or capture en passant.
+If the claim is proven true, the game is drawn.
 
 ### Time-Based (Flag Fall)
 
@@ -136,5 +149,8 @@ For us, as a chess analysis engine, resignation is just going to be an option to
 * [Promotion](https://en.wikipedia.org/wiki/Promotion_(chess))
 * [Check](https://en.wikipedia.org/wiki/Check_(chess))
 * [Checkmate](https://en.wikipedia.org/wiki/Checkmate)
+* [Draw](https://en.wikipedia.org/wiki/Draw_(chess))
+* [50-move rule](https://en.wikipedia.org/wiki/Fifty-move_rule)
+* [3-fold repetition](https://en.wikipedia.org/wiki/Threefold_repetition)
 * [Chess Notation](https://en.wikipedia.org/wiki/Chess_notation)
 * [Algebraic Chess Notation](https://en.wikipedia.org/wiki/Algebraic_chess_notation)
