@@ -138,6 +138,14 @@ The player having the move may claim a draw by declaring that one of the followi
 If the claim is proven true, the game is drawn.
 
 ### Time-Based (Flag Fall)
+A game played under time control will end as a loss for a player who uses up all of their allotted time,
+unless the opponent cannot possibly checkmate him. This is called flag-fall (there used to a flag in
+chess clocks which used to indicate if time was up for a particular player). There are different types of
+time control. Players may have a fixed amount of time for the entire game or they may have to make a
+certain number of moves within a specified time. Also, a small increment of time may be added for each
+move made.
+
+We will be adding time controls only later, but helps to know all the rules.
 
 > Source for the majority of the material: [Wikipedia](https://en.wikipedia.org/wiki/Rules_of_chess)
 
@@ -154,3 +162,4 @@ If the claim is proven true, the game is drawn.
 * [3-fold repetition](https://en.wikipedia.org/wiki/Threefold_repetition)
 * [Chess Notation](https://en.wikipedia.org/wiki/Chess_notation)
 * [Algebraic Chess Notation](https://en.wikipedia.org/wiki/Algebraic_chess_notation)
+* [Time Control](https://en.wikipedia.org/wiki/Time_control)
