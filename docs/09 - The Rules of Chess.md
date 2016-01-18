@@ -55,7 +55,7 @@ The diagrams below demonstrate an instance of this: if the white pawn moves from
 on b4 can capture it en passant, moving from b4 to a3 while the white pawn on a4 is removed from the
 board.
 
-![En Passant](../media/moves/en-passant.png)
+![En Passant](media/moves/en-passant.png)
 > Image Source: https://en.wikipedia.org/wiki/File:Ajedrez_captura_al_paso_del_peon.png
 
 #### Pawn Promotion
