@@ -29,9 +29,10 @@ namespace CAESAR.Chess.Moves
 
         public override string ToString()
         {
-            return Piece.Notation + (MoveType == MoveType.Capture ? "x" : "") + Destination.Name +
+            // Long e2e4, e7e8Q
+            return Source.Name + Destination.Name +
                    (MoveType == MoveType.Promotion
-                       ? "=" + PromotionPiece.Notation.ToString().ToUpperInvariant().ToCharArray().First()
+                       ? PromotionPiece.Notation.ToString().ToUpperInvariant().ToCharArray().First().ToString()
                        : "");
         }
     }
