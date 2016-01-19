@@ -63,5 +63,5 @@ audience, you are encouraged to share.
 * Go to the [docs](docs) folder, review the content, review the source code, and just dive in!
 
 ##Problems, Concerns, and Feedback
-You can communicate via email to kenshin@thebattosai.in or even open issues at this repo, if
+You can communicate via email to Sudarsan.Balaji@outlook.com or even open issues at this repo, if
 something doesn't make sense or we have other troubles to be looked into.
