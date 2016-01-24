@@ -45,7 +45,7 @@ The goal is to create a cross-platform console application that runs on DNX. Nat
 be breaking down the functionality into libraries (that are also cross-platform).
 
 More granular details on what we will accomplishing on a time-frame basis will be updated in
-the journal localted in the docs folder of the repository.
+the journal localted in the [docs](docs) folder of the repository.
 
 I am very interested in your feedback. I encourage you to open issues on this repo. Any and all
 feedback is welcome.
