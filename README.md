@@ -47,9 +47,6 @@ be breaking down the functionality into libraries (that are also cross-platform)
 More granular details on what we will accomplishing on a time-frame basis will be updated in
 the journal localted in the [docs](docs) folder of the repository.
 
-I am very interested in your feedback. I encourage you to open issues on this repo. Any and all
-feedback is welcome.
-
 ##The Who
 The intended audience for this guidance/project is any developer, senior developer or architect
 interested in developing a software solution which focuses on best practices. I hope that all
@@ -65,3 +62,6 @@ audience, you are encouraged to share.
 ##Problems, Concerns, and Feedback
 You can communicate via email to Sudarsan.Balaji@outlook.com or even open issues at this repo, if
 something doesn't make sense or we have other troubles to be looked into.
+
+I am very interested in your feedback. I encourage you to open issues on this repo. Any and all
+feedback is welcome.
