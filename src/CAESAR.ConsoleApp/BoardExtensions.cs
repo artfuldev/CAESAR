@@ -1,5 +1,4 @@
 ﻿using System;
-using CAESAR.Chess;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.ConsoleApp

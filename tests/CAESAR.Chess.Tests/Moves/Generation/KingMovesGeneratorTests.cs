@@ -13,8 +13,8 @@ namespace CAESAR.Chess.Tests.Moves.Generation
 {
     public class KingMovesGeneratorTests
     {
-        private readonly IMovesGenerator _movesGenerator = new KingMovesGenerator();
         private readonly IBoard _board = new Board();
+        private readonly IMovesGenerator _movesGenerator = new KingMovesGenerator();
         private readonly IPiece _piece = new King(Side.White);
         private readonly IPlayer _player = new Player();
 
@@ -41,13 +41,13 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
-            var expectedMoveStrings = y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            var expectedMoveStrings = y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
 
         [Theory]
         [InlineData("e1", "d1,d2,e2,f2,f1", "")]
-        [InlineData("e2", "e3,f3,f2,f1,e1,d1,d2,d3","")]
+        [InlineData("e2", "e3,f3,f2,f1,e1,d1,d2,d3", "")]
         [InlineData("e2", "e3,d3", "e2f3,e2f2,e2f1,e2e1,e2d1,e2d2")]
         public void KingAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
@@ -62,7 +62,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
-            var expectedMoveStrings = z.Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            var expectedMoveStrings = z.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
     }

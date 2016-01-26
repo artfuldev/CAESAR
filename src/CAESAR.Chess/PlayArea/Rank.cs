@@ -28,6 +28,7 @@ namespace CAESAR.Chess.PlayArea
         public byte Number { get; }
         public IBoard Board { get; }
         public IReadOnlyCollection<ISquare> Squares { get; }
+
         public override string ToString()
         {
             return Number.ToString();

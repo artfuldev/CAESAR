@@ -15,7 +15,7 @@ namespace CAESAR.Chess.Helpers
         {
             if (ReferenceEquals(null, square) || direction == Direction.None)
                 yield break;
-            
+
             var rankIndex = square.File.Squares.ToList().IndexOf(square);
             var fileIndex = square.Rank.Squares.ToList().IndexOf(square);
 
@@ -42,7 +42,7 @@ namespace CAESAR.Chess.Helpers
                         yield return square.Board.Files.ElementAt(++fileIndex).Squares.ElementAt(++rankIndex);
                     break;
                 case Direction.DownRight:
-                    while(rankIndex > 0 && fileIndex < 7)
+                    while (rankIndex > 0 && fileIndex < 7)
                         yield return square.Board.Files.ElementAt(++fileIndex).Squares.ElementAt(--rankIndex);
                     break;
                 case Direction.DownLeft:
@@ -53,7 +53,6 @@ namespace CAESAR.Chess.Helpers
                     while (rankIndex < 7 && fileIndex > 0)
                         yield return square.Board.Files.ElementAt(--fileIndex).Squares.ElementAt(++rankIndex);
                     break;
-
             }
         }
     }

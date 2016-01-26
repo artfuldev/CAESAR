@@ -1,20 +1,18 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
-using CAESAR.Chess.Players;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces
 {
     public class QueenTests
     {
-        private readonly IPiece _whitePiece = new Queen(Side.White);
         private readonly IPiece _blackPiece = new Queen(Side.Black);
+        private readonly IPiece _whitePiece = new Queen(Side.White);
 
         [Fact]
         public void NameOfQueenPieceIsQueen()
         {
-            Assert.Equal("Queen",_whitePiece.Name);
+            Assert.Equal("Queen", _whitePiece.Name);
             Assert.Equal("Queen", _blackPiece.Name);
         }
 
@@ -36,6 +34,5 @@ namespace CAESAR.Chess.Tests.Pieces
         {
             Assert.Equal('q', _blackPiece.Notation);
         }
-
     }
 }

@@ -2,7 +2,6 @@
 using System.Linq;
 using CAESAR.Chess.PlayArea;
 using Xunit;
-using Rank = CAESAR.Chess.PlayArea.Rank;
 
 namespace CAESAR.Chess.Tests.PlayArea
 {
@@ -43,8 +42,8 @@ namespace CAESAR.Chess.Tests.PlayArea
         }
 
         [Theory]
-        [InlineData((byte)0)]
-        [InlineData((byte)9)]
+        [InlineData((byte) 0)]
+        [InlineData((byte) 9)]
         [InlineData(byte.MaxValue)]
         public void RankCannotBeConstructedWithoutNameFromAtoH(byte number)
         {
@@ -92,9 +91,13 @@ namespace CAESAR.Chess.Tests.PlayArea
         [Fact]
         public void FileOfSquaresInRankRangeFromAtoH()
         {
-            Assert.Equal(string.Join(",", _rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
+            Assert.Equal(
+                string.Join(",", _rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())),
+                "a,b,c,d,e,f,g,h");
             foreach (var rank in _board.Ranks)
-                Assert.Equal(string.Join(",", rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())), "a,b,c,d,e,f,g,h");
+                Assert.Equal(
+                    string.Join(",", rank.Squares.Select(x => x.File.Name).OrderBy(x => x).Select(x => x.ToString())),
+                    "a,b,c,d,e,f,g,h");
         }
     }
 }

@@ -1,20 +1,18 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
-using CAESAR.Chess.Players;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces
 {
     public class KnightTests
     {
-        private readonly IPiece _whitePiece = new Knight(Side.White);
         private readonly IPiece _blackPiece = new Knight(Side.Black);
+        private readonly IPiece _whitePiece = new Knight(Side.White);
 
         [Fact]
         public void NameOfKnightPieceIsKnight()
         {
-            Assert.Equal("Knight",_whitePiece.Name);
+            Assert.Equal("Knight", _whitePiece.Name);
             Assert.Equal("Knight", _blackPiece.Name);
         }
 
@@ -36,6 +34,5 @@ namespace CAESAR.Chess.Tests.Pieces
         {
             Assert.Equal('n', _blackPiece.Notation);
         }
-
     }
 }

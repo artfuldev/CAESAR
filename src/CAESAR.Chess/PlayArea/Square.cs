@@ -24,6 +24,7 @@ namespace CAESAR.Chess.PlayArea
             Name = name;
             IsLight = isLight;
         }
+
         public IBoard Board { get; }
         public IPiece Piece { get; set; }
         public IFile File { get; }

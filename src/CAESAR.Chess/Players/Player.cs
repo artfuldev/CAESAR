@@ -15,6 +15,7 @@ namespace CAESAR.Chess.Players
         }
 
         public string Name { get; }
+
         public IEnumerable<IMove> GetAllMoves(IBoard board, Side sideToPlay)
         {
             var pieces =

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using CAESAR.Chess.Core;
-using CAESAR.Chess.Helpers;
+﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves.Generation;
 
 namespace CAESAR.Chess.Pieces

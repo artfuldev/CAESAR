@@ -32,9 +32,9 @@ namespace CAESAR.Chess.PlayArea
             for (var i = 0; i < RankCount; i++)
                 for (var j = 0; j < FileCount; j++)
                 {
-                    var squareIndex = (i * RankCount) + j;
+                    var squareIndex = i*RankCount + j;
                     var square = new Square(this, files[j], ranks[i],
-                        files[j].Name.ToString() + ranks[i].Number.ToString(), (i+j) % 2 != 0);
+                        files[j].Name + ranks[i].Number.ToString(), (i + j)%2 != 0);
 
                     squares[squareIndex] = square;
                     rankSquares[i][j] = square;
@@ -45,9 +45,11 @@ namespace CAESAR.Chess.PlayArea
             Ranks = ranks.ToList().AsReadOnly();
             Files = files.ToList().AsReadOnly();
         }
+
         public IReadOnlyCollection<IFile> Files { get; }
         public IReadOnlyCollection<IRank> Ranks { get; }
         public IReadOnlyCollection<ISquare> Squares { get; }
+
         public ISquare GetSquare(string squareName)
         {
             return Squares.FirstOrDefault(x => x.Name == squareName);
@@ -67,6 +69,7 @@ namespace CAESAR.Chess.PlayArea
         {
             return Files.FirstOrDefault(x => x.Name == fileName);
         }
+
         public IRank GetRank(byte rankNumber)
         {
             return Ranks.FirstOrDefault(x => x.Number == rankNumber);
@@ -77,10 +80,9 @@ namespace CAESAR.Chess.PlayArea
             var stringBuilder = new StringBuilder();
             foreach (var rank in Ranks.Reverse())
             {
-
                 stringBuilder.AppendLine("________________________________");
                 stringBuilder.AppendLine(rank.Squares.Aggregate("",
-                    (current, square) => current + ("| " + (square.Piece?.Notation ?? ' ') + " ")) + "| " + rank.Number);
+                    (current, square) => current + ("| " + (square.Piece?.Notation ?? ' ')) + " ") + "| " + rank.Number);
             }
             stringBuilder.AppendLine("________________________________");
             stringBuilder.Append("  a   b   c   d   e   f   g   h");

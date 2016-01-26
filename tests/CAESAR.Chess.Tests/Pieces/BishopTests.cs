@@ -1,20 +1,18 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
-using CAESAR.Chess.Players;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces
 {
     public class BishopTests
     {
-        private readonly IPiece _whitePiece = new Bishop(Side.White);
         private readonly IPiece _blackPiece = new Bishop(Side.Black);
+        private readonly IPiece _whitePiece = new Bishop(Side.White);
 
         [Fact]
         public void NameOfBishopPieceIsBishop()
         {
-            Assert.Equal("Bishop",_whitePiece.Name);
+            Assert.Equal("Bishop", _whitePiece.Name);
             Assert.Equal("Bishop", _blackPiece.Name);
         }
 
@@ -36,6 +34,5 @@ namespace CAESAR.Chess.Tests.Pieces
         {
             Assert.Equal('b', _blackPiece.Notation);
         }
-
     }
 }

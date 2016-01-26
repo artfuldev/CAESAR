@@ -8,12 +8,22 @@ namespace CAESAR.Chess.Moves.Generation
 {
     public class PawnMovesGenerator : MovesGenerator
     {
+        private const Direction WhitePawnMovementDirection = Direction.Up;
+        private const Direction BlackPawnMovementDirection = Direction.Down;
+
+        private static readonly IEnumerable<Direction> WhitePawnCaptureDirections = new[]
+        {Direction.UpRight, Direction.UpLeft};
+
+        private static readonly IEnumerable<Direction> BlackPawnCaptureDirections = new[]
+        {Direction.DownRight, Direction.DownLeft};
+
         // TODO: Add Promotion, En Passant
         protected override IEnumerable<IMove> SpecialMoves => Enumerable.Empty<IMove>();
 
         // Safe to use "Piece" here, code only gets called when Piece != null in "IEnumerable<IMove> Moves" in base class
         protected override IEnumerable<ISquare> MovementSquares => GetPawnMovementSquares(Square, Piece.Side);
         protected override IEnumerable<ISquare> CaptureSquares => GetPawnCaptureSquares(Square, Piece.Side);
+
         private static IEnumerable<ISquare> GetPawnMovementSquares(ISquare square, Side side)
         {
             var direction = Direction.None;
@@ -40,17 +50,7 @@ namespace CAESAR.Chess.Moves.Generation
             }
             if (isStartingRank && movementSquare.Piece == null)
                 yield return movementSquare.GetAdjacentSquareInDirection(direction);
-
         }
-
-        private const Direction WhitePawnMovementDirection = Direction.Up;
-        private const Direction BlackPawnMovementDirection = Direction.Down;
-
-        private static readonly IEnumerable<Direction> WhitePawnCaptureDirections = new[]
-        {Direction.UpRight, Direction.UpLeft};
-
-        private static readonly IEnumerable<Direction> BlackPawnCaptureDirections = new[]
-        {Direction.DownRight, Direction.DownLeft};
 
 
         private static IEnumerable<ISquare> GetPawnCaptureSquares(ISquare square, Side side)

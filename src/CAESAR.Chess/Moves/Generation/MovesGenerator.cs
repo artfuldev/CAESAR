@@ -19,11 +19,11 @@ namespace CAESAR.Chess.Moves.Generation
         protected abstract IEnumerable<ISquare> MovementSquares { get; }
         protected abstract IEnumerable<ISquare> CaptureSquares { get; }
 
+        protected IPiece Piece => Square?.Piece;
+
         public IEnumerable<IMove> Moves
             => Piece != null ? MovementMoves.Concat(Captures).Concat(SpecialMoves) : Enumerable.Empty<IMove>();
 
         public ISquare Square { protected get; set; }
-
-        protected IPiece Piece => Square?.Piece;
     }
 }

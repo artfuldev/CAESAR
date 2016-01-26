@@ -10,6 +10,9 @@ namespace CAESAR.Chess.Pieces
 {
     public abstract class Piece : IPiece
     {
+        private readonly IMovesGenerator _movesGenerator;
+        private ISquare _square;
+
         protected Piece(Side side, string name, char notation, IMovesGenerator movesGenerator)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -47,8 +50,6 @@ namespace CAESAR.Chess.Pieces
         }
 
         public IEnumerable<IMove> Moves => _movesGenerator.Moves;
-        private readonly IMovesGenerator _movesGenerator;
-        private ISquare _square;
         public string Name { get; }
         public char Notation { get; }
     }

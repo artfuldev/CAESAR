@@ -2,7 +2,6 @@
 using System.Linq;
 using CAESAR.Chess.PlayArea;
 using Xunit;
-using File = CAESAR.Chess.PlayArea.File;
 
 namespace CAESAR.Chess.Tests.PlayArea
 {
@@ -38,14 +37,13 @@ namespace CAESAR.Chess.Tests.PlayArea
         [Fact]
         public void FileCannotBeConstructedWithout8Squares()
         {
-            
             Assert.Throws<ArgumentException>(() => { var s = new File(_board, 'a', _board.Squares.Take(2)); });
             Assert.Throws<ArgumentException>(() => { var s = new File(_board, 'a', _board.Squares.Take(9)); });
         }
 
         [Theory]
         [InlineData('i')]
-        [InlineData((char)0)]
+        [InlineData((char) 0)]
         [InlineData('A')]
         public void FileCannotBeConstructedWithoutNameFromAtoH(char name)
         {
@@ -93,10 +91,13 @@ namespace CAESAR.Chess.Tests.PlayArea
         [Fact]
         public void RankOfSquaresInFileRangeFrom1To8()
         {
-            Assert.Equal(string.Join(",", _file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
+            Assert.Equal(
+                string.Join(",", _file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())),
+                "1,2,3,4,5,6,7,8");
             foreach (var file in _board.Files)
-                Assert.Equal(string.Join(",", file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())), "1,2,3,4,5,6,7,8");
+                Assert.Equal(
+                    string.Join(",", file.Squares.Select(x => x.Rank.Number).OrderBy(x => x).Select(x => x.ToString())),
+                    "1,2,3,4,5,6,7,8");
         }
-
     }
 }

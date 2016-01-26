@@ -13,8 +13,8 @@ namespace CAESAR.Chess.Tests.Moves.Generation
 {
     public class RookMovesGeneratorTests
     {
-        private readonly IMovesGenerator _movesGenerator = new RookMovesGenerator();
         private readonly IBoard _board = new Board();
+        private readonly IMovesGenerator _movesGenerator = new RookMovesGenerator();
         private readonly IPiece _piece = new Rook(Side.White);
         private readonly IPlayer _player = new Player("Some Name");
 
@@ -41,13 +41,13 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
-            var expectedMoveStrings = y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            var expectedMoveStrings = y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
 
         [Theory]
-        [InlineData("d1", "d2,d3,d4,d5,d6,d7,d8,e2,e1,f1,g1,h1,c1,b1,a1","")]
-        [InlineData("f3", "f4,g3,e3,f2,","")]
+        [InlineData("d1", "d2,d3,d4,d5,d6,d7,d8,e2,e1,f1,g1,h1,c1,b1,a1", "")]
+        [InlineData("f3", "f4,g3,e3,f2,", "")]
         [InlineData("f3", "f6,h5,g3,d5", "f3f4,f3f5,f3f2,f3f1,f3e3,f3d3,f3c3,f3b3,f3a3")]
         public void RookAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
@@ -62,7 +62,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
-            var expectedMoveStrings = z.Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            var expectedMoveStrings = z.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
 
@@ -74,7 +74,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         {
             var square = _board.GetSquare(x);
             var ownPieceSquares =
-                y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
+                y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
             foreach (var ownPieceSquare in ownPieceSquares)
             {
                 _player.Place(ownPieceSquare, new Pawn(Side.Black));
@@ -83,7 +83,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
-            var expectedMoveStrings = z.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            var expectedMoveStrings = z.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
     }
