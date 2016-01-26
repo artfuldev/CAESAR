@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CAESAR.Chess
+﻿namespace CAESAR.Chess.PlayArea
 {
     public interface IDiagonal
     {

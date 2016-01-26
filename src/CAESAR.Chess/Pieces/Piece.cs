@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CAESAR.Chess.Implementation;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Moves.Generation;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Pieces
 {

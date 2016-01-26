@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CAESAR.Chess.Implementation;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Moves.Generation;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces

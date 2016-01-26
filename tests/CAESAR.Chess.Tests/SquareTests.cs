@@ -1,7 +1,7 @@
 ﻿using System;
-using CAESAR.Chess.Implementation;
 using Xunit;
 using System.Linq;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Tests
 {

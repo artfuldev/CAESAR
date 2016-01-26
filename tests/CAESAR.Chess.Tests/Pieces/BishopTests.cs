@@ -1,5 +1,6 @@
-﻿using CAESAR.Chess.Implementation;
-using CAESAR.Chess.Pieces;
+﻿using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Players;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces

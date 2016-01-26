@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace CAESAR.Chess
+namespace CAESAR.Chess.PlayArea
 {
     public interface IBoard
     {

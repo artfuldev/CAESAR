@@ -1,6 +1,6 @@
 ﻿using CAESAR.Chess.Pieces;
 
-namespace CAESAR.Chess
+namespace CAESAR.Chess.PlayArea
 {
     public interface ISquare
     {

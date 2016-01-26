@@ -1,12 +1,12 @@
 ﻿using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
-namespace CAESAR.Chess
+namespace CAESAR.Chess.Players
 {
     public interface IPlayer
     {
-        bool IsWhite { get; }
-        bool IsBlack { get; }
+        string Name { get; }
         void Place(IBoard board, IPiece piece, string squareName);
         void Place(ISquare square, IPiece piece);
         void MakeMove(IMove move);

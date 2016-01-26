@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
 using CAESAR.Chess.Pieces;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.PlayArea
 {
     public class Square : ISquare
     {

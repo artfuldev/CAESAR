@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using CAESAR.Chess.Implementation;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Players;
 
 namespace CAESAR.ConsoleApp
 {

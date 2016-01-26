@@ -1,8 +1,8 @@
 ﻿using System;
-using CAESAR.Chess.Implementation;
 using Xunit;
 using System.Linq;
-using Rank = CAESAR.Chess.Implementation.Rank;
+using CAESAR.Chess.PlayArea;
+using Rank = CAESAR.Chess.PlayArea.Rank;
 
 namespace CAESAR.Chess.Tests
 {

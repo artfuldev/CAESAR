@@ -1,17 +1,17 @@
 ﻿using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.Players
 {
     public class Player : IPlayer
     {
-        public Player(bool isWhite = true)
+        public Player(string name)
         {
-            IsWhite = isWhite;
+            Name = name;
         }
 
-        public bool IsWhite { get; }
-        public bool IsBlack => !IsWhite;
+        public string Name { get; }
         public void Place(IBoard board, IPiece piece, string squareName)
         {
             Place(board.GetSquare(squareName), piece);

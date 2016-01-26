@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CAESAR.Chess.Helpers;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Generation
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using CAESAR.Chess.Implementation;
 using Xunit;
 using System.Linq;
-using File = CAESAR.Chess.Implementation.File;
+using CAESAR.Chess.PlayArea;
+using File = CAESAR.Chess.PlayArea.File;
 
 namespace CAESAR.Chess.Tests
 {
