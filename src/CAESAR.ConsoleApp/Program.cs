@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using CAESAR.Chess;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
@@ -11,70 +14,18 @@ namespace CAESAR.ConsoleApp
     {
         public static void Main(string[] args)
         {
-            var board = new Board();
-            board.Print();
-            var player = new Player();
-            var pawn = new Pawn(Side.White);
-            var pawn2 = new Pawn(Side.Black);
-            var knight = new Knight(Side.Black);
-            player.Place(board, pawn, "b2");
-            player.Place(board, pawn2, "b7");
-            player.Place(board, knight, "c3");
+            var whitePlayer = new Player("white");
+            var blackPlayer = new Player("black");
+            var movesList = new List<IMove>();
+            var game = new Game(null, whitePlayer, blackPlayer, movesList);
+            var board = game.Board;
             board.Print();
             Console.ReadLine();
-            Console.WriteLine("Moves:");
-            var pawnMoves = pawn.Moves.ToList();
-            foreach (var move in pawnMoves)
+            for (var i = 0; i < 10; i++)
             {
-                Console.WriteLine(move.ToString());
-            }
-            foreach (var move in pawnMoves)
-            {
-                Console.WriteLine("Making move " + move);
-                player.MakeMove(move);
+                game.PlayNextMove();
                 board.Print();
-                Console.WriteLine("UnMaking move " + move);
-                player.UnMakeMove(move);
-                board.Print();
-                Console.ReadLine();
-            }
-            Console.WriteLine("All moves played");
-            Console.ReadLine();
-
-            Console.WriteLine("Moves:");
-            var pawn2Moves = pawn2.Moves.ToList();
-            foreach (var move in pawn2Moves)
-            {
-                Console.WriteLine(move.ToString());
-            }
-            foreach (var move in pawn2Moves)
-            {
-                Console.WriteLine("Making move " + move);
-                player.MakeMove(move);
-                board.Print();
-                Console.WriteLine("UnMaking move " + move);
-                player.UnMakeMove(move);
-                board.Print();
-                Console.ReadLine();
-            }
-            Console.WriteLine("All moves played");
-            Console.ReadLine();
-            var firstMove = pawn2Moves.FirstOrDefault();
-            player.MakeMove(firstMove);
-            pawn2Moves = pawn2.Moves.ToList();
-            Console.WriteLine("Moves:");
-            foreach (var move in pawn2Moves)
-            {
-                Console.WriteLine(move.ToString());
-            }
-            foreach (var move in pawn2Moves)
-            {
-                Console.WriteLine("Making move " + move);
-                player.MakeMove(move);
-                board.Print();
-                Console.WriteLine("UnMaking move " + move);
-                player.UnMakeMove(move);
-                board.Print();
+                Console.WriteLine(string.Join(" ", game.Moves.Select(x => x.ToString())));
                 Console.ReadLine();
             }
             Console.WriteLine("All moves played");

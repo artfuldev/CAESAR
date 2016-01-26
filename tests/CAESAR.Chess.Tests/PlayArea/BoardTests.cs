@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using CAESAR.Chess.PlayArea;
 using Xunit;
 
-namespace CAESAR.Chess.Tests
+namespace CAESAR.Chess.Tests.PlayArea
 {
     public class BoardTests
     {

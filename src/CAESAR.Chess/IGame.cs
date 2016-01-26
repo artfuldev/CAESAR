@@ -14,5 +14,8 @@ namespace CAESAR.Chess
         IPlayer White { get; }
         IPlayer CurrentPlayer { get; }
         Side SideToPlay { get; }
+        void PlayNextMove();
+        void PlayNextMove(IMove move);
+        void PlayNextMove(string move);
     }
 }

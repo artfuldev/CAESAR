@@ -1,10 +1,10 @@
 ﻿using System;
-using Xunit;
 using System.Linq;
 using CAESAR.Chess.PlayArea;
+using Xunit;
 using Rank = CAESAR.Chess.PlayArea.Rank;
 
-namespace CAESAR.Chess.Tests
+namespace CAESAR.Chess.Tests.PlayArea
 {
     public class RankTests
     {
