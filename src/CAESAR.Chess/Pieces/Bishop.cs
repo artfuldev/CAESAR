@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Helpers;
 using CAESAR.Chess.Moves.Generation;
 
@@ -6,7 +7,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Bishop : Piece
     {
-        public Bishop(bool isWhite) : base(isWhite, "Bishop", 'B', new BishopMovesGenerator())
+        public Bishop(Side side) : base(side, "Bishop", 'B', new BishopMovesGenerator())
         {
         }
 

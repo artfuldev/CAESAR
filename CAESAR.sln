@@ -42,6 +42,29 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "docs", "docs\", "{9744FE0F-
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "2156"
+		SlnRelativePath = "docs\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "plans", "src\plans\", "{714D70C6-2273-4A29-A7DA-A9BE58959939}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_6535"
+		Debug.AspNetCompiler.PhysicalPath = "src\plans\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6535\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_6535"
+		Release.AspNetCompiler.PhysicalPath = "src\plans\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6535\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "6535"
+		SlnRelativePath = "src\plans\"
+		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
 Global
@@ -66,6 +89,10 @@ Global
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +101,7 @@ Global
 		{D49E4D70-0517-4064-8A58-63730730CBE2} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 		{5612D407-301E-4EA7-852B-16321159ECFD} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 		{DADEE861-AE38-44AE-821D-82E8099CFD81} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
+		{714D70C6-2273-4A29-A7DA-A9BE58959939} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7

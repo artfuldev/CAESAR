@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Helpers;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Moves.Generation;
@@ -14,7 +15,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
     {
         private readonly IMovesGenerator _movesGenerator = new KnightMovesGenerator();
         private readonly IBoard _board = new Board();
-        private readonly IPiece _piece = new Knight(true);
+        private readonly IPiece _piece = new Knight(Side.White);
         private readonly IPlayer _player = new Player();
 
         [Fact]
@@ -56,7 +57,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
             foreach (var ownPieceSquare in ownPieceSquares)
             {
-                _player.Place(ownPieceSquare, new Pawn(true));
+                _player.Place(ownPieceSquare, new Pawn(Side.White));
             }
             _player.Place(square, _piece);
             _movesGenerator.Square = square;
@@ -77,7 +78,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
                 y.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
             foreach (var ownPieceSquare in ownPieceSquares)
             {
-                _player.Place(ownPieceSquare, new Pawn(false));
+                _player.Place(ownPieceSquare, new Pawn(Side.Black));
             }
             _player.Place(square, _piece);
             _movesGenerator.Square = square;

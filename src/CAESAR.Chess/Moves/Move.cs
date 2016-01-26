@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
@@ -12,7 +13,7 @@ namespace CAESAR.Chess.Moves
             Destination = destination;
             MoveType = moveType;
             Source = piece.Square;
-            IsWhite = Piece.IsWhite;
+            Side = piece.Side;
             if (moveType == MoveType.Promotion)
                 PromotionPiece = promotionPiece;
             if (moveType == MoveType.Capture)
@@ -22,8 +23,7 @@ namespace CAESAR.Chess.Moves
         public ISquare Source { get; }
         public ISquare Destination { get; }
         public IPiece Piece { get; }
-        public bool IsWhite { get; }
-        public bool IsBlack => !IsWhite;
+        public Side Side { get; }
         public MoveType MoveType { get; }
         public IPiece PromotionPiece { get; }
         public IPiece CapturedPiece { get; }

@@ -12,7 +12,7 @@ namespace CAESAR.Chess.Moves.Generation
             .Select(square => new Move(Piece, square));
 
         private IEnumerable<IMove> Captures => CaptureSquares.Distinct()
-            .Where(square => square?.Piece != null && square.Piece.IsWhite != Piece.IsWhite)
+            .Where(square => square?.Piece != null && square.Piece.Side != Piece.Side)
             .Select(square => new Move(Piece, square, MoveType.Capture));
 
         protected abstract IEnumerable<IMove> SpecialMoves { get; }

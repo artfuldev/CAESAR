@@ -11,5 +11,7 @@ namespace CAESAR.Chess.PlayArea
         bool IsDark { get; }
         IBoard Board { get; }
         IPiece Piece { get; set; }
+        bool IsEmpty { get; }
+        bool HasPiece { get; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
@@ -13,9 +14,9 @@ namespace CAESAR.ConsoleApp
             var board = new Board();
             board.Print();
             var player = new Player();
-            var pawn = new Pawn(true);
-            var pawn2 = new Pawn(false);
-            var knight = new Knight(false);
+            var pawn = new Pawn(Side.White);
+            var pawn2 = new Pawn(Side.Black);
+            var knight = new Knight(Side.Black);
             player.Place(board, pawn, "b2");
             player.Place(board, pawn2, "b7");
             player.Place(board, knight, "c3");

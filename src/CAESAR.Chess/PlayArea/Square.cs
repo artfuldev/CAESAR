@@ -31,6 +31,8 @@ namespace CAESAR.Chess.PlayArea
         public string Name { get; }
         public bool IsLight { get; }
         public bool IsDark => !IsLight;
+        public bool IsEmpty => Piece == null;
+        public bool HasPiece => !IsEmpty;
 
         public override string ToString()
         {

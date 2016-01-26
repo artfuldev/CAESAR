@@ -1,4 +1,5 @@
-﻿using CAESAR.Chess.Pieces;
+﻿using CAESAR.Chess.Core;
+using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves
@@ -8,8 +9,7 @@ namespace CAESAR.Chess.Moves
         ISquare Source { get; }
         ISquare Destination { get; }
         IPiece Piece { get; }
-        bool IsWhite { get; }
-        bool IsBlack { get; }
+        Side Side { get; }
         MoveType MoveType { get; }
         IPiece PromotionPiece { get; }
         IPiece CapturedPiece { get; }

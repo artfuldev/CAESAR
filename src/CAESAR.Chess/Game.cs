@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
@@ -19,6 +20,7 @@ namespace CAESAR.Chess
         public IPlayer White { get; }
         public IPlayer Black { get; }
         public ICollection<IMove> Moves { get; }
-        public IPlayer CurrentPlayer => (Moves?.Count ?? 0) % 2 == 0 ? White : Black;
+        public IPlayer CurrentPlayer => (Moves?.Count ?? 0)%2 == 0 ? White : Black;
+        public Side SideToPlay => (Moves?.Count ?? 0)%2 == 0 ? Side.White : Side.Black;
     }
 }
