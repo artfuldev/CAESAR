@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CAESAR.Chess.Implementation;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Moves.Generation;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces
@@ -48,7 +49,7 @@ namespace CAESAR.Chess.Tests.Pieces
         private class PieceTestClass : Piece
         {
             public PieceTestClass(string name, char notation, IMovesGenerator movesGenerator)
-                : base(true, name, notation, movesGenerator)
+                : base(Side.White, name, notation, movesGenerator)
             {
             }
         }

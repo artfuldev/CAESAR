@@ -1,4 +1,4 @@
-﻿using CAESAR.Chess.Implementation;
+﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using Xunit;
 
@@ -6,30 +6,21 @@ namespace CAESAR.Chess.Tests.Pieces
 {
     public class PawnTests
     {
-        private readonly IPiece _whitePiece = new Pawn(true);
-        private readonly IPiece _blackPiece = new Pawn(false);
-        private readonly IBoard _board = new Board();
-        private readonly IPlayer _player = new Player();
+        private readonly IPiece _blackPiece = new Pawn(Side.Black);
+        private readonly IPiece _whitePiece = new Pawn(Side.White);
 
         [Fact]
         public void NameOfPawnPieceIsPawn()
         {
-            Assert.Equal("Pawn",_whitePiece.Name);
+            Assert.Equal("Pawn", _whitePiece.Name);
             Assert.Equal("Pawn", _blackPiece.Name);
         }
 
         [Fact]
-        public void IsWhiteOfPawnPieceIsStored()
+        public void SideOfPawnPieceIsStored()
         {
-            Assert.Equal(true, _whitePiece.IsWhite);
-            Assert.Equal(false, _blackPiece.IsWhite);
-        }
-
-        [Fact]
-        public void IsWhiteOfPawnPieceIsOppositeOfIsBlack()
-        {
-            Assert.NotEqual(_whitePiece.IsBlack, _whitePiece.IsWhite);
-            Assert.NotEqual(_blackPiece.IsBlack, _blackPiece.IsWhite);
+            Assert.Equal(Side.White, _whitePiece.Side);
+            Assert.Equal(Side.Black, _blackPiece.Side);
         }
 
         [Fact]
@@ -43,6 +34,5 @@ namespace CAESAR.Chess.Tests.Pieces
         {
             Assert.Equal('p', _blackPiece.Notation);
         }
-
     }
 }

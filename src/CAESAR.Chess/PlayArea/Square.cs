@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
 using CAESAR.Chess.Pieces;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.PlayArea
 {
     public class Square : ISquare
     {
@@ -25,6 +24,7 @@ namespace CAESAR.Chess.Implementation
             Name = name;
             IsLight = isLight;
         }
+
         public IBoard Board { get; }
         public IPiece Piece { get; set; }
         public IFile File { get; }
@@ -32,6 +32,8 @@ namespace CAESAR.Chess.Implementation
         public string Name { get; }
         public bool IsLight { get; }
         public bool IsDark => !IsLight;
+        public bool IsEmpty => Piece == null;
+        public bool HasPiece => !IsEmpty;
 
         public override string ToString()
         {

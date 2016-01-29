@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.PlayArea
 {
     public class File : IFile
     {

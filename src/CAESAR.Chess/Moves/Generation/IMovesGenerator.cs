@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Generation
 {

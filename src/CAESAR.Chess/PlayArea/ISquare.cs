@@ -1,6 +1,6 @@
 ﻿using CAESAR.Chess.Pieces;
 
-namespace CAESAR.Chess
+namespace CAESAR.Chess.PlayArea
 {
     public interface ISquare
     {
@@ -11,5 +11,7 @@ namespace CAESAR.Chess
         bool IsDark { get; }
         IBoard Board { get; }
         IPiece Piece { get; set; }
+        bool IsEmpty { get; }
+        bool HasPiece { get; }
     }
 }

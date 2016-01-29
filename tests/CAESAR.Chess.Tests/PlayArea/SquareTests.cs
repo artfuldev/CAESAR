@@ -1,9 +1,9 @@
 ﻿using System;
-using CAESAR.Chess.Implementation;
-using Xunit;
 using System.Linq;
+using CAESAR.Chess.PlayArea;
+using Xunit;
 
-namespace CAESAR.Chess.Tests
+namespace CAESAR.Chess.Tests.PlayArea
 {
     public class SquareTests
     {
@@ -40,16 +40,24 @@ namespace CAESAR.Chess.Tests
         [Fact]
         public void SquareCannotBeConstructedWithoutRank()
         {
-            Assert.Throws<ArgumentNullException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), null, null, false); });
+            Assert.Throws<ArgumentNullException>(
+                () => { var s = new Square(_board, _board.Files.ElementAt(0), null, null, false); });
         }
 
         [Fact]
         public void SquareCannotBeConstructedWithoutName()
         {
-            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), null, false); });
-            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "", false); });
-            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "   ", false); });
-            Assert.Throws<ArgumentException>(() => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "\n", false); });
+            Assert.Throws<ArgumentException>(
+                () => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), null, false); });
+            Assert.Throws<ArgumentException>(
+                () => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "", false); });
+            Assert.Throws<ArgumentException>(
+                () =>
+                {
+                    var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "   ", false);
+                });
+            Assert.Throws<ArgumentException>(
+                () => { var s = new Square(_board, _board.Files.ElementAt(0), _board.Ranks.ElementAt(0), "\n", false); });
         }
 
         [Fact]
@@ -77,7 +85,7 @@ namespace CAESAR.Chess.Tests
 
         [Fact]
         public void StringRepresentationOfSquareOfBoardIsItsName()
-        { 
+        {
             Assert.Equal(_square.Name, _square.ToString());
         }
 

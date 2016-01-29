@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CAESAR.Chess.Implementation;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Generation
 {
@@ -12,18 +12,18 @@ namespace CAESAR.Chess.Moves.Generation
             .Select(square => new Move(Piece, square));
 
         private IEnumerable<IMove> Captures => CaptureSquares.Distinct()
-            .Where(square => square?.Piece != null && square.Piece.IsWhite != Piece.IsWhite)
+            .Where(square => square?.Piece != null && square.Piece.Side != Piece.Side)
             .Select(square => new Move(Piece, square, MoveType.Capture));
 
         protected abstract IEnumerable<IMove> SpecialMoves { get; }
         protected abstract IEnumerable<ISquare> MovementSquares { get; }
         protected abstract IEnumerable<ISquare> CaptureSquares { get; }
 
+        protected IPiece Piece => Square?.Piece;
+
         public IEnumerable<IMove> Moves
             => Piece != null ? MovementMoves.Concat(Captures).Concat(SpecialMoves) : Enumerable.Empty<IMove>();
 
         public ISquare Square { protected get; set; }
-
-        protected IPiece Piece => Square?.Piece;
     }
 }

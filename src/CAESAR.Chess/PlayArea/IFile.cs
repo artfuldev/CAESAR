@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace CAESAR.Chess
+namespace CAESAR.Chess.PlayArea
 {
-    public interface IRank
+    public interface IFile
     {
-        byte Number { get; }
+        char Name { get; }
         IBoard Board { get; }
         IReadOnlyCollection<ISquare> Squares { get; }
     }

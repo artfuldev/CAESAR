@@ -5,7 +5,8 @@ namespace CAESAR.Chess.Helpers
 {
     public static class LinqExtensions
     {
-        public static IEnumerable<TSource> TakeWhileUntil<TSource>(this IEnumerable<TSource> list, Func<TSource, bool> whilePredicate, Func<TSource, bool> untilPredicate)
+        public static IEnumerable<TSource> TakeWhileUntil<TSource>(this IEnumerable<TSource> list,
+            Func<TSource, bool> whilePredicate, Func<TSource, bool> untilPredicate)
         {
             foreach (var item in list)
             {

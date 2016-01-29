@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace CAESAR.Chess
+﻿namespace CAESAR.Chess.PlayArea
 {
     public interface IDiagonal
     {
-        ISquare[] Squares { get; }  
+        ISquare[] Squares { get; }
         string Name { get; }
         IBoard Board { get; }
     }

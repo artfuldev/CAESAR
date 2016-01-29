@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace CAESAR.Chess.Implementation
+namespace CAESAR.Chess.PlayArea
 {
     public class Rank : IRank
     {
@@ -30,6 +28,7 @@ namespace CAESAR.Chess.Implementation
         public byte Number { get; }
         public IBoard Board { get; }
         public IReadOnlyCollection<ISquare> Squares { get; }
+
         public override string ToString()
         {
             return Number.ToString();

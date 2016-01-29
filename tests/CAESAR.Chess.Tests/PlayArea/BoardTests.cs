@@ -1,11 +1,10 @@
 ﻿using System;
-using CAESAR.Chess.Implementation;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using CAESAR.Chess.PlayArea;
 using Xunit;
 
-namespace CAESAR.Chess.Tests
+namespace CAESAR.Chess.Tests.PlayArea
 {
     public class BoardTests
     {
@@ -163,7 +162,7 @@ namespace CAESAR.Chess.Tests
         }
 
         [Theory]
-        [InlineData("g2", (byte)2)]
+        [InlineData("g2", (byte) 2)]
         public void SquareNamedXnBelongsToRankN(string xn, byte n)
         {
             var square = _board.Squares.First(x => x.Name == xn);
@@ -192,7 +191,7 @@ namespace CAESAR.Chess.Tests
         }
 
         [Theory]
-        [InlineData('g', (byte)2)]
+        [InlineData('g', (byte) 2)]
         public void GetSquareByFileNameAndRankNumberReturnsCorrectSquare(char fileName, byte rankNumber)
         {
             var square = _board.Squares.FirstOrDefault(x => x.File.Name == fileName && x.Rank.Number == rankNumber);
@@ -208,7 +207,7 @@ namespace CAESAR.Chess.Tests
         }
 
         [Theory]
-        [InlineData((byte)2)]
+        [InlineData((byte) 2)]
         public void GetRankReturnsCorrectRank(byte rankNumber)
         {
             var rank = _board.Ranks.FirstOrDefault(x => x.Number == rankNumber);
@@ -225,13 +224,12 @@ namespace CAESAR.Chess.Tests
             for (var i = 8; i > 0;)
             {
                 expectedStringBuilder.AppendLine(rankLine);
-                expectedStringBuilder.AppendLine(rankSquares + (i--));
+                expectedStringBuilder.AppendLine(rankSquares + i--);
             }
             expectedStringBuilder.AppendLine(rankLine);
             expectedStringBuilder.Append("  a   b   c   d   e   f   g   h");
             var expected = expectedStringBuilder.ToString();
             Assert.Equal(expected, actual);
         }
-
     }
 }
