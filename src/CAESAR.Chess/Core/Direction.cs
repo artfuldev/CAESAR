@@ -1,4 +1,4 @@
-﻿namespace CAESAR.Chess.Helpers
+﻿namespace CAESAR.Chess.Core
 {
     public enum Direction : byte
     {

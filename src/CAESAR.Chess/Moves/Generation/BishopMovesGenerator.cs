@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Moves.Generation
