@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Moves.Notations;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
@@ -7,6 +8,7 @@ namespace CAESAR.Chess.Moves
 {
     public class Move : IMove
     {
+        private static readonly INotation DefaultNotation = new PureCoordinateNotation();
         public Move(IPiece piece, ISquare destination, MoveType moveType = MoveType.Normal, IPiece promotionPiece = null)
         {
             Piece = piece;
@@ -30,11 +32,12 @@ namespace CAESAR.Chess.Moves
 
         public override string ToString()
         {
-            // Long e2e4, e7e8Q
-            return Source.Name + Destination.Name +
-                   (MoveType == MoveType.Promotion
-                       ? PromotionPiece.Notation.ToString().ToUpperInvariant().ToCharArray().First().ToString()
-                       : "");
+            return ToString(DefaultNotation);
+        }
+
+        public string ToString(INotation notation)
+        {
+            return notation?.ToString(this);
         }
     }
 }
