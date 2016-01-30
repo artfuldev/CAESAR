@@ -7,6 +7,9 @@ using CAESAR.Chess.Players;
 
 namespace CAESAR.Chess
 {
+    /// <summary>
+    /// Represents a game of chess
+    /// </summary>
     public class Game : IGame
     {
         public Game(IBoard board, IPlayer white, IPlayer black, ICollection<IMove> moves)
