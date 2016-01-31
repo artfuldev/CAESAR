@@ -5,7 +5,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Rook : Piece
     {
-        public Rook(Side side) : base(side, "Rook", 'R', new RookMovesGenerator())
+        public Rook(Side side) : base(side, PieceType.Rook, new RookMovesGenerator())
         {
         }
     }

@@ -5,7 +5,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Pawn : Piece
     {
-        public Pawn(Side side) : base(side, "Pawn", 'P', new PawnMovesGenerator())
+        public Pawn(Side side) : base(side, PieceType.Pawn, new PawnMovesGenerator())
         {
         }
     }

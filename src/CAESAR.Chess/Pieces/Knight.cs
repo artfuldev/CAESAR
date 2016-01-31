@@ -5,7 +5,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Knight : Piece
     {
-        public Knight(Side side) : base(side, "Knight", 'N', new KnightMovesGenerator())
+        public Knight(Side side) : base(side, PieceType.Knight, new KnightMovesGenerator())
         {
         }
     }

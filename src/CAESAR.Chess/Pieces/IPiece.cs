@@ -12,5 +12,6 @@ namespace CAESAR.Chess.Pieces
         IEnumerable<IMove> Moves { get; }
         string Name { get; }
         char Notation { get; }
+        PieceType PieceType { get; }
     }
 }

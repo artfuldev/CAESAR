@@ -5,7 +5,7 @@ namespace CAESAR.Chess.Pieces
 {
     public class Queen : Piece
     {
-        public Queen(Side side) : base(side, "Queen", 'Q', new QueenMovesGenerator())
+        public Queen(Side side) : base(side, PieceType.Queen, new QueenMovesGenerator())
         {
         }
     }

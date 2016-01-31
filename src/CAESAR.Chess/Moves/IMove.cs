@@ -1,4 +1,5 @@
 ﻿using CAESAR.Chess.Core;
+using CAESAR.Chess.Moves.Notations;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
@@ -13,5 +14,6 @@ namespace CAESAR.Chess.Moves
         MoveType MoveType { get; }
         IPiece PromotionPiece { get; }
         IPiece CapturedPiece { get; }
+        string ToString(INotation notation);
     }
 }

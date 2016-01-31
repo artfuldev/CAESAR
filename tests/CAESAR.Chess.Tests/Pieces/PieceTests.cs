@@ -17,20 +17,12 @@ namespace CAESAR.Chess.Tests.Pieces
 
         private static readonly IMovesGenerator Generator = new MovesGeneratorTestClass();
 
-        private readonly IPiece _piece = new PieceTestClass("SS", 's', Generator);
-
-        [Fact]
-        public void PieceCannotBeConstructedWithoutName()
-        {
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(null, 'a', Generator));
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass("", 'a', Generator));
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(" ", 'a', Generator));
-        }
+        private readonly IPiece _piece = new PieceTestClass(Generator);
 
         [Fact]
         public void PieceCannotBeConstructedWithoutMovesGenerator()
         {
-            Assert.Throws<ArgumentNullException>(() => new PieceTestClass("SS", 'a', null));
+            Assert.Throws<ArgumentNullException>(() => new PieceTestClass(null));
         }
 
         [Fact]
@@ -48,8 +40,8 @@ namespace CAESAR.Chess.Tests.Pieces
 
         private class PieceTestClass : Piece
         {
-            public PieceTestClass(string name, char notation, IMovesGenerator movesGenerator)
-                : base(Side.White, name, notation, movesGenerator)
+            public PieceTestClass(IMovesGenerator movesGenerator)
+                : base(Side.White, PieceType.Pawn, movesGenerator)
             {
             }
         }
