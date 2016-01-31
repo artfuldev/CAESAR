@@ -15,7 +15,7 @@ namespace CAESAR.Chess.Pieces
             Direction.UpLeft
         };
 
-        public Bishop(Side side) : base(side, "Bishop", 'B', new BishopMovesGenerator())
+        public Bishop(Side side) : base(side, PieceType.Bishop, new BishopMovesGenerator())
         {
         }
     }
