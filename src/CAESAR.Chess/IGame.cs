@@ -6,6 +6,9 @@ using CAESAR.Chess.Players;
 
 namespace CAESAR.Chess
 {
+    /// <summary>
+    /// Represents a game of chess
+    /// </summary>
     public interface IGame
     {
         IPlayer Black { get; }
