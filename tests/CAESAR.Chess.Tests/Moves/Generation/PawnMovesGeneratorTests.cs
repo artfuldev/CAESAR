@@ -35,6 +35,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [Theory]
         [InlineData("d2", "d2d3,d2d4")]
         [InlineData("f3", "f3f4")]
+        [InlineData("f7", "f7f8q,f7f8r,f7f8b,f7f8n")]
         public void PawnAtXGeneratesYMoves(string x, string y)
         {
             var square = _board.GetSquare(x);
@@ -50,6 +51,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [InlineData("d7", "d7d6,d7d5")]
         [InlineData("f3", "f3f2")]
         [InlineData("d6", "d6d5")]
+        [InlineData("f2", "f2f1q,f2f1r,f2f1b,f2f1n")]
         public void BlackPawnAtXGeneratesYMoves(string x, string y)
         {
             var square = _board.GetSquare(x);
@@ -65,6 +67,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [InlineData("d2", "d3", "")]
         [InlineData("f3", "f4", "")]
         [InlineData("d2", "d4", "d2d3")]
+        [InlineData("d7", "d8", "")]
         public void PawnAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);
@@ -87,6 +90,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [InlineData("d2", "c3,d3,e3,c2,e2", "d2c3,d2e3")]
         [InlineData("f3", "e3,e4,f4,g4,g3", "f3e4,f3g4")]
         [InlineData("f3", "e4", "f3e4,f3f4")]
+        [InlineData("f7", "g8", "f7f8q,f7f8r,f7f8b,f7f8n,f7g8q,f7g8r,f7g8b,f7g8n")]
         public void PawnAtXWithEnemyPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);

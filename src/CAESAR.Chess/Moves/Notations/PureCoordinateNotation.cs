@@ -14,9 +14,7 @@ namespace CAESAR.Chess.Moves.Notations
         public string ToString(IMove move)
         {
             return move.Source.Name + move.Destination.Name +
-                   (move.MoveType == MoveType.Promotion
-                       ? move.PromotionPiece.Notation.ToString().ToLowerInvariant()
-                       : "");
+                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToLowerInvariant() : "");
         }
     }
 }

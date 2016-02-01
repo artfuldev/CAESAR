@@ -19,10 +19,8 @@ namespace CAESAR.Chess.Moves.Notations
         public string ToString(IMove move)
         {
             return GetNotation(move.Source.Piece) + move.Source.Name +
-                   (move.MoveType == MoveType.Capture ? "x" : "-") + move.Destination.Name +
-                   (move.MoveType == MoveType.Promotion
-                       ? move.PromotionPiece.Notation.ToString().ToUpperInvariant()
-                       : "");
+                   (move.CapturedPiece != null ? "x" : "-") + move.Destination.Name +
+                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToUpperInvariant() : "");
         }
 
         private static string GetNotation(IPiece piece)

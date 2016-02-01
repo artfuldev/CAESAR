@@ -10,8 +10,6 @@ namespace CAESAR.Chess.Moves
         ISquare Source { get; }
         ISquare Destination { get; }
         IPiece Piece { get; }
-        Side Side { get; }
-        MoveType MoveType { get; }
         IPiece PromotionPiece { get; }
         IPiece CapturedPiece { get; }
         string ToString(INotation notation);

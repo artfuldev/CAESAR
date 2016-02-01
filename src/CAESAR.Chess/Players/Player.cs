@@ -47,21 +47,9 @@ namespace CAESAR.Chess.Players
             var piece = move.Piece;
             var destination = move.Destination;
             var source = move.Source;
-            switch (move.MoveType)
-            {
-                case MoveType.Normal:
-                case MoveType.Capture:
-                    Place(source, null);
-                    Place(destination, piece);
-                    break;
-                case MoveType.None:
-                case MoveType.Illegal:
-                case MoveType.EnPassant:
-                case MoveType.Castle:
-                case MoveType.Promotion:
-                default:
-                    return;
-            }
+            var promotionPiece = move.PromotionPiece;
+            Place(source, null);
+            Place(destination, promotionPiece ?? piece);
         }
 
         public void UnMakeMove(IMove move)
@@ -70,21 +58,8 @@ namespace CAESAR.Chess.Players
             var destination = move.Destination;
             var captured = move.CapturedPiece;
             var source = move.Source;
-            switch (move.MoveType)
-            {
-                case MoveType.Normal:
-                case MoveType.Capture:
-                    Place(source, piece);
-                    Place(destination, captured);
-                    break;
-                case MoveType.None:
-                case MoveType.Illegal:
-                case MoveType.EnPassant:
-                case MoveType.Castle:
-                case MoveType.Promotion:
-                default:
-                    return;
-            }
+            Place(source, piece);
+            Place(destination, captured);
         }
     }
 }

@@ -19,10 +19,8 @@ namespace CAESAR.Chess.Moves.Notations
         {
             var piece = move.Source.Piece;
             return GetNotation(piece) + GetSpecifier(move) +
-                   (move.MoveType == MoveType.Capture ? "x" : "") + move.Destination.Name +
-                   (move.MoveType == MoveType.Promotion
-                       ? move.PromotionPiece.Notation.ToString().ToUpperInvariant()
-                       : "");
+                   (move.CapturedPiece != null ? "x" : "") + move.Destination.Name +
+                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToUpperInvariant() : "");
         }
 
         private static string GetNotation(IPiece piece)
@@ -44,7 +42,7 @@ namespace CAESAR.Chess.Moves.Notations
             var pieceType = piece.PieceType;
 
             // If pawn captures, return file name
-            if (move.MoveType == MoveType.Capture && pieceType == PieceType.Pawn)
+            if (move.CapturedPiece != null && pieceType == PieceType.Pawn)
                 return source.Name[0].ToString();
 
             // If there are two pieces on the board which can move to the same destination square, use a specifier
