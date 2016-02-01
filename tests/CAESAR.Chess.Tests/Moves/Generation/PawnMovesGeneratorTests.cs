@@ -90,7 +90,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [InlineData("d2", "c3,d3,e3,c2,e2", "d2c3,d2e3")]
         [InlineData("f3", "e3,e4,f4,g4,g3", "f3e4,f3g4")]
         [InlineData("f3", "e4", "f3e4,f3f4")]
-        [InlineData("f7", "g8", "f7g8q,f7g8r,f7g8b,f7g8n")]
+        [InlineData("f7", "g8", "f7f8q,f7f8r,f7f8b,f7f8n,f7g8q,f7g8r,f7g8b,f7g8n")]
         public void PawnAtXWithEnemyPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);

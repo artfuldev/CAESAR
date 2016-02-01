@@ -101,10 +101,16 @@ namespace CAESAR.Chess.Moves.Generation
             var promotionRankNumber = GetPromotionRankNumber(side);
             if (square.Rank.Number != promotionRankNumber)
                 return Enumerable.Empty<IMove>();
-            var directions = GetPawnCaptureDirections(side).ToList();
-            directions.Add(GetPawnMovementDirection(side));
-            return directions.Select(square.GetAdjacentSquareInDirection)
-                .SelectMany(destination => GetPromotionMoves(square, destination));
+            var eligibleSquares =
+                // Capture Promotion
+                GetPawnCaptureDirections(side)
+                    .Select(square.GetAdjacentSquareInDirection)
+                    .Where(x => x.HasPiece && x.Piece.Side != side).ToList();
+            // Movement Promotion
+            var movementSquare = square.GetAdjacentSquareInDirection(GetPawnMovementDirection(side));
+            if (!movementSquare.HasPiece)
+                eligibleSquares.Add(movementSquare);
+            return eligibleSquares.SelectMany(destination => GetPromotionMoves(square, destination));
         }
 
         private static IEnumerable<IMove> GetPromotionMoves(ISquare square, ISquare destination)
