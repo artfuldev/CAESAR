@@ -8,12 +8,11 @@ namespace CAESAR.Chess.Players
 {
     public interface IPlayer
     {
+        Side Side { get; set; }
         string Name { get; }
-        IEnumerable<IMove> GetAllMoves(IBoard board, Side sideToPlay);
-        IMove GetBestMove(IBoard board, Side sideToPlay);
-        void Place(IBoard board, IPiece piece, string squareName);
-        void Place(ISquare square, IPiece piece);
-        void MakeMove(IMove move);
-        void UnMakeMove(IMove move);
+        IEnumerable<IMove> GetAllMoves(IBoard board);
+        IMove GetBestMove(IBoard board);
+        IBoard MakeMove(IMove move, IBoard board);
+        IBoard UnMakeMove(IMove move, IBoard board);
     }
 }

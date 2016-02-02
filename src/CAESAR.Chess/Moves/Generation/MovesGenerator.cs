@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
@@ -7,23 +8,24 @@ namespace CAESAR.Chess.Moves.Generation
 {
     public abstract class MovesGenerator : IMovesGenerator
     {
-        private IEnumerable<IMove> MovementMoves => MovementSquares.Distinct()
+        private IEnumerable<NormalMove> MovementMoves => MovementSquares.Distinct()
             .Where(square => square != null && square.Piece == null)
-            .Select(square => new Move(Piece, square));
+            .Select(square => new NormalMove(Piece.Side, Square.Name, square.Name));
 
-        private IEnumerable<IMove> Captures => CaptureSquares.Distinct()
+        private IEnumerable<CapturingMove> Captures => CaptureSquares.Distinct()
             .Where(square => square?.Piece != null && square.Piece.Side != Piece.Side)
-            .Select(square => new Move(Piece, square));
+            .Select(square => new CapturingMove(Piece.Side, Square.Name, square.Name));
 
         protected abstract IEnumerable<IMove> SpecialMoves { get; }
         protected abstract IEnumerable<ISquare> MovementSquares { get; }
         protected abstract IEnumerable<ISquare> CaptureSquares { get; }
 
-        protected IPiece Piece => Square?.Piece;
+        protected IPiece Piece => Square.Piece;
+        protected Side Side => Piece.Side;
 
         public IEnumerable<IMove> Moves
             => Piece != null ? MovementMoves.Concat(Captures).Concat(SpecialMoves) : Enumerable.Empty<IMove>();
 
-        public ISquare Square { protected get; set; }
+        public ISquare Square { get; set; }
     }
 }

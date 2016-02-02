@@ -5,6 +5,8 @@ namespace CAESAR.Chess.PlayArea
 {
     public class Square : ISquare
     {
+        private IPiece _piece;
+
         public Square(IBoard board, IFile file, IRank rank, string name, bool isLight = false)
         {
             if (board == null)
@@ -26,7 +28,18 @@ namespace CAESAR.Chess.PlayArea
         }
 
         public IBoard Board { get; }
-        public IPiece Piece { get; set; }
+
+        public IPiece Piece
+        {
+            get { return _piece; }
+            set
+            {
+                _piece = value;
+                if (Piece != null)
+                    Piece.Square = this;
+            }
+        }
+
         public IFile File { get; }
         public IRank Rank { get; }
         public string Name { get; }

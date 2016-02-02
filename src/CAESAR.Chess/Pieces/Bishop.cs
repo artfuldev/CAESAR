@@ -18,5 +18,6 @@ namespace CAESAR.Chess.Pieces
         public Bishop(Side side) : base(side, PieceType.Bishop, new BishopMovesGenerator())
         {
         }
+        public override object Clone() => new Bishop(Side);
     }
 }

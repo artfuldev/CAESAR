@@ -19,6 +19,5 @@ namespace CAESAR.Chess
         Side SideToPlay { get; }
         void PlayNextMove();
         void PlayNextMove(IMove move);
-        void PlayNextMove(string move);
     }
 }

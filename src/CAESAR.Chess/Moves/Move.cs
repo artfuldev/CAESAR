@@ -1,37 +1,37 @@
-﻿using System.Linq;
+﻿using System;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves.Notations;
-using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves
 {
-    public class Move : IMove
+    public abstract class Move : IMove
     {
-        private static readonly INotation DefaultNotation = new PureCoordinateNotation();
-        public Move(IPiece piece, ISquare destination, IPiece promotionPiece = null)
+        public string MoveString { get; }
+        private IBoard Previous { get; set; }
+        protected Move(Side side, string move)
         {
-            Piece = piece;
-            Destination = destination;
-            Source = piece.Square;
-            PromotionPiece = promotionPiece;
-            CapturedPiece = Destination.Piece;
+            Side = side;
+            if (string.IsNullOrWhiteSpace(move))
+                throw new ArgumentNullException(nameof(move), "Move String cannot be null or empty");
+            MoveString = move;
         }
 
-        public ISquare Source { get; }
-        public ISquare Destination { get; }
-        public IPiece Piece { get; }
-        public IPiece PromotionPiece { get; }
-        public IPiece CapturedPiece { get; }
+        public override string ToString() => MoveString;
+        public Side Side { get; }
 
-        public override string ToString()
+        public IBoard Make(IBoard board)
         {
-            return ToString(DefaultNotation);
+            Previous = board;
+            return MakeImplementation();
         }
 
-        public string ToString(INotation notation)
+        protected abstract IBoard MakeImplementation();
+
+        public IBoard Undo()
         {
-            return notation?.ToString(this);
+            return Previous;
         }
+        public string ToString(INotation notation) => notation?.ToString(this);
     }
 }

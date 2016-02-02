@@ -9,6 +9,7 @@ namespace CAESAR.Chess.Players
 {
     public class Player : IPlayer
     {
+        public Side Side { get; set; }
         public Player(string name = null)
         {
             Name = name;
@@ -16,50 +17,28 @@ namespace CAESAR.Chess.Players
 
         public string Name { get; }
 
-        public IEnumerable<IMove> GetAllMoves(IBoard board, Side sideToPlay)
+        public IEnumerable<IMove> GetAllMoves(IBoard board)
         {
             var pieces =
-                board.Squares.Where(square => square.HasPiece && square.Piece.Side == sideToPlay)
+                board.Squares.Where(square => square.HasPiece && square.Piece.Side == Side)
                     .Select(square => square.Piece);
             return pieces.SelectMany(piece => piece.Moves);
         }
 
-        public IMove GetBestMove(IBoard board, Side sideToPlay)
+        public IMove GetBestMove(IBoard board)
         {
             // For now
-            return GetAllMoves(board, sideToPlay).FirstOrDefault();
+            return GetAllMoves(board).FirstOrDefault();
         }
 
-        public void Place(IBoard board, IPiece piece, string squareName)
+        public IBoard MakeMove(IMove move, IBoard board)
         {
-            Place(board.GetSquare(squareName), piece);
+            return Side != move.Side ? board : move.Make(board);
         }
 
-        public void Place(ISquare square, IPiece piece)
+        public IBoard UnMakeMove(IMove move, IBoard board)
         {
-            if (!ReferenceEquals(null, piece))
-                piece.Square = square;
-            square.Piece = piece;
-        }
-
-        public void MakeMove(IMove move)
-        {
-            var piece = move.Piece;
-            var destination = move.Destination;
-            var source = move.Source;
-            var promotionPiece = move.PromotionPiece;
-            Place(source, null);
-            Place(destination, promotionPiece ?? piece);
-        }
-
-        public void UnMakeMove(IMove move)
-        {
-            var piece = move.Piece;
-            var destination = move.Destination;
-            var captured = move.CapturedPiece;
-            var source = move.Source;
-            Place(source, piece);
-            Place(destination, captured);
+            return Side != move.Side ? board : move.Undo(board);
         }
     }
 }

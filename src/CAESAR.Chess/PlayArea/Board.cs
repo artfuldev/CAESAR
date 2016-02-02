@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CAESAR.Chess.Pieces;
 
 namespace CAESAR.Chess.PlayArea
 {
@@ -87,6 +88,16 @@ namespace CAESAR.Chess.PlayArea
             stringBuilder.AppendLine("________________________________");
             stringBuilder.Append("  a   b   c   d   e   f   g   h");
             return stringBuilder.ToString();
+        }
+
+        public object Clone()
+        {
+            var returnable = new Board();
+            for (var i = 0; i < Squares.Count; i++)
+                returnable.Squares.ElementAt(i).Piece = Squares.ElementAt(i).IsEmpty
+                    ? null
+                    : (IPiece) Squares.ElementAt(i).Piece.Clone();
+            return returnable;
         }
     }
 }

@@ -8,5 +8,6 @@ namespace CAESAR.Chess.Pieces
         public Pawn(Side side) : base(side, PieceType.Pawn, new PawnMovesGenerator())
         {
         }
+        public override object Clone() => new Pawn(Side);
     }
 }
