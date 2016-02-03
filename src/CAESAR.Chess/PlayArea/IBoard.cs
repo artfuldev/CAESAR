@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using CAESAR.Chess.Core;
 
 namespace CAESAR.Chess.PlayArea
 {
-    public interface IBoard
+    public interface IBoard : ICloneable
     {
         IReadOnlyCollection<IFile> Files { get; }
         IReadOnlyCollection<IRank> Ranks { get; }

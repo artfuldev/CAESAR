@@ -5,7 +5,7 @@ using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Pieces
 {
-    public interface IPiece
+    public interface IPiece : ICloneable
     {
         Side Side { get; }
         ISquare Square { get; set; }

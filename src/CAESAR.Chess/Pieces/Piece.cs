@@ -11,7 +11,6 @@ namespace CAESAR.Chess.Pieces
     public abstract class Piece : IPiece
     {
         private readonly IMovesGenerator _movesGenerator;
-        private ISquare _square;
 
         protected Piece(Side side, PieceType pieceType, IMovesGenerator movesGenerator)
         {
@@ -31,17 +30,14 @@ namespace CAESAR.Chess.Pieces
 
         public ISquare Square
         {
-            get { return _square; }
-            set
-            {
-                _square = value;
-                _movesGenerator.Square = value;
-            }
+            get { return _movesGenerator.Square; }
+            set { _movesGenerator.Square = value; }
         }
 
         public IEnumerable<IMove> Moves => _movesGenerator.Moves;
         public string Name { get; }
         public char Notation { get; }
         public PieceType PieceType { get; }
+        public abstract object Clone();
     }
 }

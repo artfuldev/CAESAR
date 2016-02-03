@@ -44,6 +44,11 @@ namespace CAESAR.Chess.Tests.Pieces
                 : base(Side.White, PieceType.Pawn, movesGenerator)
             {
             }
+
+            public override object Clone()
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private class MovesGeneratorTestClass : IMovesGenerator

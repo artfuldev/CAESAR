@@ -2,13 +2,13 @@
 using System.Linq;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
-using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Players
 {
     public class Player : IPlayer
     {
+        public Side Side { get; set; }
         public Player(string name = null)
         {
             Name = name;
@@ -16,50 +16,30 @@ namespace CAESAR.Chess.Players
 
         public string Name { get; }
 
-        public IEnumerable<IMove> GetAllMoves(IBoard board, Side sideToPlay)
+        public IEnumerable<IMove> GetAllMoves(IBoard board)
         {
             var pieces =
-                board.Squares.Where(square => square.HasPiece && square.Piece.Side == sideToPlay)
+                board.Squares.Where(square => square.HasPiece && square.Piece.Side == Side)
                     .Select(square => square.Piece);
             return pieces.SelectMany(piece => piece.Moves);
         }
 
-        public IMove GetBestMove(IBoard board, Side sideToPlay)
+        public IMove GetBestMove(IBoard board)
         {
             // For now
-            return GetAllMoves(board, sideToPlay).FirstOrDefault();
+            // Play capturing moves first
+            return GetAllMoves(board).FirstOrDefault(x => x is CapturingMove || x is CapturingPromotionMove) ??
+                   GetAllMoves(board).FirstOrDefault();
         }
 
-        public void Place(IBoard board, IPiece piece, string squareName)
+        public IBoard MakeMove(IMove move)
         {
-            Place(board.GetSquare(squareName), piece);
+            return move.Make(this);
         }
 
-        public void Place(ISquare square, IPiece piece)
+        public IBoard UnMakeMove(IMove move)
         {
-            if (!ReferenceEquals(null, piece))
-                piece.Square = square;
-            square.Piece = piece;
-        }
-
-        public void MakeMove(IMove move)
-        {
-            var piece = move.Piece;
-            var destination = move.Destination;
-            var source = move.Source;
-            var promotionPiece = move.PromotionPiece;
-            Place(source, null);
-            Place(destination, promotionPiece ?? piece);
-        }
-
-        public void UnMakeMove(IMove move)
-        {
-            var piece = move.Piece;
-            var destination = move.Destination;
-            var captured = move.CapturedPiece;
-            var source = move.Source;
-            Place(source, piece);
-            Place(destination, captured);
+            return move.Undo(this);
         }
     }
 }

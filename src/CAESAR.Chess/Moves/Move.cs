@@ -1,37 +1,44 @@
-﻿using System.Linq;
+﻿using System;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Moves.Exceptions;
 using CAESAR.Chess.Moves.Notations;
-using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Players;
 
 namespace CAESAR.Chess.Moves
 {
-    public class Move : IMove
+    public abstract class Move : IMove
     {
-        private static readonly INotation DefaultNotation = new PureCoordinateNotation();
-        public Move(IPiece piece, ISquare destination, IPiece promotionPiece = null)
+        public string MoveString { get; protected set; }
+        public IBoard Board { get; }
+        private IBoard NextBoard { get; set; }
+        protected Move(IBoard board, Side side, string move)
         {
-            Piece = piece;
-            Destination = destination;
-            Source = piece.Square;
-            PromotionPiece = promotionPiece;
-            CapturedPiece = Destination.Piece;
+            Board = (IBoard)board.Clone();
+            Side = side;
+            if (string.IsNullOrWhiteSpace(move))
+                throw new ArgumentNullException(nameof(move), "Move String cannot be null or empty");
+            MoveString = move;
         }
 
-        public ISquare Source { get; }
-        public ISquare Destination { get; }
-        public IPiece Piece { get; }
-        public IPiece PromotionPiece { get; }
-        public IPiece CapturedPiece { get; }
+        public override string ToString() => MoveString;
+        public Side Side { get; }
 
-        public override string ToString()
+        public IBoard Make(IPlayer player)
         {
-            return ToString(DefaultNotation);
+            if(player.Side != Side)
+                throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
+            return NextBoard ?? (NextBoard = MakeImplementation(Board));
         }
 
-        public string ToString(INotation notation)
+        protected abstract IBoard MakeImplementation(IBoard board);
+
+        public IBoard Undo(IPlayer player)
         {
-            return notation?.ToString(this);
+            if (player.Side != Side)
+                throw new CannotUndoMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
+            return Board;
         }
+        public string ToString(INotation notation) => notation?.ToString(this);
     }
 }

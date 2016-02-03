@@ -1,4 +1,5 @@
 ﻿using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Notations
 {
@@ -18,9 +19,14 @@ namespace CAESAR.Chess.Moves.Notations
     {
         public string ToString(IMove move)
         {
-            return GetNotation(move.Source.Piece) + move.Source.Name +
-                   (move.CapturedPiece != null ? "x" : "-") + move.Destination.Name +
-                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToUpperInvariant() : "");
+            var normalMove = move as NormalMove;
+            if (normalMove == null)
+                return null;
+            var isCapturingMove = move is CapturingMove || move is CapturingPromotionMove;
+            var promotionMove = move as PromotionMove;
+            return GetNotation(normalMove.Piece) + normalMove.SourceSquareName +
+                   (isCapturingMove ? "x" : "-") + normalMove.DestinationSquareName +
+                   promotionMove?.PromotionPieceType.GetNotation();
         }
 
         private static string GetNotation(IPiece piece)

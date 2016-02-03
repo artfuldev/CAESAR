@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Notations
 {
@@ -17,10 +18,14 @@ namespace CAESAR.Chess.Moves.Notations
     {
         public string ToString(IMove move)
         {
-            var piece = move.Source.Piece;
-            return GetNotation(piece) + GetSpecifier(move) +
-                   (move.CapturedPiece != null ? "x" : "") + move.Destination.Name +
-                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToUpperInvariant() : "");
+            var normalMove = move as NormalMove;
+            if (normalMove == null)
+                return null;
+            var promotionMove = move as PromotionMove;
+            var isCapturingMove = move is CapturingMove || move is CapturingPromotionMove;
+            var promotionSuffix = (promotionMove != null ? "=" + promotionMove.PromotionPieceType.GetNotation() : "");
+            return GetNotation(normalMove.Piece) + GetSpecifier(move) + (isCapturingMove ? "x" : "") +
+                   normalMove.DestinationSquareName + promotionSuffix;
         }
 
         private static string GetNotation(IPiece piece)
@@ -37,12 +42,18 @@ namespace CAESAR.Chess.Moves.Notations
 
         private static string GetSpecifier(IMove move)
         {
-            var source = move.Source;
-            var piece = source.Piece;
+            var normalMove = move as NormalMove;
+            if (normalMove == null)
+                return null;
+
+            var source = normalMove.Source;
+            var piece = normalMove.Piece;
             var pieceType = piece.PieceType;
 
+            var isCapture = move is CapturingMove || move is CapturingPromotionMove;
+
             // If pawn captures, return file name
-            if (move.CapturedPiece != null && pieceType == PieceType.Pawn)
+            if (isCapture && pieceType == PieceType.Pawn)
                 return source.Name[0].ToString();
 
             // If there are two pieces on the board which can move to the same destination square, use a specifier
@@ -51,7 +62,9 @@ namespace CAESAR.Chess.Moves.Notations
                     x => x.HasPiece && x.Piece.Side == piece.Side && x.Piece.PieceType == pieceType)
                     .Select(x => x.Piece);
             var similarPiecesWhichCanMoveToSameDestination =
-                similarPieces.Where(x => x.Moves.Any(m => m.Destination.Name == move.Destination.Name)).ToList();
+                similarPieces.Where(
+                    x => x.Moves.Any(m => (m as NormalMove)?.DestinationSquareName == normalMove.DestinationSquareName))
+                    .ToList();
             if (similarPiecesWhichCanMoveToSameDestination.Count > 0)
             {
                 return similarPiecesWhichCanMoveToSameDestination.Count > 1
@@ -60,7 +73,7 @@ namespace CAESAR.Chess.Moves.Notations
                         ? source.File.Name.ToString()
                         : source.Rank.Number.ToString());
             }
-            return "";
+            return null;
         }
     }
 }

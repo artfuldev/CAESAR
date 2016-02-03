@@ -8,5 +8,6 @@ namespace CAESAR.Chess.Pieces
         public King(Side side) : base(side, PieceType.King, new KingMovesGenerator())
         {
         }
+        public override object Clone() => new King(Side);
     }
 }
