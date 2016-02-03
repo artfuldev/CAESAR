@@ -9,7 +9,7 @@ namespace CAESAR.Chess.Moves
         public PieceType PromotionPieceType { get; }
 
         public PromotionMove(ISquare source, string destinationSquareName, PieceType promotionPieceType)
-            : base(source, destinationSquareName + promotionPieceType.GetNotation())
+            : base(source, destinationSquareName)
         {
             PromotionPieceType = promotionPieceType;
         }

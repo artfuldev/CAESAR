@@ -2,7 +2,6 @@
 using System.Linq;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
-using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Players
@@ -28,21 +27,19 @@ namespace CAESAR.Chess.Players
         public IMove GetBestMove(IBoard board)
         {
             // For now
-            return GetAllMoves(board).FirstOrDefault();
+            // Play capturing moves first
+            return GetAllMoves(board).FirstOrDefault(x => x is CapturingMove || x is CapturingPromotionMove) ??
+                   GetAllMoves(board).FirstOrDefault();
         }
 
         public IBoard MakeMove(IMove move)
         {
-            if(Side != move.Side)
-                throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return move.Make();
+            return move.Make(this);
         }
 
         public IBoard UnMakeMove(IMove move)
         {
-            if (Side != move.Side)
-                throw new CannotUndoMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return move.Undo();
+            return move.Undo(this);
         }
     }
 }

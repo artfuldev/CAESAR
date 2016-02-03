@@ -1,6 +1,7 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves.Notations;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Players;
 
 namespace CAESAR.Chess.Moves
 {
@@ -24,14 +25,14 @@ namespace CAESAR.Chess.Moves
         ///     <seealso cref="IBoard" />.
         /// </summary>
         /// <returns>An <seealso cref="IBoard" /> with this <seealso cref="IMove" /> already made on it.</returns>
-        IBoard Make();
+        IBoard Make(IPlayer player);
 
         /// <summary>
         ///     Undoes the <seealso cref="IMove" /> on the <seealso cref="IBoard" /> and returns a new instance of
         ///     <seealso cref="IBoard" />.
         /// </summary>
         /// <returns>An <seealso cref="IBoard" /> with this <seealso cref="IMove" /> undone on it.</returns>
-        IBoard Undo();
+        IBoard Undo(IPlayer player);
 
         /// <summary>
         ///     Returns a string representation of the move in the specified <seealso cref="INotation" />.
