@@ -14,7 +14,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
 {
     public class BishopMovesGeneratorTests
     {
-        private readonly IBoard _board = new Position().Board;
+        private readonly IBoard _board = new Position().ClearBoard().Board;
         private readonly IMovesGenerator _movesGenerator = new BishopMovesGenerator();
         private readonly IPiece _piece = new Bishop(Side.White);
 
