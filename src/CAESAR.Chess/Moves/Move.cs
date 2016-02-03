@@ -9,7 +9,7 @@ namespace CAESAR.Chess.Moves
 {
     public abstract class Move : IMove
     {
-        public string MoveString { get; }
+        public string MoveString { get; protected set; }
         public IBoard Board { get; }
         private IBoard NextBoard { get; set; }
         protected Move(IBoard board, Side side, string move)

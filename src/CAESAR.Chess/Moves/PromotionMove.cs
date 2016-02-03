@@ -12,6 +12,7 @@ namespace CAESAR.Chess.Moves
             : base(source, destinationSquareName)
         {
             PromotionPieceType = promotionPieceType;
+            MoveString = SourceSquareName + DestinationSquareName + PromotionPieceType.GetNotation();
         }
 
         protected override IBoard MakeImplementation(IBoard board)
