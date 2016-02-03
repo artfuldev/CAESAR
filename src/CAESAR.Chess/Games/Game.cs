@@ -9,6 +9,7 @@ using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Games
 {
@@ -24,21 +25,19 @@ namespace CAESAR.Chess.Games
             new WinByCheckmateUpdater(),
             new ThreefoldRepetitionUpdater()
         }; 
-        public Game(IBoard board, IPlayer white, IPlayer black, ICollection<IMove> moves, ICollection<IStatusUpdater> statusUpdaters = null)
+        public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves, ICollection<IStatusUpdater> statusUpdaters = null)
         {
             StatusUpdaters = statusUpdaters;
-            Board = board ?? new Board();
+            Position = position ?? new Position();
             White = white ?? new Player("White");
             White.Side = Side.White;
             Black = black ?? new Player("Black");
             Black.Side = Side.Black;
             Moves = moves ?? new List<IMove>();
             StatusUpdaters = statusUpdaters ?? DefaultStatusUpdaters;
-            if (board == null)
-                SetupBoard();
         }
 
-        public IBoard Board { get; private set; }
+        public IPosition Position { get; private set; }
         public IPlayer White { get; }
         public IPlayer Black { get; }
         public ICollection<IMove> Moves { get; }
@@ -53,7 +52,7 @@ namespace CAESAR.Chess.Games
             {
                 case Status.YetToBegin:
                 case Status.InProgress:
-                    Play(CurrentPlayer.GetBestMove(Board));
+                    Play(CurrentPlayer.GetBestMove(Position));
                     break;
                 default:
                     throw new CannotPlayGameException(Status, StatusReason);
@@ -62,7 +61,7 @@ namespace CAESAR.Chess.Games
 
         public void Play(IMove move)
         {
-            Board = CurrentPlayer.MakeMove(move) ?? Board;
+            Position = CurrentPlayer.MakeMove(move) ?? Position;
             Moves.Add(move);
             UpdateStatus();
         }
@@ -76,52 +75,5 @@ namespace CAESAR.Chess.Games
         public ICollection<IStatusUpdater> StatusUpdaters { get; }
         public Status Status { get; set; } = Status.YetToBegin;
         public StatusReason StatusReason { get; set; } = StatusReason.GameJustBegan;
-
-        private void SetupBoard()
-        {
-            var piecePlacements = new Dictionary<string, IPiece>();
-
-            // Pawns
-            for (var i = 0; i < 8; i++)
-            {
-                piecePlacements.Add((char) (97 + i) + "2", new Pawn(Side.White));
-                piecePlacements.Add((char) (97 + i) + "7", new Pawn(Side.Black));
-            }
-
-            // Rooks
-
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char) (97 + i*7) + "1", new Rook(Side.White));
-                piecePlacements.Add((char) (97 + i*7) + "8", new Rook(Side.Black));
-            }
-
-            // Knights
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char) (98 + i*5) + "1", new Knight(Side.White));
-                piecePlacements.Add((char) (98 + i*5) + "8", new Knight(Side.Black));
-            }
-
-            // Bishops
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char) (99 + i*3) + "1", new Bishop(Side.White));
-                piecePlacements.Add((char) (99 + i*3) + "8", new Bishop(Side.Black));
-            }
-
-            // Queens
-            piecePlacements.Add("d1", new Queen(Side.White));
-            piecePlacements.Add("d8", new Queen(Side.Black));
-
-            // Kings
-            piecePlacements.Add("e1", new King(Side.White));
-            piecePlacements.Add("e8", new King(Side.Black));
-
-            foreach (var piecePlacement in piecePlacements)
-            {
-                Board.GetSquare(piecePlacement.Key).Piece = piecePlacement.Value;
-            }
-        }
     }
 }

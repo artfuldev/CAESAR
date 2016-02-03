@@ -7,13 +7,14 @@ using CAESAR.Chess.Moves.Generation;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
+using CAESAR.Chess.Positions;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Moves.Generation
 {
     public class RookMovesGeneratorTests
     {
-        private readonly IBoard _board = new Board();
+        private readonly IBoard _board = new Position().ClearBoard().Board;
         private readonly IMovesGenerator _movesGenerator = new RookMovesGenerator();
         private readonly IPiece _piece = new Rook(Side.White);
 

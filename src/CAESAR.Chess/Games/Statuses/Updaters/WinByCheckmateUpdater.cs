@@ -7,8 +7,8 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
     {
         public void UpdateStatus(IGame game)
         {
-            if (!game.CurrentSideInCheck || game.CurrentPlayer.GetAllMoves(game.Board).Any()) return;
-            game.Status = game.SideToPlay == Side.White ? Status.BlackWon : Status.WhiteWon;
+            if (!game.CurrentSideInCheck || game.CurrentPlayer.GetAllMoves(game.Position).Any()) return;
+            game.Status = game.Position.SideToMove == Side.White ? Status.BlackWon : Status.WhiteWon;
             game.StatusReason = StatusReason.Checkmate;
         }
     }

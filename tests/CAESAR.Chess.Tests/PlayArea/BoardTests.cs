@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.PlayArea
@@ -10,7 +11,7 @@ namespace CAESAR.Chess.Tests.PlayArea
     {
         private readonly IBoard _board;
 
-        public BoardTests() : this(new Board())
+        public BoardTests() : this(new Position().ClearBoard().Board)
         {
         }
 

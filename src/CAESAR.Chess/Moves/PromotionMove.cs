@@ -1,6 +1,7 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Moves
 {
@@ -15,13 +16,13 @@ namespace CAESAR.Chess.Moves
             MoveString = SourceSquareName + DestinationSquareName + PromotionPieceType.GetNotation();
         }
 
-        protected override IBoard MakeImplementation(IBoard board)
+        protected override IPosition MakeImplementation(IPosition position)
         {
             // Make normal move
-            board = base.MakeImplementation(board);
-            var destinationSquare = board.GetSquare(DestinationSquareName);
+            position = base.MakeImplementation(position);
+            var destinationSquare = position.Board.GetSquare(DestinationSquareName);
             destinationSquare.Piece = PromotionPieceType.GetPiece(Side);
-            return board;
+            return position;
         }
     }
 }

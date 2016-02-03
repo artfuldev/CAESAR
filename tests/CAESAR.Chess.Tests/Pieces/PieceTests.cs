@@ -6,6 +6,7 @@ using CAESAR.Chess.Moves;
 using CAESAR.Chess.Moves.Generation;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.Pieces
@@ -13,7 +14,7 @@ namespace CAESAR.Chess.Tests.Pieces
     public class PieceTests
     {
         private static readonly IEnumerable<IMove> MovesInstance = Enumerable.Empty<Move>();
-        private static readonly ISquare SomeSquareInstance = new Board().GetSquare("a1");
+        private static readonly ISquare SomeSquareInstance = new Position().ClearBoard().Board.GetSquare("a1");
 
         private static readonly IMovesGenerator Generator = new MovesGeneratorTestClass();
 

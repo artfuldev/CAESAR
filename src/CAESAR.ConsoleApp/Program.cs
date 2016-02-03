@@ -17,7 +17,7 @@ namespace CAESAR.ConsoleApp
             var blackPlayer = new Player("black");
             var movesList = new List<IMove>();
             var game = new Game(null, whitePlayer, blackPlayer, movesList);
-            var board = game.Board;
+            var board = game.Position.Board;
             var maxMovesCount = 200;
             board.Print();
             Console.ReadLine();
@@ -30,7 +30,7 @@ namespace CAESAR.ConsoleApp
                 {
                     game.Play();
                     var currentSideInCheck = game.CurrentSideInCheck;
-                    board = game.Board;
+                    board = game.Position.Board;
                     board.Print();
                     Console.WriteLine(string.Join(" ",
                         game.Moves.Select(x => x.ToString() + (currentSideInCheck ? "+" : ""))) + " " + game.Status +

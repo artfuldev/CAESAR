@@ -6,6 +6,7 @@ using CAESAR.Chess.Helpers;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Players
 {
@@ -19,31 +20,28 @@ namespace CAESAR.Chess.Players
 
         public string Name { get; }
 
-        public IEnumerable<IMove> GetAllMoves(IBoard board)
+        public IEnumerable<IMove> GetAllMoves(IPosition position)
         {
-            var pieces =
-                board.Squares.Where(square => square.HasPiece && square.Piece.Side == Side)
-                    .Select(square => square.Piece);
-            return pieces.SelectMany(piece => piece.Moves);
+            return position.Board.Squares.Where(square => square.HasPiece && square.Piece.Side == Side)
+                    .Select(square => square.Piece).SelectMany(piece => piece.Moves);
         }
 
         private readonly Random _random = new Random();
 
-        public IMove GetBestMove(IBoard board)
+        public IMove GetBestMove(IPosition board)
         {
-            // For now
-            // Play capturing moves
-            // Play any other move
-            return GetAllMoves(board).FirstOrDefault(x => x is CapturingMove || x is CapturingPromotionMove) ??
-                   GetAllMoves(board).FirstOrDefault();
+            var allMoves = GetAllMoves(board).ToList();
+            var capture = allMoves.FirstOrDefault(x => x is CapturingMove || x is CapturingPromotionMove);
+            var move = allMoves.FirstOrDefault();
+            return capture ?? move;
         }
 
-        public IBoard MakeMove(IMove move)
+        public IPosition MakeMove(IMove move)
         {
             return move?.Make(this);
         }
 
-        public IBoard UnMakeMove(IMove move)
+        public IPosition UnMakeMove(IMove move)
         {
             return move?.Undo(this);
         }
