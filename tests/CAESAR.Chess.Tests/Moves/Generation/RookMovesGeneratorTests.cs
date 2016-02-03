@@ -16,7 +16,6 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         private readonly IBoard _board = new Board();
         private readonly IMovesGenerator _movesGenerator = new RookMovesGenerator();
         private readonly IPiece _piece = new Rook(Side.White);
-        private readonly IPlayer _player = new Player("Some Name");
 
         [Fact]
         public void MoveGeneratorWithoutSquareGeneratesEmptyMoves()
@@ -37,7 +36,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         public void RookAtXGeneratesYMoves(string x, string y)
         {
             var square = _board.GetSquare(x);
-            _player.Place(square, _piece);
+            square.Piece = _piece;
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
@@ -52,13 +51,13 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         public void RookAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);
-            var ownPieceSquares =
+            var squares =
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
-            foreach (var ownPieceSquare in ownPieceSquares)
+            foreach (var pieceSquare in squares)
             {
-                _player.Place(ownPieceSquare, new Pawn(Side.White));
+                pieceSquare.Piece = new Pawn(Side.White);
             }
-            _player.Place(square, _piece);
+            square.Piece = _piece;
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
@@ -73,13 +72,13 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         public void RookAtXWithEnemyPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);
-            var ownPieceSquares =
+            var squares =
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
-            foreach (var ownPieceSquare in ownPieceSquares)
+            foreach (var pieceSquare in squares)
             {
-                _player.Place(ownPieceSquare, new Pawn(Side.Black));
+                pieceSquare.Piece = new Pawn(Side.Black);
             }
-            _player.Place(square, _piece);
+            square.Piece = _piece;
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());

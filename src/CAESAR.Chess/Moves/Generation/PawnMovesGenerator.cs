@@ -13,7 +13,11 @@ namespace CAESAR.Chess.Moves.Generation
 
         private static readonly IEnumerable<Direction> BlackPawnCaptureDirections = new[] {Direction.DownRight, Direction.DownLeft};
 
-        private static readonly char[] PromotionPieces = "QRBN".ToCharArray();
+        private static readonly PieceType[] PromotionPieceTypes =
+        {
+            PieceType.Queen, PieceType.Rook, PieceType.Bishop,
+            PieceType.Knight
+        };
 
         // TODO: Add En Passant
         protected override IEnumerable<IMove> SpecialMoves
@@ -38,7 +42,8 @@ namespace CAESAR.Chess.Moves.Generation
         private Direction PawnMovementDirection
             => Side == Side.White ? Direction.Up : Side == Side.Black ? Direction.Down : Direction.None;
 
-        private bool IsStartingRank => Side == Side.White? Square.Rank.Number == 7 : Side == Side.Black && Square.Rank.Number == 2;
+        private bool IsStartingRank
+            => Side == Side.White ? Square.Rank.Number == 2 : Side == Side.Black && Square.Rank.Number == 7;
 
         private IEnumerable<Direction> PawnCaptureDirections
             =>
@@ -66,13 +71,11 @@ namespace CAESAR.Chess.Moves.Generation
         private IEnumerable<PromotionMove> GetPromotionMoves(ISquare destination)
         {
             return
-                PromotionPieces.Select(
-                    promotionPiece =>
+                PromotionPieceTypes.Select(
+                    pieceType =>
                         destination.HasPiece
-                            ? new CapturingPromotionMove(Piece.Side, Square.Name, destination.Name,
-                                promotionPiece)
-                            : new PromotionMove(Piece.Side, Square.Name, destination.Name,
-                                promotionPiece));
+                            ? new CapturingPromotionMove(Square, destination.Name, pieceType)
+                            : new PromotionMove(Square, destination.Name, pieceType));
         }
 
         private int PromotionRankNumber => Side == Side.White ? 7 : Side == Side.Black ? 2 : 0;

@@ -10,17 +10,17 @@ namespace CAESAR.Chess.Moves.Generation
     {
         private IEnumerable<NormalMove> MovementMoves => MovementSquares.Distinct()
             .Where(square => square != null && square.Piece == null)
-            .Select(square => new NormalMove(Piece.Side, Square.Name, square.Name));
+            .Select(square => new NormalMove(Square, square.Name));
 
         private IEnumerable<CapturingMove> Captures => CaptureSquares.Distinct()
             .Where(square => square?.Piece != null && square.Piece.Side != Piece.Side)
-            .Select(square => new CapturingMove(Piece.Side, Square.Name, square.Name));
+            .Select(square => new CapturingMove(Square, square.Name));
 
         protected abstract IEnumerable<IMove> SpecialMoves { get; }
         protected abstract IEnumerable<ISquare> MovementSquares { get; }
         protected abstract IEnumerable<ISquare> CaptureSquares { get; }
 
-        protected IPiece Piece => Square.Piece;
+        protected IPiece Piece => Square?.Piece;
         protected Side Side => Piece.Side;
 
         public IEnumerable<IMove> Moves

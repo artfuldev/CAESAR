@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using CAESAR.Chess.Pieces;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Notations
 {
@@ -13,8 +15,12 @@ namespace CAESAR.Chess.Moves.Notations
     {
         public string ToString(IMove move)
         {
-            return move.Source.Name + move.Destination.Name +
-                   (move.PromotionPiece != null ? move.PromotionPiece.Notation.ToString().ToLowerInvariant() : "");
+            var normalMove = move as NormalMove;
+            if (normalMove == null)
+                return null;
+            var promotionMove = move as PromotionMove;
+            return normalMove.SourceSquareName + normalMove.DestinationSquareName +
+                   promotionMove?.PromotionPieceType.GetNotation();
         }
     }
 }

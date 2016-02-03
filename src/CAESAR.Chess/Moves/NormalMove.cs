@@ -1,21 +1,30 @@
 ﻿using CAESAR.Chess.Core;
+using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves
 {
     public class NormalMove : Move
     {
-        public string SourceSquareName { get; }
+        public string SourceSquareName => Source.Name;
         public string DestinationSquareName { get; }
-        public NormalMove(Side side, string sourceSquareName, string destinationSquareName) : base(side, sourceSquareName + destinationSquareName)
+        public ISquare Source { get;}
+        public IPiece Piece { get; }
+        public NormalMove(ISquare source, string destinationSquareName) : base(source.Board, source.Piece.Side, source.Name + destinationSquareName)
         {
-            SourceSquareName = sourceSquareName;
+            Source = source;
+            Piece = source.Piece;
             DestinationSquareName = destinationSquareName;
         }
 
-        protected override IBoard MakeImplementation()
+        protected override IBoard MakeImplementation(IBoard board)
         {
-            throw new System.NotImplementedException();
+            if (Source.IsEmpty)
+                throw new CannotMakeMoveException(MoveOperationFailureReason.SourceSquareIsEmpty);
+            var destination = board.GetSquare(DestinationSquareName);
+            Source.Piece = null;
+            destination.Piece = Piece;
+            return board;
         }
     }
 }

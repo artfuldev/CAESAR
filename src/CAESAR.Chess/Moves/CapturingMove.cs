@@ -1,11 +1,12 @@
 ﻿using CAESAR.Chess.Core;
+using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves
 {
     public class CapturingMove : NormalMove
     {
-        public CapturingMove(Side side, string sourceSquareName, string destinationSquareName)
-            : base(side, sourceSquareName, destinationSquareName)
+        public CapturingMove(ISquare source, string destinationSquareName)
+            : base(source, destinationSquareName)
         {
         }
     }

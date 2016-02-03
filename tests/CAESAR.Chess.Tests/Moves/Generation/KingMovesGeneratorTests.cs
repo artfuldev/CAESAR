@@ -16,7 +16,6 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         private readonly IBoard _board = new Board();
         private readonly IMovesGenerator _movesGenerator = new KingMovesGenerator();
         private readonly IPiece _piece = new King(Side.White);
-        private readonly IPlayer _player = new Player();
 
         [Fact]
         public void MoveGeneratorWithoutSquareGeneratesEmptyMoves()
@@ -37,7 +36,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         public void KingAtXGeneratesYMoves(string x, string y)
         {
             var square = _board.GetSquare(x);
-            _player.Place(square, _piece);
+            square.Piece = _piece;
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());
@@ -52,13 +51,13 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         public void KingAtXWithOwnPiecesAtYGeneratesZMoves(string x, string y, string z)
         {
             var square = _board.GetSquare(x);
-            var ownPieceSquares =
+            var squares =
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
-            foreach (var ownPieceSquare in ownPieceSquares)
+            foreach (var pieceSquare in squares)
             {
-                _player.Place(ownPieceSquare, new Pawn(Side.White));
+                pieceSquare.Piece = new Pawn(Side.White);
             }
-            _player.Place(square, _piece);
+            square.Piece = _piece;
             _movesGenerator.Square = square;
             var moves = _movesGenerator.Moves;
             var moveStrings = moves.Select(move => move.ToString());

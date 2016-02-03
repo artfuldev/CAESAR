@@ -8,9 +8,11 @@ namespace CAESAR.Chess.Moves
     public abstract class Move : IMove
     {
         public string MoveString { get; }
-        private IBoard Previous { get; set; }
-        protected Move(Side side, string move)
+        public IBoard Board { get; }
+        private IBoard NextBoard { get; set; }
+        protected Move(IBoard board, Side side, string move)
         {
+            Board = board;
             Side = side;
             if (string.IsNullOrWhiteSpace(move))
                 throw new ArgumentNullException(nameof(move), "Move String cannot be null or empty");
@@ -20,17 +22,16 @@ namespace CAESAR.Chess.Moves
         public override string ToString() => MoveString;
         public Side Side { get; }
 
-        public IBoard Make(IBoard board)
+        public IBoard Make()
         {
-            Previous = board;
-            return MakeImplementation();
+            return NextBoard ?? (NextBoard = MakeImplementation((IBoard) Board.Clone()));
         }
 
-        protected abstract IBoard MakeImplementation();
+        protected abstract IBoard MakeImplementation(IBoard board);
 
         public IBoard Undo()
         {
-            return Previous;
+            return Board;
         }
         public string ToString(INotation notation) => notation?.ToString(this);
     }

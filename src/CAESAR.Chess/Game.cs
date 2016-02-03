@@ -38,7 +38,7 @@ namespace CAESAR.Chess
 
         public void PlayNextMove(IMove move)
         {
-            var board = CurrentPlayer.MakeMove(move, Board);
+            var board = CurrentPlayer.MakeMove(move);
             if (board == Board)
                 return;
             Board = board;

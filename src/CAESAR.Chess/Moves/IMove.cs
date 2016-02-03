@@ -15,12 +15,16 @@ namespace CAESAR.Chess.Moves
         /// </summary>
         Side Side { get; }
         /// <summary>
+        /// The <seealso cref="IBoard"/> to which the move belongs.
+        /// </summary>
+        IBoard Board { get; }
+
+        /// <summary>
         ///     Makes the <seealso cref="IMove" /> on the <seealso cref="IBoard" /> and returns a new instance of
         ///     <seealso cref="IBoard" />.
         /// </summary>
-        /// <param name="board">The <seealso cref="IBoard" /> on which to make the move.</param>
         /// <returns>An <seealso cref="IBoard" /> with this <seealso cref="IMove" /> already made on it.</returns>
-        IBoard Make(IBoard board);
+        IBoard Make();
 
         /// <summary>
         ///     Undoes the <seealso cref="IMove" /> on the <seealso cref="IBoard" /> and returns a new instance of

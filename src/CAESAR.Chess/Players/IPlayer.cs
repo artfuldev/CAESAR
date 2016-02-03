@@ -12,7 +12,7 @@ namespace CAESAR.Chess.Players
         string Name { get; }
         IEnumerable<IMove> GetAllMoves(IBoard board);
         IMove GetBestMove(IBoard board);
-        IBoard MakeMove(IMove move, IBoard board);
-        IBoard UnMakeMove(IMove move, IBoard board);
+        IBoard MakeMove(IMove move);
+        IBoard UnMakeMove(IMove move);
     }
 }

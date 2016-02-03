@@ -31,14 +31,18 @@ namespace CAESAR.Chess.Players
             return GetAllMoves(board).FirstOrDefault();
         }
 
-        public IBoard MakeMove(IMove move, IBoard board)
+        public IBoard MakeMove(IMove move)
         {
-            return Side != move.Side ? board : move.Make(board);
+            if(Side != move.Side)
+                throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
+            return move.Make();
         }
 
-        public IBoard UnMakeMove(IMove move, IBoard board)
+        public IBoard UnMakeMove(IMove move)
         {
-            return Side != move.Side ? board : move.Undo(board);
+            if (Side != move.Side)
+                throw new CannotUndoMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
+            return move.Undo();
         }
     }
 }
