@@ -18,7 +18,6 @@ namespace CAESAR.Chess.Moves
 
         protected override IPosition MakeImplementation(IPosition position)
         {
-            // Make normal move
             position = base.MakeImplementation(position);
             var destinationSquare = position.Board.GetSquare(DestinationSquareName);
             destinationSquare.Piece = PromotionPieceType.GetPiece(Side);

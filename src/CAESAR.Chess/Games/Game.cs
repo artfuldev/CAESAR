@@ -23,7 +23,8 @@ namespace CAESAR.Chess.Games
             new InProgressUpdater(),
             new InCheckUpdater(),
             new WinByCheckmateUpdater(),
-            new ThreefoldRepetitionUpdater()
+            new ThreefoldRepetitionUpdater(),
+            new FiftyMoveRuleUpdater()
         }; 
         public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves, ICollection<IStatusUpdater> statusUpdaters = null)
         {
@@ -36,12 +37,26 @@ namespace CAESAR.Chess.Games
             Moves = moves ?? new List<IMove>();
             StatusUpdaters = statusUpdaters ?? DefaultStatusUpdaters;
         }
-
+        /// <summary>
+        ///     The current <seealso cref="IPosition" /> of the <seealso cref="IGame" />.
+        /// </summary>
         public IPosition Position { get; private set; }
+        /// <summary>
+        ///     The <seealso cref="IPlayer" /> who plays for <seealso cref="Side.White" />.
+        /// </summary>
         public IPlayer White { get; }
+        /// <summary>
+        ///     The <seealso cref="IPlayer" /> who plays for <seealso cref="Side.Black" />.
+        /// </summary>
         public IPlayer Black { get; }
         public ICollection<IMove> Moves { get; }
+        /// <summary>
+        ///     The current <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
+        /// </summary>
         public IPlayer CurrentPlayer => (Moves?.Count ?? 0) % 2 == 0 ? White : Black;
+        /// <summary>
+        ///     The current opposing <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
+        /// </summary>
         public IPlayer CurrentOpponent => CurrentPlayer == White ? Black : White;
         public bool CurrentSideInCheck { get; set; }
         public Side SideToPlay => (Moves?.Count ?? 0) % 2 == 0 ? Side.White : Side.Black;
