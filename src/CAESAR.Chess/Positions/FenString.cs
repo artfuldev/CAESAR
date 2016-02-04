@@ -7,7 +7,7 @@ namespace CAESAR.Chess.Positions
     {
         private static readonly Regex FenRegex =
             new Regex(
-                @"\A(?<PiecePlacement>[rnbqkRNBQK1-8]+/(?:[prnbqkPRNBQK1-8]+/){6}[rnbqkRNBQK1-8]+)\s(?<ActiveColor>[wb])\s(?<CastlingAvailability>[KQkq]{1,4}|-)\s(?<EnPassantSquare>[a-h][36]|-)(\s(?<HalfMoveClock>[0-9]+)\s(?<FullMoveNumber>[0-9]+))?$",
+                @"\A(?<PiecePlacement>[rnbqkRNBQK1-8]+/(?:[prnbqkPRNBQK1-8]+/){6}[rnbqkRNBQK1-8]+)\s(?<ActiveColor>[wb])\s(?<CastlingAvailability>[KQkq]{1,4}|-)\s(?<EnPassantTargetSquare>[a-h][36]|-)(\s(?<HalfMoveClock>[0-9]+)\s(?<FullMoveNumber>[0-9]+))?$",
                 RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
 
         public FenString(string fen)
