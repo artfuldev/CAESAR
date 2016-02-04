@@ -26,6 +26,10 @@ namespace CAESAR.Chess.Moves
             var destination = position.Board.GetSquare(DestinationSquareName);
             Source.Piece = null;
             destination.Piece = Piece;
+            if (Piece.PieceType == PieceType.Pawn)
+                position.HalfMoveClock = 0;
+            else
+                position.HalfMoveClock++;
             return position;
         }
     }
