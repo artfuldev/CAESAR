@@ -11,6 +11,11 @@
         Unknown,
 
         /// <summary>
+        ///     An illegal move was played by one side.
+        /// </summary>
+        IllegalMove,
+
+        /// <summary>
         ///     The <seealso cref="IGame" /> just began.
         /// </summary>
         GameJustBegan,
@@ -38,6 +43,6 @@
         /// <summary>
         ///     The position has repeated itself three times on the board, no progress is being made.
         /// </summary>
-        ThreefoldRepetition
+        ThreefoldRepetition,
     }
 }
