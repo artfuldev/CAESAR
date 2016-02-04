@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Games.Exceptions;
 using CAESAR.Chess.Games.Statuses;
 using CAESAR.Chess.Games.Statuses.Updaters;
 using CAESAR.Chess.Moves;
-using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
 using CAESAR.Chess.Positions;
 
@@ -24,7 +20,8 @@ namespace CAESAR.Chess.Games
             new InCheckUpdater(),
             new WinByCheckmateUpdater(),
             new ThreefoldRepetitionUpdater(),
-            new FiftyMoveRuleUpdater()
+            new FiftyMoveRuleUpdater(),
+            new StalemateUpdater()
         }; 
         public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves, ICollection<IStatusUpdater> statusUpdaters = null)
         {
