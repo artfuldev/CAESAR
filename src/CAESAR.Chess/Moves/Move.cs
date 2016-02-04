@@ -27,7 +27,7 @@ namespace CAESAR.Chess.Moves
         {
             if(player.Side != Side)
                 throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return NextPosition ?? (NextPosition = MakeImplementation(Position));
+            return NextPosition ?? (NextPosition = MakeImplementation((IPosition)Position.Clone()));
         }
         protected abstract IPosition MakeImplementation(IPosition position);
         public IPosition Undo(IPlayer player)

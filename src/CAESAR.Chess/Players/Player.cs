@@ -31,8 +31,8 @@ namespace CAESAR.Chess.Players
         public IMove GetBestMove(IPosition board)
         {
             var allMoves = GetAllMoves(board).ToList();
-            var capture = allMoves.FirstOrDefault(x => x is CapturingMove || x is CapturingPromotionMove);
-            var move = allMoves.FirstOrDefault();
+            var capture = allMoves.RandomOrDefault(x => x is CapturingMove || x is CapturingPromotionMove);
+            var move = allMoves.RandomOrDefault();
             return capture ?? move;
         }
 

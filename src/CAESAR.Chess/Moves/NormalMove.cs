@@ -20,10 +20,11 @@ namespace CAESAR.Chess.Moves
         }
         protected override IPosition MakeImplementation(IPosition position)
         {
-            if (Source.IsEmpty)
+            var source = position.Board.GetSquare(SourceSquareName);
+            if (source.IsEmpty)
                 throw new CannotMakeMoveException(MoveOperationFailureReason.SourceSquareIsEmpty);
             var destination = position.Board.GetSquare(DestinationSquareName);
-            Source.Piece = null;
+            source.Piece = null;
             destination.Piece = Piece;
             
             // 50 Move Rule
@@ -32,12 +33,19 @@ namespace CAESAR.Chess.Moves
             else
                 position.HalfMoveClock++;
 
-            // En-Passant
-            if(Piece.PieceType == PieceType.Pawn)
-                if((Source.Rank.Number == 2 && Side == Side.White && (DestinationSquareName == (Source.File.Name.ToString()+4)))||
-                    (Source.Rank.Number==7 && Side==Side.Black && (DestinationSquareName == (Source.File.Name.ToString() + 5))))
-                    position.EnPassantSquare = position.Board.GetSquare(Side==Side.White)
+            // Set En-Passant Square
+            // If piece is pawn
+            if (Piece.PieceType == PieceType.Pawn &&
+                // and pawn moves from rank 2 to rank 4 if white
+                ((SourceSquareName.EndsWith("2") && Side == Side.White &&
+                  (DestinationSquareName == (source.File.Name.ToString() + 4))) ||
+                  // or from rank 7 to rank 5 if black
+                 (SourceSquareName.EndsWith("7") && Side == Side.Black &&
+                  (DestinationSquareName == (source.File.Name.ToString() + 5)))))
+                // set rank 3/6 square of the file as En Passant Square
+                position.EnPassantSquare = position.Board.GetSquare(SourceSquareName.Replace('2', '3').Replace('7', '6'));
 
+            position.SideToMove = Position.SideToMove == Side.White ? Side.Black : Side.White;
 
             return position;
         }
