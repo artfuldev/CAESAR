@@ -14,7 +14,7 @@ namespace CAESAR.Chess.Tests.Pieces
     public class PieceTests
     {
         private static readonly IEnumerable<IMove> MovesInstance = Enumerable.Empty<Move>();
-        private static readonly ISquare SomeSquareInstance = new Position().ClearBoard().Board.GetSquare("a1");
+        private static readonly ISquare SomeSquareInstance = Position.EmptyPosition.Board.GetSquare("a1");
 
         private static readonly IMovesGenerator Generator = new MovesGeneratorTestClass();
 

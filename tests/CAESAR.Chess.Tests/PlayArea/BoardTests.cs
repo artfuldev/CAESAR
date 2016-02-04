@@ -11,7 +11,7 @@ namespace CAESAR.Chess.Tests.PlayArea
     {
         private readonly IBoard _board;
 
-        public BoardTests() : this(new Position().ClearBoard().Board)
+        public BoardTests() : this(Position.EmptyPosition.Board)
         {
         }
 

@@ -11,5 +11,7 @@ namespace CAESAR.Chess.Positions
         ISquare EnPassantSquare { get; set; }
         byte HalfMoveClock { get; set; }
         ushort FullMoveNumber { get; set; }
+        void SetPosition(FenString fenString);
+        FenString ToFenString();
     }
 }

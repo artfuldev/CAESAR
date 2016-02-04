@@ -14,7 +14,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
 {
     public class BishopMovesGeneratorTests
     {
-        private readonly IBoard _board = new Position().ClearBoard().Board;
+        private readonly IBoard _board = Position.EmptyPosition.Board;
         private readonly IMovesGenerator _movesGenerator = new BishopMovesGenerator();
         private readonly IPiece _piece = new Bishop(Side.White);
 
@@ -56,7 +56,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
             foreach (var pieceSquare in squares)
             {
-                pieceSquare.Piece = new Pawn(Side.White);
+                pieceSquare.Piece = new Queen(Side.White);
             }
             square.Piece = _piece;
             _movesGenerator.Square = square;
@@ -77,7 +77,7 @@ namespace CAESAR.Chess.Tests.Moves.Generation
                 y.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(sq => _board.GetSquare(sq));
             foreach (var pieceSquare in squares)
             {
-                pieceSquare.Piece = new Pawn(Side.Black);
+                pieceSquare.Piece = new Queen(Side.Black);
             }
             square.Piece = _piece;
             _movesGenerator.Square = square;

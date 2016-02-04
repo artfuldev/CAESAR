@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Helpers;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
 
@@ -7,89 +10,39 @@ namespace CAESAR.Chess.Positions
 {
     public class Position : IPosition
     {
-        public Position(IBoard board = null, Side sideToMove = Side.White, CastlingRights castlingRights = CastlingRights.WhiteLong|CastlingRights.WhiteShort|CastlingRights.BlackLong|CastlingRights.BlackShort, ISquare enPassantSquare = null, byte halfMoveClock = 0, ushort fullMoveNumber = 1)
+        private static readonly FenString StartingPositionFenString =
+            "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+        private static readonly FenString EmptyPositionFenString =
+            "8/8/8/8/8/8/8/8 w KQkq - 0 1";
+
+
+        public Position(FenString fenString = null)
         {
-            Board = board ?? new Board(this);
-            if (board == null)
-                SetupBoard();
-            SideToMove = sideToMove;
-            CastlingRights = castlingRights;
-            EnPassantSquare = enPassantSquare;
-            HalfMoveClock = halfMoveClock;
-            FullMoveNumber = fullMoveNumber;
+            Board = new Board(this);
+            fenString = fenString ?? StartingPositionFenString;
+            SetPosition(fenString);
         }
 
-        public IPosition ClearBoard()
+        public static IPosition EmptyPosition => new Position(EmptyPositionFenString);
+
+        public void ClearBoard()
         {
-            var position = new Position()
-            {
-                Board = (IBoard)Board.Clone(),
-                SideToMove = Side.White,
-                CastlingRights = CastlingRights.WhiteLong | CastlingRights.WhiteShort | CastlingRights.BlackLong | CastlingRights.BlackShort,
-                HalfMoveClock = 0,
-                FullMoveNumber = 1
-            };
-            foreach (var square in position.Board.Squares)
+            foreach (var square in Board.Squares)
                 square.Piece = null;
-            return position;
         }
 
-        private void SetupBoard()
+        private void ResetPosition()
         {
-            var piecePlacements = new Dictionary<string, IPiece>();
-
-            // Pawns
-            for (var i = 0; i < 8; i++)
-            {
-                piecePlacements.Add((char)(97 + i) + "2", new Pawn(Side.White));
-                piecePlacements.Add((char)(97 + i) + "7", new Pawn(Side.Black));
-            }
-
-            // Rooks
-
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char)(97 + i * 7) + "1", new Rook(Side.White));
-                piecePlacements.Add((char)(97 + i * 7) + "8", new Rook(Side.Black));
-            }
-
-            // Knights
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char)(98 + i * 5) + "1", new Knight(Side.White));
-                piecePlacements.Add((char)(98 + i * 5) + "8", new Knight(Side.Black));
-            }
-
-            // Bishops
-            for (var i = 0; i < 2; i++)
-            {
-                piecePlacements.Add((char)(99 + i * 3) + "1", new Bishop(Side.White));
-                piecePlacements.Add((char)(99 + i * 3) + "8", new Bishop(Side.Black));
-            }
-
-            // Queens
-            piecePlacements.Add("d1", new Queen(Side.White));
-            piecePlacements.Add("d8", new Queen(Side.Black));
-
-            // Kings
-            piecePlacements.Add("e1", new King(Side.White));
-            piecePlacements.Add("e8", new King(Side.Black));
-
-            foreach (var piecePlacement in piecePlacements)
-            {
-                Board.GetSquare(piecePlacement.Key).Piece = piecePlacement.Value;
-            }
+            ClearBoard();
+            SideToMove = Side.White;
+            CastlingRights = CastlingRights.WhiteLong | CastlingRights.WhiteShort | CastlingRights.BlackLong |
+                             CastlingRights.BlackShort;
+            HalfMoveClock = 0;
+            FullMoveNumber = 1;
         }
         public object Clone()
         {
-            return new Position()
-            {
-                Board = (IBoard)Board.Clone(),
-                SideToMove = SideToMove,
-                CastlingRights = CastlingRights,
-                HalfMoveClock = HalfMoveClock,
-                FullMoveNumber = FullMoveNumber
-            };
+            return new Position(ToFenString());
         }
 
         public IBoard Board { get; set; }
@@ -98,5 +51,72 @@ namespace CAESAR.Chess.Positions
         public ISquare EnPassantSquare { get; set; }
         public byte HalfMoveClock { get; set; }
         public ushort FullMoveNumber { get; set; }
+        public void SetPosition(FenString fenString)
+        {
+            ResetPosition();
+
+            // Piece Placement
+            var rows = fenString.PiecePlacement.Split('/');
+            var boardRows = Board.Ranks.Reverse().ToArray();
+            for (var i = 0; i < boardRows.Length; i++)
+            {
+                var row = rows[i];
+                var boardRow = boardRows[i].Squares.ToArray();
+                var j = 0;
+                foreach (var character in row)
+                {
+                    if (char.IsDigit(character))
+                    {
+                        var digit = byte.Parse(character.ToString());
+                        for (var k = 0; k < digit; k++)
+                            boardRow[j++].Piece = null;
+                    }
+                    else
+                        boardRow[j++].Piece = character.GetPiece();
+                }
+            }
+            
+            SideToMove = fenString.ActiveColor.ToSide();
+            CastlingRights = fenString.CastlingAvailablity.ToCastlingRights();
+            EnPassantSquare = Board.GetSquare(fenString.EnPassantTargetSquare);
+            HalfMoveClock = fenString.HalfMoveClock;
+            FullMoveNumber = fenString.FullMoveNumber;
+        }
+
+        public FenString ToFenString()
+        {
+            var piecePlacement = "";
+            var rows = Board.Ranks.Reverse().ToArray();
+            for (var i = 0; i < rows.Length; i++)
+            {
+                var squares = rows[i].Squares.ToArray();
+                var emptySquareCount = 0;
+                for(var j=0;j<squares.Length;j++)
+                {
+                    var square = squares[j];
+                    if (square.IsEmpty)
+                    {
+                        emptySquareCount++;
+                        if (j == squares.Length - 1)
+                            piecePlacement += emptySquareCount;
+                    }
+                    else
+                    {
+                        if (emptySquareCount != 0)
+                            piecePlacement += emptySquareCount;
+                        emptySquareCount = 0;
+                        piecePlacement += square.Piece.Notation;
+                    }
+                }
+                if (i != rows.Length - 1)
+                    piecePlacement += "/";
+            }
+
+            var activeColor = SideToMove.GetActiveColor();
+            var castlingAvailability = CastlingRights.ToCastlingAvailability();
+            var enPassantSquare = EnPassantSquare?.Name ?? "-";
+            return
+                $"{piecePlacement} {activeColor} {castlingAvailability} {enPassantSquare} {HalfMoveClock} {FullMoveNumber}";
+        }
     }
 }

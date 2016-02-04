@@ -11,7 +11,7 @@ namespace CAESAR.Chess.Tests.PlayArea
         private readonly IBoard _board;
         private readonly IFile _file;
 
-        public FileTests() : this(new Position().ClearBoard().Board)
+        public FileTests() : this(Position.EmptyPosition.Board)
         {
         }
 

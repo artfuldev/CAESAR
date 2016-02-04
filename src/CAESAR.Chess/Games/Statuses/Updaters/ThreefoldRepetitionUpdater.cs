@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Games.Statuses.Updaters
 {
@@ -6,12 +7,19 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
     {
         public void UpdateStatus(IGame game)
         {
-            var lastBoard = game.Position.ToString();
-            var boards = game.Moves.Select(move => move.Position.Board.ToString()).ToArray();
-            if (!boards.Contains(lastBoard) || boards.Count(b => b == lastBoard) != 3)
+            var lastPosition = game.Position.ToFenString();
+            var previousPositions = game.Moves.Select(move => move.Position.ToFenString()).ToArray();
+            if (previousPositions.Count(position => IsRepeatPosition(lastPosition, position)) != 3)
                 return;
             game.Status = Status.Drawn;
             game.StatusReason = StatusReason.ThreefoldRepetition;
+        }
+
+        private static bool IsRepeatPosition(FenString left, FenString right)
+        {
+            return left.EnPassantTargetSquare == right.EnPassantTargetSquare &&
+                   left.CastlingAvailablity == right.CastlingAvailablity &&
+                   left.PiecePlacement == right.PiecePlacement;
         }
     }
 }

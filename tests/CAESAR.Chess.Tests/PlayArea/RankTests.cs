@@ -11,7 +11,7 @@ namespace CAESAR.Chess.Tests.PlayArea
         private readonly IBoard _board;
         private readonly IRank _rank;
 
-        public RankTests() : this(new Position().ClearBoard().Board)
+        public RankTests() : this(Position.EmptyPosition.Board)
         {
         }
 

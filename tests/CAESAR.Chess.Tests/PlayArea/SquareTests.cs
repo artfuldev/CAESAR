@@ -13,7 +13,7 @@ namespace CAESAR.Chess.Tests.PlayArea
         private readonly ISquare _lightSquare;
         private readonly ISquare _square;
 
-        public SquareTests() : this(new Position().ClearBoard().Board)
+        public SquareTests() : this(Position.EmptyPosition.Board)
         {
         }
 
