@@ -107,5 +107,29 @@ namespace CAESAR.Chess.Tests.Moves.Generation
             var expectedMoveStrings = z.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             Assert.True(expectedMoveStrings.SetEquals(moveStrings));
         }
+
+        [Theory]
+        [InlineData("d7d5", "rnbqkbnr/pppp1ppp/4p3/4P3/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2 ","d6")]
+        public void MoveAtFenSetsEnPassantSquare(string move, string fen, string enPassantSquare)
+        {
+            IPosition position = new Position(fen);
+            var player = new Player() {Side = position.SideToMove};
+            var thisMove = player.GetAllMoves(position).First(x => ((Move) x).MoveString == move);
+            position = player.MakeMove(thisMove);
+            Assert.Equal(position.Board.GetSquare(enPassantSquare), position.EnPassantSquare);
+        }
+
+        [Theory]
+        [InlineData("rnbqkbnr/ppp2ppp/4p3/3pP3/8/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 3 ","e5d6")]
+        [InlineData("r1bqkbnr/ppp3pp/n3pp2/2PpP3/8/8/PP1P1PPP/RNBQKBNR w KQkq d6 0 5 ","e5d6,c5d6")]
+        public void EnPassantMovesAtFenStringAreGenerated(string fen, string enPassantMoves)
+        {
+            IPosition position = new Position(fen);
+            var player = new Player() { Side = position.SideToMove };
+            var moves = player.GetAllMoves(position).OfType<EnPassantMove>();
+            var moveStrings = moves.Select(move => move.ToString());
+            var expectedMoveStrings = enPassantMoves.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            Assert.True(expectedMoveStrings.SetEquals(moveStrings));
+        }
     }
 }

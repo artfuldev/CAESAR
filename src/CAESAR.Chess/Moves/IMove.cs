@@ -20,21 +20,18 @@ namespace CAESAR.Chess.Moves
         /// The <seealso cref="IPosition"/> to which the move belongs.
         /// </summary>
         IPosition Position { get; }
-
         /// <summary>
         ///     Makes the <seealso cref="IMove" /> on the <seealso cref="IPosition" /> and returns a new instance of
         ///     <seealso cref="IPosition" />.
         /// </summary>
         /// <returns>An <seealso cref="IPosition" /> with this <seealso cref="IMove" /> already made on it.</returns>
         IPosition Make(IPlayer player);
-
         /// <summary>
         ///     Undoes the <seealso cref="IMove" /> on the <seealso cref="IPosition" /> and returns a new instance of
         ///     <seealso cref="IPosition" />.
         /// </summary>
         /// <returns>An <seealso cref="IPosition" /> with this <seealso cref="IMove" /> undone on it.</returns>
         IPosition Undo(IPlayer player);
-
         /// <summary>
         ///     Returns a string representation of the move in the specified <seealso cref="INotation" />.
         /// </summary>

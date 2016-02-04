@@ -10,7 +10,6 @@ namespace CAESAR.Chess.Moves
             : base(source, destinationSquareName)
         {
         }
-
         protected override IPosition MakeImplementation(IPosition position)
         {
             position = base.MakeImplementation(position);

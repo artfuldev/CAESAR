@@ -2,6 +2,7 @@
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Games.Statuses.Updaters
 {
@@ -18,17 +19,7 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
         /// <param name="game">The <seealso cref="IGame" /> for which the status is to be updated.</param>
         public void UpdateStatus(IGame game)
         {
-            // If king can be captured by opponent, current side is in check
-            game.CurrentSideInCheck = game.CurrentOpponent.GetAllMoves(game.Position).FirstOrDefault(x =>
-            {
-                var normalMove = x as NormalMove;
-                if (normalMove == null)
-                    return false;
-                var square = x.Position.Board.GetSquare(normalMove.DestinationSquareName);
-                if (square == null)
-                    return false;
-                return square.HasPiece && square.Piece.PieceType == PieceType.King;
-            }) != null;
+            game.CurrentSideInCheck = game.Position.IsInCheck(game.Position.SideToMove);
         }
     }
 }

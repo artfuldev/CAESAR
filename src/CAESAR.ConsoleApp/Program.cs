@@ -33,7 +33,7 @@ namespace CAESAR.ConsoleApp
                     board = game.Position.Board;
                     board.Print();
                     Console.WriteLine(string.Join(" ",
-                        game.Moves.Select(x => x.ToString() + (currentSideInCheck ? "+" : ""))) + " " + game.Status +
+                        game.Moves.Select(x => x.ToString())) + (currentSideInCheck ? "+" : "") + " " + game.Status +
                                       " " + game.StatusReason);
                 }
                 catch
@@ -43,27 +43,8 @@ namespace CAESAR.ConsoleApp
             }
             stopwatch.Stop();
             var time1 = stopwatch.Elapsed;
-            movesList = new List<IMove>();
-            game = new Game(null, whitePlayer, blackPlayer, movesList);
-            stopwatch.Restart();
-            var movesPlayed2 = 0;
-            for (movesPlayed2 = 0; movesPlayed2 < maxMovesCount; movesPlayed2++)
-            {
-                try
-                {
-                    game.Play();
-                }
-                catch
-                {
-                    break;
-                }
-            }
-            stopwatch.Stop();
-            var time2 = stopwatch.Elapsed;
             Console.WriteLine(movesPlayed1 + " moves played and printed in " + time1.Milliseconds + "ms");
-            Console.WriteLine("Moves played and printed per second: " + (movesPlayed1/time1.Milliseconds)*1000);
-            Console.WriteLine(movesPlayed2 + " moves played in " + time2.Milliseconds + "ms");
-            Console.WriteLine("Moves played per second: " + (movesPlayed2/time2.Milliseconds)*1000);
+            Console.WriteLine("Moves played and printed per second: " + (movesPlayed1 / time1.Milliseconds) * 1000);
             Console.WriteLine("All moves played");
             Console.ReadLine();
         }

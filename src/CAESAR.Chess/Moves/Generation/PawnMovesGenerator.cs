@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Helpers;
@@ -19,9 +20,12 @@ namespace CAESAR.Chess.Moves.Generation
             PieceType.Knight
         };
 
-        // TODO: Add En Passant
         protected override IEnumerable<IMove> SpecialMoves
-            => PromotionMoves().Concat(Enumerable.Empty<IMove>());
+            =>
+                PromotionMoves()
+                    .Cast<IMove>()
+                    .Concat(GetEnPassantMove() == null ? Enumerable.Empty<EnPassantMove>() : new[] {GetEnPassantMove()})
+            ;
         protected override IEnumerable<ISquare> MovementSquares => PawnMovementSquares();
         protected override IEnumerable<ISquare> CaptureSquares => Square.Rank.Number == PromotionRankNumber
             ? Enumerable.Empty<ISquare>()
@@ -78,6 +82,22 @@ namespace CAESAR.Chess.Moves.Generation
                             : new PromotionMove(Square, destination.Name, pieceType));
         }
 
+        private EnPassantMove _enPassantMove;
+
+        private EnPassantMove GetEnPassantMove()
+        {
+            if (_enPassantMove != null)
+                return _enPassantMove;
+            var enPassantSquare = Square.Board.Position.EnPassantSquare;
+            if (enPassantSquare == null ||
+                Square.Rank.Number != EnPassantRankNumber ||
+                Math.Abs(Square.File.Name - enPassantSquare.File.Name) != 1 ||
+                Math.Abs(Square.Rank.Number - enPassantSquare.Rank.Number) != 1)
+                return null;
+            return _enPassantMove = new EnPassantMove(Square, enPassantSquare.Name);
+        }
+
         private int PromotionRankNumber => Side == Side.White ? 7 : Side == Side.Black ? 2 : 0;
+        private int EnPassantRankNumber => Side == Side.White ? 5 : Side == Side.Black ? 4 : 0;
     }
 }

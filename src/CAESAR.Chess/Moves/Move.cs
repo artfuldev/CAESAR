@@ -21,19 +21,15 @@ namespace CAESAR.Chess.Moves
                 throw new ArgumentNullException(nameof(move), "Move String cannot be null or empty");
             MoveString = move;
         }
-
         public override string ToString() => MoveString;
         public Side Side { get; }
-
         public IPosition Make(IPlayer player)
         {
             if(player.Side != Side)
                 throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return NextPosition ?? (NextPosition = MakeImplementation(Position));
+            return NextPosition ?? (NextPosition = MakeImplementation((IPosition)Position.Clone()));
         }
-
         protected abstract IPosition MakeImplementation(IPosition position);
-
         public IPosition Undo(IPlayer player)
         {
             if (player.Side != Side)

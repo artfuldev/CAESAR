@@ -21,7 +21,8 @@ namespace CAESAR.Chess.Games
             new WinByCheckmateUpdater(),
             new ThreefoldRepetitionUpdater(),
             new FiftyMoveRuleUpdater(),
-            new StalemateUpdater()
+            new StalemateUpdater(),
+            new IllegalMoveUpdater()
         }; 
         public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves, ICollection<IStatusUpdater> statusUpdaters = null)
         {
