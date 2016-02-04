@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.PlayArea
@@ -10,7 +11,7 @@ namespace CAESAR.Chess.Tests.PlayArea
         private readonly IBoard _board;
         private readonly IRank _rank;
 
-        public RankTests() : this(new Board())
+        public RankTests() : this(Position.EmptyPosition.Board)
         {
         }
 

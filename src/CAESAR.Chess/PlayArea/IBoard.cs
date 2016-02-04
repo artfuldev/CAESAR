@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.PlayArea
 {
     public interface IBoard : ICloneable
     {
+        IPosition Position { get; }
         IReadOnlyCollection<IFile> Files { get; }
         IReadOnlyCollection<IRank> Ranks { get; }
         IReadOnlyCollection<ISquare> Squares { get; }

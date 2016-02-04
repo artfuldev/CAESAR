@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using CAESAR.Chess.Pieces;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.PlayArea
 {
@@ -11,8 +12,9 @@ namespace CAESAR.Chess.PlayArea
         private const byte FileCount = 8;
         private const byte SquareCount = 64;
 
-        public Board()
+        public Board(IPosition position)
         {
+            Position = position;
             var fileSquares = new List<ISquare>[FileCount];
             var files = new IFile[FileCount];
             for (var i = 0; i < FileCount; i++)
@@ -47,6 +49,7 @@ namespace CAESAR.Chess.PlayArea
             Files = files.ToList().AsReadOnly();
         }
 
+        public IPosition Position { get; }
         public IReadOnlyCollection<IFile> Files { get; }
         public IReadOnlyCollection<IRank> Ranks { get; }
         public IReadOnlyCollection<ISquare> Squares { get; }
@@ -92,7 +95,7 @@ namespace CAESAR.Chess.PlayArea
 
         public object Clone()
         {
-            var returnable = new Board();
+            var returnable = new Board(Position);
             for (var i = 0; i < Squares.Count; i++)
                 returnable.Squares.ElementAt(i).Piece = Squares.ElementAt(i).IsEmpty
                     ? null

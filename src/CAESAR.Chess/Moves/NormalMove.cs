@@ -2,6 +2,7 @@
 using CAESAR.Chess.Moves.Exceptions;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Moves
 {
@@ -11,21 +12,21 @@ namespace CAESAR.Chess.Moves
         public string DestinationSquareName { get; }
         public ISquare Source { get;}
         public IPiece Piece { get; }
-        public NormalMove(ISquare source, string destinationSquareName) : base(source.Board, source.Piece.Side, source.Name + destinationSquareName)
+        public NormalMove(ISquare source, string destinationSquareName) : base(source.Board.Position, source.Piece.Side, source.Name + destinationSquareName)
         {
-            Source = Board.GetSquare(source.Name);
+            Source = Position.Board.GetSquare(source.Name);
             Piece = source.Piece;
             DestinationSquareName = destinationSquareName;
         }
 
-        protected override IBoard MakeImplementation(IBoard board)
+        protected override IPosition MakeImplementation(IPosition position)
         {
             if (Source.IsEmpty)
                 throw new CannotMakeMoveException(MoveOperationFailureReason.SourceSquareIsEmpty);
-            var destination = board.GetSquare(DestinationSquareName);
+            var destination = position.Board.GetSquare(DestinationSquareName);
             Source.Piece = null;
             destination.Piece = Piece;
-            return board;
+            return position;
         }
     }
 }

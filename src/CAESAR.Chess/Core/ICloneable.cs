@@ -1,11 +1,14 @@
 ﻿namespace CAESAR.Chess.Core
 {
-    public interface ICloneable<out T>
+    /// <summary>
+    ///     Represents an object that is cloneable
+    /// </summary>
+    public interface ICloneable
     {
-        T Clone();
-    }
-
-    public interface ICloneable : ICloneable<object>
-    {
+        /// <summary>
+        ///     Return a clone of the current object
+        /// </summary>
+        /// <returns>An <seealso cref="object" /> that is the clone of the current object.</returns>
+        object Clone();
     }
 }

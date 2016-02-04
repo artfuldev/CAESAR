@@ -4,17 +4,18 @@ using CAESAR.Chess.Moves.Exceptions;
 using CAESAR.Chess.Moves.Notations;
 using CAESAR.Chess.PlayArea;
 using CAESAR.Chess.Players;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Moves
 {
     public abstract class Move : IMove
     {
         public string MoveString { get; protected set; }
-        public IBoard Board { get; }
-        private IBoard NextBoard { get; set; }
-        protected Move(IBoard board, Side side, string move)
+        public IPosition Position { get; }
+        private IPosition NextPosition { get; set; }
+        protected Move(IPosition position, Side side, string move)
         {
-            Board = (IBoard)board.Clone();
+            Position = (IPosition)position.Clone();
             Side = side;
             if (string.IsNullOrWhiteSpace(move))
                 throw new ArgumentNullException(nameof(move), "Move String cannot be null or empty");
@@ -24,20 +25,20 @@ namespace CAESAR.Chess.Moves
         public override string ToString() => MoveString;
         public Side Side { get; }
 
-        public IBoard Make(IPlayer player)
+        public IPosition Make(IPlayer player)
         {
             if(player.Side != Side)
                 throw new CannotMakeMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return NextBoard ?? (NextBoard = MakeImplementation(Board));
+            return NextPosition ?? (NextPosition = MakeImplementation(Position));
         }
 
-        protected abstract IBoard MakeImplementation(IBoard board);
+        protected abstract IPosition MakeImplementation(IPosition position);
 
-        public IBoard Undo(IPlayer player)
+        public IPosition Undo(IPlayer player)
         {
             if (player.Side != Side)
                 throw new CannotUndoMoveException(MoveOperationFailureReason.PlayerNotOnCorrectSide);
-            return Board;
+            return Position;
         }
         public string ToString(INotation notation) => notation?.ToString(this);
     }

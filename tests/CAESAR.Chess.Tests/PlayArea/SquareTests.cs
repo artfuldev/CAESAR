@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 using Xunit;
 
 namespace CAESAR.Chess.Tests.PlayArea
@@ -12,7 +13,7 @@ namespace CAESAR.Chess.Tests.PlayArea
         private readonly ISquare _lightSquare;
         private readonly ISquare _square;
 
-        public SquareTests() : this(new Board())
+        public SquareTests() : this(Position.EmptyPosition.Board)
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Helpers;
 
 namespace CAESAR.Chess.Pieces
 {
@@ -72,6 +73,13 @@ namespace CAESAR.Chess.Pieces
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+        }
+
+        
+
+        public static IPiece GetPiece(this char notation)
+        {
+            return GetPiece(notation.GetPieceType(), notation.GetPieceSide());
         }
     }
 }
