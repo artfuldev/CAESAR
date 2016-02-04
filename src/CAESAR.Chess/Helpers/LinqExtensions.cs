@@ -30,7 +30,7 @@ namespace CAESAR.Chess.Helpers
             whilePredicate = whilePredicate ?? (x => true);
             var list = source.Where(whilePredicate).ToList();
             var count = list.Count;
-            var index = _random.Next(0, count + 1);
+            var index = _random.Next(count);
             return list[index];
         }
 
