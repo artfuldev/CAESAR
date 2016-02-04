@@ -18,7 +18,6 @@ namespace CAESAR.Chess.Moves
             Piece = source.Piece;
             DestinationSquareName = destinationSquareName;
         }
-
         protected override IPosition MakeImplementation(IPosition position)
         {
             if (Source.IsEmpty)
@@ -26,10 +25,20 @@ namespace CAESAR.Chess.Moves
             var destination = position.Board.GetSquare(DestinationSquareName);
             Source.Piece = null;
             destination.Piece = Piece;
+            
+            // 50 Move Rule
             if (Piece.PieceType == PieceType.Pawn)
                 position.HalfMoveClock = 0;
             else
                 position.HalfMoveClock++;
+
+            // En-Passant
+            if(Piece.PieceType == PieceType.Pawn)
+                if((Source.Rank.Number == 2 && Side == Side.White && (DestinationSquareName == (Source.File.Name.ToString()+4)))||
+                    (Source.Rank.Number==7 && Side==Side.Black && (DestinationSquareName == (Source.File.Name.ToString() + 5))))
+                    position.EnPassantSquare = position.Board.GetSquare(Side==Side.White)
+
+
             return position;
         }
     }
