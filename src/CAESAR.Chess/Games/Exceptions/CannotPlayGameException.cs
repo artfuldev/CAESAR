@@ -20,7 +20,7 @@ namespace CAESAR.Chess.Games.Exceptions
         }
 
         /// <summary>
-        ///     The status of the <seealso cref="IGame" /> that cannot be played
+        ///     The status of the <seealso cref="IGame" /> that cannot be played.
         /// </summary>
         public Status Status { get; }
 
