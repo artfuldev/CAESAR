@@ -79,7 +79,7 @@ namespace CAESAR.Chess.Games
         /// <summary>
         ///     Plays the best <seealso cref="IMove" /> of the <seealso cref="IGame.CurrentPlayer" />.
         /// </summary>
-        /// <exception cref="CannotPlayGameException"></exception>
+        /// <exception cref="CannotPlayGameException">When the current <seealso cref="IGame" /> is not playable.</exception>
         public void Play()
         {
             switch (Status)
