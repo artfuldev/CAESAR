@@ -25,25 +25,34 @@ namespace CAESAR.Chess.Moves.Generation
 
         private IEnumerable<CastlingMove> GetCastlingMoves()
         {
-            var availability = Square.Board.Position.CastlingRights;
+            var board = Square.Board;
+            var position = board.Position;
+            var availability = position.CastlingRights;
             if (availability == CastlingRights.None)
+                yield break;
+            if (position.IsInCheck(Side))
                 yield break;
             if (Side == Side.White)
             {
-                if(availability.HasFlag(CastlingRights.WhiteShort))
+                if (availability.HasFlag(CastlingRights.WhiteShort) && board.GetSquare("f1").IsEmpty &&
+                    board.GetSquare("g1").IsEmpty)
                     yield return new CastlingMove(Square, CastlingType.Kingside);
-                if (availability.HasFlag(CastlingRights.WhiteLong))
+                if (availability.HasFlag(CastlingRights.WhiteLong) && board.GetSquare("b1").IsEmpty &&
+                    board.GetSquare("c1").IsEmpty && board.GetSquare("d1").IsEmpty)
                     yield return new CastlingMove(Square, CastlingType.Queenside);
                 yield break;
             }
             if (Side == Side.Black)
             {
-                if (availability.HasFlag(CastlingRights.BlackShort))
+                if (availability.HasFlag(CastlingRights.BlackShort) && board.GetSquare("f8").IsEmpty &&
+                    board.GetSquare("g8").IsEmpty)
                     yield return new CastlingMove(Square, CastlingType.Kingside);
-                if (availability.HasFlag(CastlingRights.BlackLong))
+                if (availability.HasFlag(CastlingRights.BlackLong) && board.GetSquare("b8").IsEmpty &&
+                    board.GetSquare("c8").IsEmpty && board.GetSquare("d8").IsEmpty)
                     yield return new CastlingMove(Square, CastlingType.Queenside);
+                yield break;
             }
-        } 
+        }
 
         protected override IEnumerable<ISquare> MovementSquares
             => Directions.Select(Square.GetAdjacentSquareInDirection);
