@@ -45,6 +45,38 @@ namespace CAESAR.Chess.Moves
                 // set rank 3/6 square of the file as En Passant Square
                 position.EnPassantSquare = position.Board.GetSquare(SourceSquareName.Replace('2', '3').Replace('7', '6'));
 
+            // Set castling rights
+            if (Piece.PieceType == PieceType.King)
+            {
+                if (Side == Side.White)
+                {
+                    position.CastlingRights &= ~CastlingRights.WhiteShort;
+                    position.CastlingRights &= ~CastlingRights.WhiteLong;
+                }
+                if (Side == Side.Black)
+                {
+                    position.CastlingRights &= ~CastlingRights.BlackShort;
+                    position.CastlingRights &= ~CastlingRights.BlackLong;
+                }
+            }
+            if (Piece.PieceType == PieceType.Rook)
+            {
+                if (Side == Side.White)
+                {
+                    if (Source.File.Name == 'h')
+                        position.CastlingRights &= ~CastlingRights.WhiteShort;
+                    if (Source.File.Name == 'a')
+                        position.CastlingRights &= ~CastlingRights.WhiteLong;
+                }
+                if (Side == Side.Black)
+                {
+                    if (Source.File.Name == 'h')
+                        position.CastlingRights &= ~CastlingRights.BlackShort;
+                    if (Source.File.Name == 'a')
+                        position.CastlingRights &= ~CastlingRights.BlackLong;
+                }
+            }
+
             position.SideToMove = Position.SideToMove == Side.White ? Side.Black : Side.White;
 
             return position;
