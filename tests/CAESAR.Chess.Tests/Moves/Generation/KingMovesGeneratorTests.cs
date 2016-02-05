@@ -74,7 +74,8 @@ namespace CAESAR.Chess.Tests.Moves.Generation
         [InlineData("r1bqk1nr/pp3pbp/2npp1p1/2p5/4P3/2NPB1P1/PPP1NPBP/R2QK2R w KQkq - 6 12", "e1g1")]
         [InlineData("r1bqk1nr/pp3pbp/2npp1p1/2p5/4P3/2NPB1P1/PPPQNPBP/R3K2R w Kkq - 6 12", "e1g1")]
         [InlineData("r1bqk1nr/pp3pbp/2npp1p1/2p5/4P3/2NPB1P1/PPPQNPBP/R3K2R w KQkq - 6 12", "e1g1,e1c1")]
-        public void FenStringXGeneratesCastlingMoves(string fen, string castlingMoves)
+        [InlineData("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","")]
+        public void FenStringGeneratesCorrectCastlingMoves(string fen, string castlingMoves)
         {
             IPosition position = new Position(fen);
             var player = new Player() { Side = position.SideToMove };
