@@ -13,7 +13,7 @@ namespace CAESAR.Chess.Positions
         private static readonly FenString StartingPositionFenString =
             "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         private static readonly FenString EmptyPositionFenString =
-            "8/8/8/8/8/8/8/8 w KQkq - 0 1";
+            "8/8/8/8/8/8/8/8 w - - 0 1";
 
 
         public Position(FenString fenString = null)
