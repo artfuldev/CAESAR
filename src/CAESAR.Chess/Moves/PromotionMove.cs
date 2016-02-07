@@ -35,10 +35,8 @@ namespace CAESAR.Chess.Moves
         ///     Makes this <seealso cref="PromotionMove" /> on its <seealso cref="Move.Position" />.
         ///     <para>
         ///         It moves the <seealso cref="Pawn" /> from the source to the destination, sets castling rights, en passant
-        ///         square, half move
-        ///         clock, etc. on the new position, and then it swaps the moved <seealso cref="Pawn" /> with a new
-        ///         <seealso cref="IPiece" /> of
-        ///         the <seealso cref="PromotionPieceType" />.
+        ///         square, half move clock, etc. on the new position, and then it swaps the moved <seealso cref="Pawn" /> with a
+        ///         new <seealso cref="IPiece" /> of the <seealso cref="PromotionPieceType" />.
         ///     </para>
         /// </summary>
         /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="NormalMove" /> is to be made.</param>
