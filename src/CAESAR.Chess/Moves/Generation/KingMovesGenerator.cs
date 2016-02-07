@@ -71,20 +71,20 @@ namespace CAESAR.Chess.Moves.Generation
             {
                 if (availability.HasFlag(CastlingRights.WhiteShort) && board.GetSquare("f1").IsEmpty &&
                     board.GetSquare("g1").IsEmpty)
-                    yield return new CastlingMove(Square, CastlingType.Kingside);
+                    yield return new CastlingMove(Square, CastleSide.King);
                 if (availability.HasFlag(CastlingRights.WhiteLong) && board.GetSquare("b1").IsEmpty &&
                     board.GetSquare("c1").IsEmpty && board.GetSquare("d1").IsEmpty)
-                    yield return new CastlingMove(Square, CastlingType.Queenside);
+                    yield return new CastlingMove(Square, CastleSide.Queen);
                 yield break;
             }
             if (Side == Side.Black)
             {
                 if (availability.HasFlag(CastlingRights.BlackShort) && board.GetSquare("f8").IsEmpty &&
                     board.GetSquare("g8").IsEmpty)
-                    yield return new CastlingMove(Square, CastlingType.Kingside);
+                    yield return new CastlingMove(Square, CastleSide.King);
                 if (availability.HasFlag(CastlingRights.BlackLong) && board.GetSquare("b8").IsEmpty &&
                     board.GetSquare("c8").IsEmpty && board.GetSquare("d8").IsEmpty)
-                    yield return new CastlingMove(Square, CastlingType.Queenside);
+                    yield return new CastlingMove(Square, CastleSide.Queen);
             }
         }
     }
