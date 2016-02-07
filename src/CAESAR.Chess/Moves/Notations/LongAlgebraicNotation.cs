@@ -1,5 +1,4 @@
 ﻿using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Notations
 {
@@ -17,6 +16,11 @@ namespace CAESAR.Chess.Moves.Notations
     /// <remarks>https://chessprogramming.wikispaces.com/Algebraic+Chess+Notation#Long%20Algebraic%20Notation%20(LAN)</remarks>
     public class LongAlgebraicNotation : INotation
     {
+        /// <summary>
+        ///     Gets the string representation of the <seealso cref="IMove" /> in <seealso cref="LongAlgebraicNotation" />.
+        /// </summary>
+        /// <param name="move">The <seealso cref="IMove" /> for which the notation is required.</param>
+        /// <returns>The string representation of the <seealso cref="IMove" /> in <seealso cref="LongAlgebraicNotation" />.</returns>
         public string ToString(IMove move)
         {
             var normalMove = move as NormalMove;
@@ -29,6 +33,11 @@ namespace CAESAR.Chess.Moves.Notations
                    promotionMove?.PromotionPieceType.GetNotation();
         }
 
+        /// <summary>
+        ///     Gets the notation of the <seealso cref="IPiece" /> required for <seealso cref="LongAlgebraicNotation" />.
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <returns></returns>
         private static string GetNotation(IPiece piece)
         {
             var pieceType = piece.PieceType;
