@@ -25,15 +25,15 @@ namespace CAESAR.Chess.Moves
         }
 
         /// <summary>
-        ///     Makes this <seealso cref="PromotionMove" /> on its <seealso cref="Move.Position" />.
+        ///     Makes this <seealso cref="CapturingPromotionMove" /> on its <seealso cref="Move.Position" />.
         ///     <para>
         ///         It moves the <seealso cref="Pawn" /> from the source to the destination, sets castling rights, en passant
         ///         square, half move clock, etc. on the new position, and then it swaps the moved <seealso cref="Pawn" /> with a
         ///         new <seealso cref="IPiece" /> of the <seealso cref="PromotionMove.PromotionPieceType" />.
         ///     </para>
         /// </summary>
-        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="NormalMove" /> is to be made.</param>
-        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="NormalMove" /> is already made.</returns>
+        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="CapturingPromotionMove" /> is to be made.</param>
+        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="CapturingPromotionMove" /> is already made.</returns>
         protected override IPosition MakeImplementation(IPosition position)
         {
             position = base.MakeImplementation(position);

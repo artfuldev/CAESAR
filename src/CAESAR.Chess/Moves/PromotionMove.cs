@@ -39,8 +39,8 @@ namespace CAESAR.Chess.Moves
         ///         new <seealso cref="IPiece" /> of the <seealso cref="PromotionPieceType" />.
         ///     </para>
         /// </summary>
-        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="NormalMove" /> is to be made.</param>
-        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="NormalMove" /> is already made.</returns>
+        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="PromotionMove" /> is to be made.</param>
+        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="PromotionMove" /> is already made.</returns>
         protected override IPosition MakeImplementation(IPosition position)
         {
             position = base.MakeImplementation(position);
