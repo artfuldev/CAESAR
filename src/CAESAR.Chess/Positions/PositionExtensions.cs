@@ -10,14 +10,15 @@ namespace CAESAR.Chess.Positions
     {
         public static bool IsInCheck(this IPosition position, Side side)
         {
-            var movesToConsider =
+            var opposingSide = side == Side.White ? Side.Black : Side.White;
+            var opponentMoves =
                 position.Board.Squares.Where(
-                    square => square.HasPiece && square.Piece.Side == side && square.Piece.PieceType != PieceType.King)
+                    square => square.HasPiece && square.Piece.Side == opposingSide && square.Piece.PieceType != PieceType.King)
                     .Select(square => square.Piece)
                     .SelectMany(piece => piece.Moves);
 
             // If king can be captured by opponent, current side is in check
-            return movesToConsider.FirstOrDefault(x =>
+            return opponentMoves.FirstOrDefault(x =>
             {
                 var normalMove = x as NormalMove;
                 if (normalMove == null)
