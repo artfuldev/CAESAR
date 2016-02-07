@@ -36,8 +36,8 @@ namespace CAESAR.Chess.Moves.Notations
         /// <summary>
         ///     Gets the notation of the <seealso cref="IPiece" /> required for <seealso cref="LongAlgebraicNotation" />.
         /// </summary>
-        /// <param name="piece"></param>
-        /// <returns></returns>
+        /// <param name="piece">The <seealso cref="IPiece" /> for which the notation is required.</param>
+        /// <returns>The notation of the <seealso cref="IPiece" /> required for <seealso cref="LongAlgebraicNotation" />.</returns>
         private static string GetNotation(IPiece piece)
         {
             var pieceType = piece.PieceType;
