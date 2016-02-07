@@ -6,18 +6,57 @@ using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Moves
 {
+    /// <summary>
+    ///     A normal <seealso cref="Move" /> where an <seealso cref="IPiece" /> is moved from a source
+    ///     <seealso cref="ISquare" /> to a destination <seealso cref="ISquare" />. It has additional rules whereby some
+    ///     properties of the <seealso cref="IMove.Position" /> may be set.
+    /// </summary>
     public class NormalMove : Move
     {
-        public string SourceSquareName => Source.Name;
-        public string DestinationSquareName { get; }
-        public ISquare Source { get;}
-        public IPiece Piece { get; }
-        public NormalMove(ISquare source, string destinationSquareName) : base(source.Board.Position, source.Piece.Side, source.Name + destinationSquareName)
+        /// <summary>
+        ///     Instantiates a <seealso cref="NormalMove" /> with a source <seealso cref="ISquare" /> and a destination square
+        ///     name.
+        /// </summary>
+        /// <param name="source">The <seealso cref="ISquare" /> in which the move originates.</param>
+        /// <param name="destinationSquareName">The name of the destination square.</param>
+        public NormalMove(ISquare source, string destinationSquareName)
+            : base(source.Board.Position, source.Piece.Side, source.Name + destinationSquareName)
         {
             Source = Position.Board.GetSquare(source.Name);
+            SourceSquareName = source.Name;
             Piece = source.Piece;
             DestinationSquareName = destinationSquareName;
         }
+
+        /// <summary>
+        ///     The name of the source <seealso cref="ISquare" />.
+        /// </summary>
+        public string SourceSquareName { get; }
+
+        /// <summary>
+        ///     The name of the destination <seealso cref="ISquare" />.
+        /// </summary>
+        public string DestinationSquareName { get; }
+
+        /// <summary>
+        ///     The source <seealso cref="ISquare" />.
+        /// </summary>
+        public ISquare Source { get; }
+
+        /// <summary>
+        ///     The <seealso cref="IPiece" /> in the <seealso cref="Source" />.
+        /// </summary>
+        public IPiece Piece { get; }
+
+        /// <summary>
+        ///     Makes this <seealso cref="NormalMove" /> on its <seealso cref="Move.Position" />.
+        ///     <para>
+        ///         It moves the piece from the source to the destination, sets castling rights, en passant square, half move
+        ///         clock, etc. on the new position.
+        ///     </para>
+        /// </summary>
+        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="NormalMove" /> is to be made.</param>
+        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="NormalMove" /> is already made.</returns>
         protected override IPosition MakeImplementation(IPosition position)
         {
             var source = position.Board.GetSquare(SourceSquareName);
@@ -26,7 +65,7 @@ namespace CAESAR.Chess.Moves
             var destination = position.Board.GetSquare(DestinationSquareName);
             source.Piece = null;
             destination.Piece = Piece;
-            
+
             // 50 Move Rule
             if (Piece.PieceType == PieceType.Pawn)
                 position.HalfMoveClock = 0;
@@ -38,10 +77,10 @@ namespace CAESAR.Chess.Moves
             if (Piece.PieceType == PieceType.Pawn &&
                 // and pawn moves from rank 2 to rank 4 if white
                 ((SourceSquareName.EndsWith("2") && Side == Side.White &&
-                  (DestinationSquareName == (source.File.Name.ToString() + 4))) ||
-                  // or from rank 7 to rank 5 if black
+                  (DestinationSquareName == source.File.Name.ToString() + 4)) ||
+                 // or from rank 7 to rank 5 if black
                  (SourceSquareName.EndsWith("7") && Side == Side.Black &&
-                  (DestinationSquareName == (source.File.Name.ToString() + 5)))))
+                  (DestinationSquareName == source.File.Name.ToString() + 5))))
                 // set rank 3/6 square of the file as En Passant Square
                 position.EnPassantSquare = position.Board.GetSquare(SourceSquareName.Replace('2', '3').Replace('7', '6'));
 
@@ -63,16 +102,16 @@ namespace CAESAR.Chess.Moves
             {
                 if (Side == Side.White)
                 {
-                    if (Source.File.Name == 'h')
+                    if (source.File.Name == 'h')
                         position.CastlingRights &= ~CastlingRights.WhiteShort;
-                    if (Source.File.Name == 'a')
+                    if (source.File.Name == 'a')
                         position.CastlingRights &= ~CastlingRights.WhiteLong;
                 }
                 if (Side == Side.Black)
                 {
-                    if (Source.File.Name == 'h')
+                    if (source.File.Name == 'h')
                         position.CastlingRights &= ~CastlingRights.BlackShort;
-                    if (Source.File.Name == 'a')
+                    if (source.File.Name == 'a')
                         position.CastlingRights &= ~CastlingRights.BlackLong;
                 }
             }

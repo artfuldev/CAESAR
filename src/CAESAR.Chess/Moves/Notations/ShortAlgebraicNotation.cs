@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using CAESAR.Chess.Pieces;
-using CAESAR.Chess.PlayArea;
 
 namespace CAESAR.Chess.Moves.Notations
 {
@@ -16,6 +15,11 @@ namespace CAESAR.Chess.Moves.Notations
     /// <remarks>https://chessprogramming.wikispaces.com/Algebraic+Chess+Notation#Long%20Algebraic%20Notation%20(LAN)</remarks>
     public class ShortAlgebraicNotation : INotation
     {
+        /// <summary>
+        ///     Gets the string representation of the <seealso cref="IMove" /> in <seealso cref="ShortAlgebraicNotation" />.
+        /// </summary>
+        /// <param name="move">The <seealso cref="IMove" /> for which the notation is required.</param>
+        /// <returns>The string representation of the <seealso cref="IMove" /> in <seealso cref="ShortAlgebraicNotation" />.</returns>
         public string ToString(IMove move)
         {
             var normalMove = move as NormalMove;
@@ -23,11 +27,16 @@ namespace CAESAR.Chess.Moves.Notations
                 return null;
             var promotionMove = move as PromotionMove;
             var isCapturingMove = move is CapturingMove || move is CapturingPromotionMove;
-            var promotionSuffix = (promotionMove != null ? "=" + promotionMove.PromotionPieceType.GetNotation() : "");
+            var promotionSuffix = promotionMove != null ? "=" + promotionMove.PromotionPieceType.GetNotation() : "";
             return GetNotation(normalMove.Piece) + GetSpecifier(move) + (isCapturingMove ? "x" : "") +
                    normalMove.DestinationSquareName + promotionSuffix;
         }
 
+        /// <summary>
+        ///     Gets the notation of the <seealso cref="IPiece" /> as required by <seealso cref="ShortAlgebraicNotation" />.
+        /// </summary>
+        /// <param name="piece">The <seealso cref="IPiece" /> for which the notation is required.</param>
+        /// <returns>The notation of the <seealso cref="IPiece" /> as required by <seealso cref="ShortAlgebraicNotation" />.</returns>
         private static string GetNotation(IPiece piece)
         {
             var pieceType = piece.PieceType;
@@ -40,6 +49,11 @@ namespace CAESAR.Chess.Moves.Notations
             }
         }
 
+        /// <summary>
+        ///     Gets the specifier for an <seealso cref="IMove" />, used to disambiguate between pieces involved.
+        /// </summary>
+        /// <param name="move">The <seealso cref="IMove" /> for which the specifier is required.</param>
+        /// <returns>The specifier for the <seealso cref="move" />, used to disambiguate between pieces involved.</returns>
         private static string GetSpecifier(IMove move)
         {
             var normalMove = move as NormalMove;
