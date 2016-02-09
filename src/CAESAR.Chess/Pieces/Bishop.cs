@@ -7,7 +7,7 @@ using CAESAR.Chess.PlayArea;
 namespace CAESAR.Chess.Pieces
 {
     /// <summary>
-    ///     Represents a bishop in the <seealso cref="IGame" />. It belongs to a <seealso cref="Core.Side" />, occupies an
+    ///     Represents a bishop in the <seealso cref="IGame" />. It belongs to a <seealso cref="Side" />, occupies an
     ///     <seealso cref="ISquare" />, and can have <seealso cref="IMove" />s available.
     /// </summary>
     public class Bishop : Piece
