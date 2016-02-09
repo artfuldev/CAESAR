@@ -8,6 +8,5 @@ namespace CAESAR.Chess.Pieces
         public Rook(Side side) : base(side, PieceType.Rook, new RookMovesGenerator())
         {
         }
-        public override object Clone() => new Rook(Side);
     }
 }
