@@ -13,12 +13,12 @@ namespace CAESAR.Chess.PlayArea
         byte Number { get; }
 
         /// <summary>
-        ///     The <seealso cref="IBoard" /> to which this <seealso cref="IFile" /> belongs.
+        ///     The <seealso cref="IBoard" /> to which this <seealso cref="IRank" /> belongs.
         /// </summary>
         IBoard Board { get; }
 
         /// <summary>
-        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="IFile" />.
+        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="IRank" />.
         /// </summary>
         IReadOnlyCollection<ISquare> Squares { get; }
     }
