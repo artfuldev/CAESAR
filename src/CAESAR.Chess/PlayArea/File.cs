@@ -36,17 +36,17 @@ namespace CAESAR.Chess.PlayArea
         }
 
         /// <summary>
-        ///     The name of this <seealso cref="IFile" />
+        ///     The name of this <seealso cref="File" />
         /// </summary>
         public char Name { get; }
 
         /// <summary>
-        ///     The <seealso cref="IBoard" /> to which this <seealso cref="IFile" /> belongs.
+        ///     The <seealso cref="IBoard" /> to which this <seealso cref="File" /> belongs.
         /// </summary>
         public IBoard Board { get; }
 
         /// <summary>
-        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="IFile" />.
+        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="File" />.
         /// </summary>
         public IReadOnlyCollection<ISquare> Squares { get; }
 
