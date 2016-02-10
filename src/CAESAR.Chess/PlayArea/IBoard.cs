@@ -6,7 +6,7 @@ namespace CAESAR.Chess.PlayArea
 {
     /// <summary>
     ///     Represents a chessboard belonging to an <seealso cref="IPosition" />. It is made up of <seealso cref="IFile" />s,
-    ///     <seealso cref="IRank" />s, all made up of <seealso cref="ISquare" />s.
+    ///     <seealso cref="IRank" />s, all made up of <seealso cref="ISquare" />s. It is also an <seealso cref="ICloneable"/>.
     /// </summary>
     public interface IBoard : ICloneable
     {
@@ -52,8 +52,6 @@ namespace CAESAR.Chess.PlayArea
         ///     <seealso cref="IRank" />.
         /// </returns>
         ISquare GetSquare(IFile file, IRank rank);
-
-        ISquare GetSquare(char fileName, byte rankNumber);
 
         /// <summary>
         ///     Gets the <seealso cref="IFile" /> of the specified <seealso cref="fileName" /> that belongs to this
