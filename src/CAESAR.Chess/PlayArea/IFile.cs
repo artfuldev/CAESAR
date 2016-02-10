@@ -8,7 +8,7 @@ namespace CAESAR.Chess.PlayArea
     public interface IFile
     {
         /// <summary>
-        ///     The name of this <seealso cref="IFile" />
+        ///     The name of this <seealso cref="IFile" />.
         /// </summary>
         char Name { get; }
 
