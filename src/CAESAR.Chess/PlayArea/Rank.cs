@@ -36,17 +36,17 @@ namespace CAESAR.Chess.PlayArea
         }
 
         /// <summary>
-        ///     The number of this <seealso cref="IRank" />.
+        ///     The number of this <seealso cref="Rank" />.
         /// </summary>
         public byte Number { get; }
 
         /// <summary>
-        ///     The <seealso cref="IBoard" /> to which this <seealso cref="IRank" /> belongs.
+        ///     The <seealso cref="IBoard" /> to which this <seealso cref="Rank" /> belongs.
         /// </summary>
         public IBoard Board { get; }
 
         /// <summary>
-        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="IRank" />.
+        ///     The <seealso cref="ISquare" />s that make up this <seealso cref="Rank" />.
         /// </summary>
         public IReadOnlyCollection<ISquare> Squares { get; }
 
