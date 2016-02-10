@@ -192,14 +192,6 @@ namespace CAESAR.Chess.Tests.PlayArea
         }
 
         [Theory]
-        [InlineData('g', (byte) 2)]
-        public void GetSquareByFileNameAndRankNumberReturnsCorrectSquare(char fileName, byte rankNumber)
-        {
-            var square = _board.Squares.FirstOrDefault(x => x.File.Name == fileName && x.Rank.Number == rankNumber);
-            Assert.Equal(square, _board.GetSquare(fileName, rankNumber));
-        }
-
-        [Theory]
         [InlineData('g')]
         public void GetFileReturnsCorrectFile(char name)
         {
