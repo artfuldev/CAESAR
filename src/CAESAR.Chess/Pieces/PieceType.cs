@@ -8,6 +8,11 @@ namespace CAESAR.Chess.Pieces
     public enum PieceType
     {
         /// <summary>
+        ///     No specific piece type.
+        /// </summary>
+        None,
+
+        /// <summary>
         ///     The pawn.
         /// </summary>
         Pawn,
