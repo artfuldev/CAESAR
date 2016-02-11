@@ -1,10 +1,6 @@
 {
-  "version": "1.0.0-*",
-  "description": "CAESAR.Chess Class Library",
   "authors": [ "Kenshin The Battosai (Sudarsan Balaji)" ],
-  "tags": [ "" ],
-  "projectUrl": "https://github.com/kenshinthebattosai/CAESAR/",
-  "licenseUrl": "https://github.com/kenshinthebattosai/CAESAR/blob/master/LICENSE",
+  "description": "CAESAR.Chess Class Library",
   "frameworks": {
     "net45": { "frameworkAssemblies": { "System.Text.RegularExpressions": "4.0.0.0" } },
     "dnx451": { "frameworkAssemblies": { "System.Text.RegularExpressions": "4.0.0.0" } },
@@ -15,8 +11,8 @@
         "System.Collections": "4.0.11-beta-23516",
         "System.Linq": "4.0.1-beta-23516",
         "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516",
-        "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        "System.Text.RegularExpressions": "4.0.11-beta-23516",
+        "System.Threading": "4.0.11-beta-23516"
       }
     },
     "dotnet5.4": {
@@ -25,9 +21,13 @@
         "System.Collections": "4.0.11-beta-23516",
         "System.Linq": "4.0.1-beta-23516",
         "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516",
-        "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        "System.Text.RegularExpressions": "4.0.11-beta-23516",
+        "System.Threading": "4.0.11-beta-23516"
       }
     }
-  }
+  },
+  "licenseUrl": "https://github.com/kenshinthebattosai/CAESAR/blob/master/LICENSE",
+  "projectUrl": "https://github.com/kenshinthebattosai/CAESAR/",
+  "tags": [ "" ],
+  "version": "1.0.0-*"
 }
