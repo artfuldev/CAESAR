@@ -167,7 +167,7 @@ namespace CAESAR.Chess.Positions
         /// <summary>
         ///     Clears the <seealso cref="Board" /> of all <seealso cref="IPiece" />s.
         /// </summary>
-        public void ClearBoard()
+        private void ClearBoard()
         {
             foreach (var square in Board.Squares)
                 square.Piece = null;
