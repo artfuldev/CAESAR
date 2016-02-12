@@ -25,7 +25,8 @@ namespace CAESAR.Chess.Games
             new ThreefoldRepetitionUpdater(),
             new FiftyMoveRuleUpdater(),
             new StalemateUpdater(),
-            new IllegalMoveUpdater()
+            new IllegalMoveUpdater(),
+            new InsufficientMatingMaterialUpdater()
         };
 
         public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves,

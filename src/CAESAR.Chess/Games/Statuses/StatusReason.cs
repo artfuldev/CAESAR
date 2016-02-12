@@ -44,5 +44,10 @@
         ///     The position has repeated itself three times on the board, no progress is being made.
         /// </summary>
         ThreefoldRepetition,
+
+        /// <summary>
+        ///     There is insufficient material for any side to checkmate the opponent.
+        /// </summary>
+        InsufficientMaterial
     }
 }
