@@ -35,23 +35,39 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
                 }
 
                 // Case 2 K vs KnB
-                var otherSidePiecesOtherThanKing = otherSidePieces.Where(x => x.PieceType != PieceType.King).ToList();
-                if (otherSidePiecesOtherThanKing.All(x => x.PieceType == PieceType.Bishop) &&
-                    otherSidePiecesOtherThanKing.Select(x => x.Square.IsLight).Distinct().Count() == 1)
+                var otherSidePiecesExceptKing = otherSidePieces.Where(x => x.PieceType != PieceType.King).ToList();
+                if (otherSidePiecesExceptKing.All(x => x.PieceType == PieceType.Bishop) &&
+                    otherSidePiecesExceptKing.Select(x => x.Square.IsLight).Distinct().Count() == 1)
                 {
                     SetGameDrawnByInsufficientMaterial(game);
                     return;
                 }
 
                 // Case 3 K vs KN
-                if (otherSidePiecesOtherThanKing.Count == 1 &&
-                    otherSidePiecesOtherThanKing.First().PieceType == PieceType.Knight)
+                if (otherSidePiecesExceptKing.Count == 1 &&
+                    otherSidePiecesExceptKing.First().PieceType == PieceType.Knight)
                 {
                     SetGameDrawnByInsufficientMaterial(game);
+                    return;
                 }
             }
 
-            // TODO: Cases 4-7
+            // Case 4
+            var blackPiecesExceptKing = blackPieces.Where(x => x.PieceType != PieceType.King).ToList();
+            var whitePiecesExceptKing = whitePieces.Where(x => x.PieceType != PieceType.King).ToList();
+
+            if (blackPiecesExceptKing.All(x => x.PieceType == PieceType.Bishop) &&
+                blackPiecesExceptKing.Select(x => x.Square.IsLight).Distinct().Count() == 1 &&
+                whitePiecesExceptKing.All(x => x.PieceType == PieceType.Bishop) &&
+                whitePiecesExceptKing.Select(x => x.Square.IsLight).Distinct().Count() == 1
+                && blackPiecesExceptKing.First().Square.IsLight == whitePiecesExceptKing.First().Square.IsLight)
+            {
+                SetGameDrawnByInsufficientMaterial(game);
+                return;
+            }
+
+
+            // TODO: Cases 5-7
         }
 
         /// <summary>
