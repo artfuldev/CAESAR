@@ -58,10 +58,9 @@ namespace CAESAR.Chess.Pieces
         }
 
         /// <summary>
-        ///     The names of the <seealso cref="ISquare" />s which this <seealso cref="IPiece" /> threatens to capture, if any.
+        ///     The <seealso cref="ISquare" />s which this <seealso cref="IPiece" /> threatens to capture, if any.
         /// </summary>
-        public IEnumerable<string> ThreatenedSquareNames
-            => _movesGenerator.CaptureSquares.Distinct().Where(x => x != null).Select(x => x.Name);
+        public IEnumerable<ISquare> ThreatenedSquares => _movesGenerator.CaptureSquares.Distinct().Where(x => x != null);
 
         /// <summary>
         ///     The <seealso cref="IMove" />s that can be made by this <seealso cref="IPiece" />. This is calculated by the

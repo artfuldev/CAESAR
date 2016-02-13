@@ -34,9 +34,7 @@ namespace CAESAR.Chess.Positions
             var squaresThreatenedByOpponent =
                 squares.Where(square => square.HasPiece && square.Piece.Side == opposingSide)
                     .Select(square => square.Piece)
-                    .SelectMany(piece => piece.ThreatenedSquareNames)
-                    .Select(squareName => board.GetSquare(squareName))
-                    .Where(square => square != null);
+                    .SelectMany(piece => piece.ThreatenedSquares);
             return squaresThreatenedByOpponent.Contains(thisKingSquare);
         }
     }
