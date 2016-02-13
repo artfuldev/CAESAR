@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CAESAR.Chess.Core;
+using CAESAR.Chess.Pieces;
 using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Games.Statuses.Updaters
@@ -17,19 +18,27 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
         /// <param name="game">The <seealso cref="IGame" /> for which the status is to be updated.</param>
         public void UpdateStatus(IGame game)
         {
+            var currentPosition = game.Position;
+
+            // If the number of kings is incorrect
+            if (game.Position.Board.Squares.Count(x => x.HasPiece && x.Piece.PieceType == PieceType.King) != 2)
+            {
+                game.Status = currentPosition.SideToMove == Side.White ? Status.WhiteWon : Status.BlackWon;
+                game.StatusReason = StatusReason.IllegalMove;
+            }
+
             // If less than 2 moves played
             if (game.Moves.Count <= 2)
                 return;
 
             var lastPosition = game.Moves.Last().Position;
-            var currentPosition = game.Position;
+            var sideThatJustPlayed = lastPosition.SideToMove;
 
             // If check was ignored, illegal move
-            var sideThatJustPlayed = lastPosition.SideToMove;
             var checkedNow = currentPosition.IsInCheck(sideThatJustPlayed);
             if (checkedNow)
             {
-                game.Status = game.Position.SideToMove == Side.White ? Status.WhiteWon : Status.BlackWon;
+                game.Status = currentPosition.SideToMove == Side.White ? Status.WhiteWon : Status.BlackWon;
                 game.StatusReason = StatusReason.IllegalMove;
             }
         }
