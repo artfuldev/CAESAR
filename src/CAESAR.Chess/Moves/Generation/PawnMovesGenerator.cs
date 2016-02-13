@@ -57,13 +57,17 @@ namespace CAESAR.Chess.Moves.Generation
         /// </summary>
         protected override IEnumerable<ISquare> MovementSquares => PawnMovementSquares();
 
+        protected override IEnumerable<CapturingMove> Captures => Square.Rank.Number == PromotionRankNumber
+            ? Enumerable.Empty<CapturingMove>()
+            : CaptureSquares.Distinct()
+                .Where(square => square?.Piece != null && square.Piece.Side != Piece.Side)
+                .Select(square => new CapturingMove(Square, square.Name));
+
         /// <summary>
         ///     The <seealso cref="ISquare" />s which the <seealso cref="Pawn" /> can capture, from
         ///     <seealso cref="IMovesGenerator.Square" />.
         /// </summary>
-        protected override IEnumerable<ISquare> CaptureSquares => Square.Rank.Number == PromotionRankNumber
-            ? Enumerable.Empty<ISquare>()
-            : PawnCaptureDirections.Select(Square.GetAdjacentSquareInDirection);
+        public override IEnumerable<ISquare> CaptureSquares => PawnCaptureDirections.Select(Square.GetAdjacentSquareInDirection);
 
         /// <summary>
         ///     The <seealso cref="Direction" /> in which a <seealso cref="Pawn" /> is allowed to move.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Games;
 using CAESAR.Chess.Moves;
@@ -55,6 +56,12 @@ namespace CAESAR.Chess.Pieces
             get { return _movesGenerator.Square; }
             set { _movesGenerator.Square = value; }
         }
+
+        /// <summary>
+        ///     The names of the <seealso cref="ISquare" />s which this <seealso cref="IPiece" /> threatens to capture, if any.
+        /// </summary>
+        public IEnumerable<string> ThreatenedSquareNames
+            => _movesGenerator.CaptureSquares.Distinct().Where(x => x != null).Select(x => x.Name);
 
         /// <summary>
         ///     The <seealso cref="IMove" />s that can be made by this <seealso cref="IPiece" />. This is calculated by the

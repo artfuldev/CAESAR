@@ -15,6 +15,12 @@ namespace CAESAR.Chess.Moves.Generation
         IEnumerable<IMove> Moves { get; }
 
         /// <summary>
+        ///     The <seealso cref="ISquare" />s that can be used to generate <seealso cref="CapturingMove" />s by this
+        ///     <seealso cref="IMovesGenerator" />.
+        /// </summary>
+        IEnumerable<ISquare> CaptureSquares { get; }
+
+        /// <summary>
         ///     The <seealso cref="ISquare" /> of the <seealso cref="IMovesGenerator" />.
         /// </summary>
         ISquare Square { get; set; }
