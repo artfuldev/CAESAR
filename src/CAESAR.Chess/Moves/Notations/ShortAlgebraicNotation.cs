@@ -73,7 +73,7 @@ namespace CAESAR.Chess.Moves.Notations
             // If there are two pieces on the board which can move to the same destination square, use a specifier
             var similarPieces =
                 source.Board.Squares.Where(
-                    x => x.HasPiece && x.Piece.Side == piece.Side && x.Piece.PieceType == pieceType)
+                    x => x.HasPiece && x.Piece.Side == piece.Side && x.Piece.PieceType == pieceType && x.Piece != source.Piece)
                     .Select(x => x.Piece);
             var similarPiecesWhichCanMoveToSameDestination =
                 similarPieces.Where(
