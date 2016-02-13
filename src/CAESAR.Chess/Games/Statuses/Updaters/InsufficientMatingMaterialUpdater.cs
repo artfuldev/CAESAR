@@ -4,6 +4,11 @@ using CAESAR.Chess.Pieces;
 
 namespace CAESAR.Chess.Games.Statuses.Updaters
 {
+    /// <summary>
+    ///     Updates the <seealso cref="IGame.Status" /> and <seealso cref="IGame.StatusReason" /> of an
+    ///     <seealso cref="IGame" />, following the Insufficient Mating Material Rule (IMMR). This rule says the game is drawn
+    ///     immediately if there is no way to end the game in <seealso cref="StatusReason.Checkmate" />.
+    /// </summary>
     public class InsufficientMatingMaterialUpdater : IStatusUpdater
     {
         /// <summary>
