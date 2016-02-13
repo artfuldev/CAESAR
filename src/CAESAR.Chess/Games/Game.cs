@@ -40,6 +40,7 @@ namespace CAESAR.Chess.Games
             Black.Side = Side.Black;
             Moves = moves ?? new List<IMove>();
             StatusUpdaters = statusUpdaters ?? DefaultStatusUpdaters;
+            UpdateStatus();
         }
 
         /// <summary>
