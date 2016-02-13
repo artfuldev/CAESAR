@@ -50,6 +50,7 @@ namespace CAESAR.Chess.Tests.Pieces
         private class MovesGeneratorTestClass : IMovesGenerator
         {
             public IEnumerable<IMove> Moves => MovesInstance;
+            public IEnumerable<ISquare> CaptureSquares { get; } = Enumerable.Empty<ISquare>();
             public ISquare Square { get; set; }
         }
     }

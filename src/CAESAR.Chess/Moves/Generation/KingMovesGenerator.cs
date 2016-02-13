@@ -47,7 +47,7 @@ namespace CAESAR.Chess.Moves.Generation
         ///     The <seealso cref="ISquare" />s which the <seealso cref="King" /> can capture, from
         ///     <seealso cref="IMovesGenerator.Square" />.
         /// </summary>
-        protected override IEnumerable<ISquare> CaptureSquares
+        public override IEnumerable<ISquare> CaptureSquares
             => Directions.Select(Square.GetAdjacentSquareInDirection);
 
         /// <summary>

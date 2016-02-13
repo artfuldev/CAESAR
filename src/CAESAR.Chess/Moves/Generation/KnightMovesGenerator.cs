@@ -29,7 +29,7 @@ namespace CAESAR.Chess.Moves.Generation
         ///     The <seealso cref="ISquare" />s which the <seealso cref="Knight" /> can capture, from
         ///     <seealso cref="IMovesGenerator.Square" />.
         /// </summary>
-        protected override IEnumerable<ISquare> CaptureSquares => MovementSquares;
+        public override IEnumerable<ISquare> CaptureSquares => MovementSquares;
 
         /// <summary>
         ///     Gets the <seealso cref="ISquare" />s that a <seealso cref="Knight" /> in the

@@ -24,6 +24,11 @@ namespace CAESAR.Chess.Pieces
         ISquare Square { get; set; }
 
         /// <summary>
+        ///     The <seealso cref="ISquare" />s which this <seealso cref="IPiece" /> threatens to capture, if any.
+        /// </summary>
+        IEnumerable<ISquare> ThreatenedSquares { get; }
+
+        /// <summary>
         ///     The <seealso cref="IMove" />s that can be made by this <seealso cref="IPiece" />.
         /// </summary>
         IEnumerable<IMove> Moves { get; }
