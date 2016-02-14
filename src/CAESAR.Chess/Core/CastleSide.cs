@@ -1,4 +1,4 @@
-﻿namespace CAESAR.Chess.Moves
+﻿namespace CAESAR.Chess.Core
 {
     /// <summary>
     ///     The side on which castling can be performed.
