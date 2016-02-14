@@ -1,6 +1,7 @@
 ﻿using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 using CAESAR.Chess.PlayArea;
+using CAESAR.Chess.Positions;
 
 namespace CAESAR.Chess.Moves
 {
@@ -39,6 +40,34 @@ namespace CAESAR.Chess.Moves
             var rankNumber = side == Side.White ? 1 : 8;
             var fileName = castleSide == CastleSide.King ? "g" : "c";
             return fileName + rankNumber;
+        }
+
+        /// <summary>
+        ///     Makes this <seealso cref="CastlingMove" /> on its <seealso cref="Move.Position" />.
+        ///     <para>
+        ///         It moves the piece from the source to the destination, sets castling rights, en passant square, half move
+        ///         clock, etc. on the new position.
+        ///     </para>
+        /// </summary>
+        /// <param name="position">The <seealso cref="IPosition" /> on which this <seealso cref="CastlingMove" /> is to be made.</param>
+        /// <returns>A <seealso cref="IPosition" /> in which the current <seealso cref="CastlingMove" /> is already made.</returns>
+        protected override IPosition MakeImplementation(IPosition position)
+        {
+            // King is moved to Destination Square
+            position = base.MakeImplementation(position);
+            
+            // Move rook to correct square
+            var fileName = DestinationSquareName[0];
+            var rankNumber = DestinationSquareName[1] == '1' ? 1 : 8;
+            var rookCurrentFileName = fileName == 'g' ? "h" : "a";
+            var rookCurrentSquareName = rookCurrentFileName + rankNumber;
+            var rook = position.Board.GetSquare(rookCurrentSquareName).Piece;
+            var rookDestinationFileName = fileName == 'g' ? "f" : "d";
+            var rookDestinationSquareName = rookDestinationFileName + rankNumber;
+            var rookSquare = position.Board.GetSquare(rookDestinationSquareName);
+            rookSquare.Piece = rook;
+
+            return position;
         }
     }
 
