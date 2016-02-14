@@ -75,20 +75,4 @@ namespace CAESAR.Chess.Moves
             return position;
         }
     }
-
-    /// <summary>
-    ///     The side on which the castling can be performed.
-    /// </summary>
-    public enum CastleSide
-    {
-        /// <summary>
-        ///     The king side.
-        /// </summary>
-        King,
-
-        /// <summary>
-        ///     The Queen side.
-        /// </summary>
-        Queen
-    }
 }
