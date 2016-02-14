@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CAESAR.Chess.Core;
 using CAESAR.Chess.Pieces;
 
 namespace CAESAR.Chess.Moves.Notations
@@ -25,6 +26,11 @@ namespace CAESAR.Chess.Moves.Notations
             var normalMove = move as NormalMove;
             if (normalMove == null)
                 return null;
+
+            var castlingMove = normalMove as CastlingMove;
+            if (castlingMove != null)
+                return castlingMove.CastleSide == CastleSide.King ? "O-O" : "O-O-O";
+
             var promotionMove = move as PromotionMove;
             var isCapturingMove = move is CapturingMove || move is CapturingPromotionMove;
             var promotionSuffix = promotionMove != null ? "=" + promotionMove.PromotionPieceType.GetNotation() : "";

@@ -27,7 +27,13 @@ namespace CAESAR.Chess.Moves
         public CastlingMove(ISquare source, CastleSide castleSide)
             : base(source, GetDestinationSquareName(source.Piece.Side, castleSide))
         {
+            CastleSide = castleSide;
         }
+
+        /// <summary>
+        ///     The <seealso cref="CastleSide" /> on which this <seealso cref="CastlingMove" /> is performed.
+        /// </summary>
+        public CastleSide CastleSide { get; }
 
         /// <summary>
         ///     Gets the destination square name based on the <seealso cref="Side" /> and the <seealso cref="CastleSide" />.
@@ -55,35 +61,18 @@ namespace CAESAR.Chess.Moves
         {
             // King is moved to Destination Square
             position = base.MakeImplementation(position);
-            
+
             // Move rook to correct square
-            var fileName = DestinationSquareName[0];
-            var rankNumber = DestinationSquareName[1] == '1' ? 1 : 8;
-            var rookCurrentFileName = fileName == 'g' ? "h" : "a";
+            var rankNumber = Side == Side.White ? 1 : 8;
+            var rookCurrentFileName = CastleSide == CastleSide.King ? "h" : "a";
             var rookCurrentSquareName = rookCurrentFileName + rankNumber;
             var rook = position.Board.GetSquare(rookCurrentSquareName).Piece;
-            var rookDestinationFileName = fileName == 'g' ? "f" : "d";
+            var rookDestinationFileName = CastleSide == CastleSide.King ? "f" : "d";
             var rookDestinationSquareName = rookDestinationFileName + rankNumber;
             var rookSquare = position.Board.GetSquare(rookDestinationSquareName);
             rookSquare.Piece = rook;
 
             return position;
         }
-    }
-
-    /// <summary>
-    ///     The side on which the castling can be performed.
-    /// </summary>
-    public enum CastleSide
-    {
-        /// <summary>
-        ///     The king side.
-        /// </summary>
-        King,
-
-        /// <summary>
-        ///     The Queen side.
-        /// </summary>
-        Queen
     }
 }
