@@ -29,8 +29,8 @@ namespace CAESAR.Chess.Games
             new InsufficientMatingMaterialUpdater()
         };
 
-        public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves,
-            ICollection<IStatusUpdater> statusUpdaters = null)
+        public Game(IPosition position = null, IPlayer white = null, IPlayer black = null,
+            ICollection<IMove> moves = null, ICollection<IStatusUpdater> statusUpdaters = null)
         {
             StatusUpdaters = statusUpdaters;
             Position = position ?? new Position();

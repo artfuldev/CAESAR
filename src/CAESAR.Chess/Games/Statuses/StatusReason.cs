@@ -38,7 +38,7 @@
         /// <summary>
         ///     Fifty moves have progressed without a pawn move or a capture.
         /// </summary>
-        FiftyMovesRule,
+        FiftyMoveRule,
 
         /// <summary>
         ///     The position has repeated itself three times on the board, no progress is being made.
