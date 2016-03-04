@@ -66,7 +66,7 @@ namespace CAESAR.Chess.Games
         /// <summary>
         ///     The current <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
         /// </summary>
-        public IPlayer CurrentPlayer => (Moves?.Count ?? 0)%2 == 0 ? White : Black;
+        public IPlayer CurrentPlayer => Position.SideToMove == Side.White ? White : Black;
 
         /// <summary>
         ///     The current opposing <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
