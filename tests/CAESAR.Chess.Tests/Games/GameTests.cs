@@ -13,5 +13,11 @@ namespace CAESAR.Chess.Tests.Games
         {
             Assert.Equal(Side.White, _game.White.Side);
         }
+
+        [Fact]
+        public void GamesBlackPlayersSideIsBlack()
+        {
+            Assert.Equal(Side.Black, _game.Black.Side);
+        }
     }
 }
