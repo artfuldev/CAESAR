@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.ConsoleApp", "src\CAESAR.ConsoleApp\CAESAR.ConsoleApp.xproj", "{D49E4D70-0517-4064-8A58-63730730CBE2}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess", "src\CAESAR.Chess\CAESAR.Chess.xproj", "{5612D407-301E-4EA7-852B-16321159ECFD}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess.Tests", "tests\CAESAR.Chess.Tests\CAESAR.Chess.Tests.xproj", "{DADEE861-AE38-44AE-821D-82E8099CFD81}"
 EndProject
@@ -67,6 +65,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "plans", "src\plans\", "{714
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess", "src\CAESAR.Chess\CAESAR.Chess.xproj", "{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,10 +77,6 @@ Global
 		{D49E4D70-0517-4064-8A58-63730730CBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D49E4D70-0517-4064-8A58-63730730CBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D49E4D70-0517-4064-8A58-63730730CBE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5612D407-301E-4EA7-852B-16321159ECFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5612D407-301E-4EA7-852B-16321159ECFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5612D407-301E-4EA7-852B-16321159ECFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5612D407-301E-4EA7-852B-16321159ECFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -93,15 +89,19 @@ Global
 		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D49E4D70-0517-4064-8A58-63730730CBE2} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
-		{5612D407-301E-4EA7-852B-16321159ECFD} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 		{DADEE861-AE38-44AE-821D-82E8099CFD81} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
 		{714D70C6-2273-4A29-A7DA-A9BE58959939} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
