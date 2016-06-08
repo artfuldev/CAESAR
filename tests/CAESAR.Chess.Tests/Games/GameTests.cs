@@ -1,10 +1,14 @@
-﻿using CAESAR.Chess.Games;
+﻿using System.Net;
+using CAESAR.Chess.Games;
 using CAESAR.Chess.Core;
 using CAESAR.Chess.Moves;
 using CAESAR.Chess.Players;
 using CAESAR.Chess.Positions;
 using Xunit;
 using CAESAR.Chess.Games.Exceptions;
+using CAESAR.Chess.Games.Statuses;
+using CAESAR.Chess.Games.Statuses.Updaters;
+using System;
 
 namespace CAESAR.Chess.Tests.Games
 {
@@ -47,6 +51,34 @@ namespace CAESAR.Chess.Tests.Games
             var position = new Position() {SideToMove = Side.White};
             var game = new Game(position);
             Assert.Throws<CannotSkipMoveException>(() => { game.Play(null); });
+        }
+
+        private class GivenStatusUpdater : IStatusUpdater
+        {
+            private readonly Status _status;
+
+            public GivenStatusUpdater(Status status)
+            {
+                _status = status;
+            }
+
+            public void UpdateStatus(IGame game)
+            {
+                game.Status = _status;
+            }
+        }
+
+        [Theory]
+        [InlineData(Status.Unknown)]
+        [InlineData(Status.Drawn)]
+        [InlineData(Status.WhiteWon)]
+        [InlineData(Status.BlackWon)]
+        public void PlayContinuesUntil(Status status)
+        {
+            var position = new Position() { SideToMove = Side.White };
+            var updater = new GivenStatusUpdater(status);
+            var game = new Game(position, statusUpdaters: new[] {updater});
+            Assert.Throws<CannotPlayGameException>(() => { game.Play(); });
         }
     }
 }
