@@ -1,31 +1,28 @@
 {
-  "authors": [ "Kenshin" ],
-  "commands": {
-    "test": "xunit.runner.dnx"
-  },
+  "version": "1.0.0-*",
+  "testRunner": "xunit",
   "dependencies": {
-    "OpenCover": "4.6.261-rc",
-    "xunit": "2.1.0-*",
-    "xunit.runner.dnx": "2.1.0-*",
-    "CAESAR.Chess": "",
-    "ReportGenerator": "2.4.0-beta1"
+    "dotnet-test-xunit": "1.0.0-rc2-build10025",
+    "OpenCover": "4.6.519",
+    "ReportGenerator": "2.4.5",
+    "xunit": "2.1.0"
   },
-  "description": "CAESAR.Chess.Tests Class Library",
   "frameworks": {
-    "dnx451": { },
-    "dnx46": { },
-    "dnxcore50": {
+    "netcoreapp1.0": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0-rc2-3002702"
+        },
+        "CAESAR.Chess": {
+          "target": "project",
+          "version": "1.0.0"
+        }
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
     }
-  },
-  "licenseUrl": "",
-  "projectUrl": "",
-  "tags": [ "" ],
-  "version": "1.0.0-*"
+  }
 }

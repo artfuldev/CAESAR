@@ -101,6 +101,8 @@ namespace CAESAR.Chess.Games
         /// <param name="move">The <seealso cref="IMove" /> to be played.</param>
         public void Play(IMove move)
         {
+            if (move == null)
+                throw new CannotSkipMoveException();
             Position = CurrentPlayer.MakeMove(move) ?? Position;
             Moves.Add(move);
             UpdateStatus();
