@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.25928.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.ConsoleApp", "src\CAESAR.ConsoleApp\CAESAR.ConsoleApp.xproj", "{D49E4D70-0517-4064-8A58-63730730CBE2}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess.Tests", "tests\CAESAR.Chess.Tests\CAESAR.Chess.Tests.xproj", "{DADEE861-AE38-44AE-821D-82E8099CFD81}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58A98FE6-C7EE-4C8F-B9F3-591294C22B40}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
@@ -65,7 +61,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "plans", "src\plans\", "{714
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CAESAR.Chess", "src\CAESAR.Chess\CAESAR.Chess.xproj", "{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAESAR.Chess", "src\CAESAR.Chess\CAESAR.Chess.csproj", "{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAESAR.Chess.Tests", "tests\CAESAR.Chess.Tests\CAESAR.Chess.Tests.csproj", "{FB0541F3-16AC-4F05-A205-873D58DF87BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAESAR.ConsoleApp", "src\CAESAR.ConsoleApp\CAESAR.ConsoleApp.csproj", "{5310BB34-E0B5-406E-81F1-7B1BFC28DB37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,14 +73,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D49E4D70-0517-4064-8A58-63730730CBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D49E4D70-0517-4064-8A58-63730730CBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D49E4D70-0517-4064-8A58-63730730CBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D49E4D70-0517-4064-8A58-63730730CBE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DADEE861-AE38-44AE-821D-82E8099CFD81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9744FE0F-C99C-49A9-BFF3-77B5CCE91D83}.Release|Any CPU.ActiveCfg = Debug|Any CPU
@@ -91,17 +83,25 @@ Global
 		{714D70C6-2273-4A29-A7DA-A9BE58959939}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FB0541F3-16AC-4F05-A205-873D58DF87BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0541F3-16AC-4F05-A205-873D58DF87BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0541F3-16AC-4F05-A205-873D58DF87BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0541F3-16AC-4F05-A205-873D58DF87BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D49E4D70-0517-4064-8A58-63730730CBE2} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
-		{DADEE861-AE38-44AE-821D-82E8099CFD81} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
 		{714D70C6-2273-4A29-A7DA-A9BE58959939} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
+		{FB0541F3-16AC-4F05-A205-873D58DF87BC} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
+		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
