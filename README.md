@@ -6,7 +6,8 @@ A pet project that aims to build a chess engine with a focus on software archite
 practices.
 
 
-##The What
+## The What
+
 A chess engine is a computer program that analyses chess positions and makes decisions on the
 best chess moves. We will be constructing a chess engine in C#. Our focus will be on problems
 related to the software architecture and design principles, such as SOLID principles and
@@ -21,7 +22,8 @@ I intend this to be an interactive act of discovery.
 
 So, we're attempting to create a chess engine with software best practices in mind - simple, no?
 
-##The Why
+## The Why
+
 Chess engines are almost always written way too optimized for "anyone" to just "have a peek under
 the hood" and dive in with contributions. Since it's a highly competitive area, the source code
 of most highly rated chess engines are close to unreadable without comments or prior knowledge.
@@ -40,14 +42,16 @@ challenges surrounding the development of a chess engine, which is also a struct
 functionally and architecturally sound piece of software. My purpose is not to tell you all
 the answers that you'll need, but rather to help you ask the right questions.
 
-##The How
+## The How
+
 The goal is to create a cross-platform console application that runs on DNX. Naturally we will
 be breaking down the functionality into libraries (that are also cross-platform).
 
 More granular details on what we will accomplishing on a time-frame basis will be updated in
 the journal localted in the [docs](docs) folder of the repository.
 
-##The Who
+## The Who
+
 The intended audience for this guidance/project is any developer, senior developer or architect
 interested in developing a software solution which focuses on best practices. I hope that all
 developers, regardless of their preferred development stack, can benefit from the written
@@ -56,10 +60,12 @@ guidance.
 If you feel that there is anything more that we can do to make this accessible to a broader
 audience, you are encouraged to share.
 
-##Next Steps
+## Next Steps
+
 * Go to the [docs](docs) folder, review the content, review the source code, and just dive in!
 
-##Problems, Concerns, and Feedback
+## Problems, Concerns, and Feedback
+
 You can communicate via email to Sudarsan.Balaji@outlook.com or even open issues at this repo, if
 something doesn't make sense or we have other troubles to be looked into.
 
