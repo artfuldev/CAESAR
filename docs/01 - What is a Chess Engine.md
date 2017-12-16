@@ -1,4 +1,5 @@
-#What is a Chess Engine?
+# What is a Chess Engine?
+
 According to [Wikipedia](https://en.wikipedia.org/wiki/Chess_engine), *a chess engine is a
 computer program that analyses chess positions and makes decisions on the best chess moves*.
 That can be a broad requirement to a software developer without any specifics. So, as any good
@@ -21,7 +22,7 @@ A chess engine can:
 4. Evaluate chess moves (arising from a particular chess position?)
 5. Make decisions on the best chess moves based on this evaluation
 
-##Further Information
+## Further Information
 
 * [Chess Engine on Wikipedia](https://en.wikipedia.org/wiki/Chess_engine)
 * [Chess on Wikipedia](https://en.wikipedia.org/wiki/Chess)
