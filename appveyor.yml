@@ -7,6 +7,8 @@ init:
  - cmd: dotnet --version
 before_build:
  - cmd: dotnet restore ./src/CAESAR.Chess/CAESAR.Chess.csproj --verbosity m
+ build_script:
+ - cmd: dotnet publish ./src/CAESAR.Chess/CAESAR.Chess.csproj
 test_script:
  - cmd: dotnet restore ./tests/CAESAR.Chess.Tests/CAESAR.Chess.Tests.csproj --verbosity m
  - cmd: cd tests
