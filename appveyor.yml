@@ -13,4 +13,4 @@ test_script:
  - cmd: dotnet restore ./tests/CAESAR.Chess.Tests/CAESAR.Chess.Tests.csproj --verbosity m
  - cmd: cd tests
  - cmd: cd CAESAR.Chess.Tests
- - cmd: dotnet xunit
+ - cmd: dotnet test
