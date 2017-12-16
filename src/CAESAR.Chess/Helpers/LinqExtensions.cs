@@ -37,17 +37,6 @@ namespace CAESAR.Chess.Helpers
         }
 
         /// <summary>
-        ///     Converts an <seealso cref="IEnumerable{T}" /> to a <seealso cref="HashSet{T}" />.
-        /// </summary>
-        /// <typeparam name="T">The type of items in the <seealso cref="IEnumerable{T}" />.</typeparam>
-        /// <param name="items">The <seealso cref="IEnumerable{TSource}" /> of items from which to take.</param>
-        /// <returns>A <seealso cref="HashSet{T}" /> containing the same items as in the passed <seealso cref="IEnumerable{T}" />.</returns>
-        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> items)
-        {
-            return new HashSet<T>(items);
-        }
-
-        /// <summary>
         ///     Selects a random element from an <seealso cref="IEnumerable{TSource}" />, with an optional condition.
         /// </summary>
         /// <typeparam name="TSource">The type of items in the <seealso cref="IEnumerable{TSource}" />.</typeparam>
