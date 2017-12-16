@@ -14,7 +14,8 @@ Our first step is to raise the issues to keep track of:
 This allows us to follow them at long last, and to keep the docs concise. We will be addressing the
 concerns in the issues themselves. Follow the issues until our next journal entry.
 
-##Further Information
+## Further Information
+
 * [Chessboard](https://en.wikipedia.org/wiki/Chessboard)
 * [Board Representation](https://en.wikipedia.org/wiki/Board_representation_(chess))
 * [Previous Jounral Entry](../05%20-%20A%20%SOLID%20Look%20At%20The%20Board.md)
