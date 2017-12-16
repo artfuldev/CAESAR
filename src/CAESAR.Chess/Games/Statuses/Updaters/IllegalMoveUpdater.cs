@@ -25,17 +25,14 @@ namespace CAESAR.Chess.Games.Statuses.Updaters
             {
                 game.Status = currentPosition.SideToMove == Side.White ? Status.WhiteWon : Status.BlackWon;
                 game.StatusReason = StatusReason.IllegalMove;
+                return;
             }
 
-            // If less than 2 moves played
-            if (game.Moves.Count <= 2)
-                return;
-
-            var lastPosition = game.Moves.Last().Position;
-            var sideThatJustPlayed = lastPosition.SideToMove;
+            var sideToMove = currentPosition.SideToMove;
+            var otherSide = sideToMove == Side.White ? Side.Black : Side.White;
 
             // If check was ignored, illegal move
-            var checkedNow = currentPosition.IsInCheck(sideThatJustPlayed);
+            var checkedNow = currentPosition.IsInCheck(otherSide);
             if (checkedNow)
             {
                 game.Status = currentPosition.SideToMove == Side.White ? Status.WhiteWon : Status.BlackWon;

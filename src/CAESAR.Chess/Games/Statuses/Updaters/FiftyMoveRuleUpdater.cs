@@ -17,7 +17,7 @@
             if (position.HalfMoveClock < 50)
                 return;
             game.Status = Status.Drawn;
-            game.StatusReason = StatusReason.FiftyMovesRule;
+            game.StatusReason = StatusReason.FiftyMoveRule;
         }
     }
 }

@@ -29,8 +29,8 @@ namespace CAESAR.Chess.Games
             new InsufficientMatingMaterialUpdater()
         };
 
-        public Game(IPosition position, IPlayer white, IPlayer black, ICollection<IMove> moves,
-            ICollection<IStatusUpdater> statusUpdaters = null)
+        public Game(IPosition position = null, IPlayer white = null, IPlayer black = null,
+            ICollection<IMove> moves = null, ICollection<IStatusUpdater> statusUpdaters = null)
         {
             StatusUpdaters = statusUpdaters;
             Position = position ?? new Position();
@@ -66,7 +66,7 @@ namespace CAESAR.Chess.Games
         /// <summary>
         ///     The current <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
         /// </summary>
-        public IPlayer CurrentPlayer => (Moves?.Count ?? 0)%2 == 0 ? White : Black;
+        public IPlayer CurrentPlayer => Position.SideToMove == Side.White ? White : Black;
 
         /// <summary>
         ///     The current opposing <seealso cref="IPlayer" /> of the <seealso cref="IGame" />.
@@ -101,6 +101,8 @@ namespace CAESAR.Chess.Games
         /// <param name="move">The <seealso cref="IMove" /> to be played.</param>
         public void Play(IMove move)
         {
+            if (move == null)
+                throw new CannotSkipMoveException();
             Position = CurrentPlayer.MakeMove(move) ?? Position;
             Moves.Add(move);
             UpdateStatus();

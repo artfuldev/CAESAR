@@ -6,6 +6,11 @@
     public enum CastleSide
     {
         /// <summary>
+        /// No side.
+        /// </summary>
+        None,
+
+        /// <summary>
         ///     The king side.
         /// </summary>
         King,

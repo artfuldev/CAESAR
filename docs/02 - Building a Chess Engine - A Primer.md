@@ -1,4 +1,5 @@
-#Building a Chess Engine: A Primer
+# Building a Chess Engine: A Primer
+
 When building a piece of software, we never start with code. That's why you'll notice that
 even though we have a few commits already, we have never actually committed any code. We
 always start with a plan. I have a personal software development cycle which goes roughly
@@ -61,7 +62,7 @@ celebrate.
 _Cheers to us!!!_
 
 
-##Further Information
+## Further Information
 
 * [Chess on Wikipedia](https://en.wikipedia.org/wiki/Chess)
 * [Getting Started on Chess Programming](http://chessprogramming.wikispaces.com/Getting+Started)
