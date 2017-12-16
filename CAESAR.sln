@@ -1,12 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25928.0
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58A98FE6-C7EE-4C8F-B9F3-591294C22B40}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
-		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -102,6 +101,9 @@ Global
 		{0C5E497F-5DBA-470E-81C2-6BF3B995AA27} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
 		{FB0541F3-16AC-4F05-A205-873D58DF87BC} = {44B5361F-68D4-492F-809A-C45EDFB9A464}
 		{5310BB34-E0B5-406E-81F1-7B1BFC28DB37} = {F2E82D66-1A6D-449F-9924-9897521D74FA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F1C7EB7-47B9-4528-9992-153866CE9319}
 	EndGlobalSection
 	GlobalSection(CodealikeProperties) = postSolution
 		SolutionGuid = 8d40768a-fa4e-4b50-8d36-8fdf0bf731d7
