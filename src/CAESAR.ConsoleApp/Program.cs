@@ -57,7 +57,7 @@ namespace CAESAR.ConsoleApp
             Console.WriteLine(moveCount + " moves played and printed in " + time1.Milliseconds + "ms");
             Console.WriteLine("Moves played and printed per second: " + (moveCount / time1.Milliseconds) * 1000);
             Console.WriteLine("All moves played");
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
