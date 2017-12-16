@@ -72,8 +72,8 @@ namespace CAESAR.Chess.Tests.PlayArea
         [Fact]
         public void SquareKnowsIfItIsLightOrDark()
         {
-            Assert.Equal(false, _darkSquare.IsLight);
-            Assert.Equal(true, _lightSquare.IsLight);
+            Assert.False(_darkSquare.IsLight);
+            Assert.True(_lightSquare.IsLight);
         }
 
         [Fact]
